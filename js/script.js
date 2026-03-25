@@ -435,7 +435,7 @@ const FALLBACK_BG = {
   permit:      'linear-gradient(135deg, #7a1010, #e63946)',
 };
 
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbw0L9cjwOUNmoKGTnLiEsbS3lOtwB5ITbhrcQygpuzWss0xm2oCq_F-_y4XEzA6cHoCIw/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycby6YeMcOnDAxLgF_wFsDfjtuc5IyRO1uBFLAhDiRCYTrBcshVPtcqJ4ve684PnTRCJkig/exec';
 
 /**
  * Mengambil data foto.
