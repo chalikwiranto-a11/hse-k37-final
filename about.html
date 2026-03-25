@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tentang HSE FMC-37 — Portal HSE</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700;800&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ═══════════════════════════════════════════════
+       ABOUT PAGE — CUSTOM STYLES
+       ═══════════════════════════════════════════════ */
+
+
+    /* ── WHATSAPP LINK ── */
+    .whatsapp-link {
+      text-decoration: none;
+      transition: all 0.2s;
+      padding: 6px 14px;
+      border-radius: 99px;
+      background: rgba(37, 211, 102, 0.1) !important;
+      color: #128c7e !important;
+      font-weight: 700;
+      margin-top: 6px;
+    }
+
+    .whatsapp-link:hover {
+      background: #25d366 !important;
+      color: #fff !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+    }
+
+    /* ── ORG CHART LAYOUT ── */
+    .org-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── LEVEL ROWS ── */
+    .org-level {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* ── CONNECTOR LINE between levels ── */
+    .org-connector {
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      height: 40px;
+      align-items: center;
+    }
+
+    .org-connector-line {
+      width: 2px;
+      height: 40px;
+      background: linear-gradient(to bottom, #3e92cc, rgba(62, 146, 204, 0.3));
+      border-radius: 99px;
+    }
+
+    .org-connector-branch {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      height: 40px;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .org-connector-branch::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background: #3e92cc;
+    }
+
+    .org-connector-branch::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20%;
+      right: 20%;
+      height: 2px;
+      background: #3e92cc;
+    }
+
+    .org-connector-branch .branch-down {
+      position: absolute;
+      bottom: 0;
+      width: 2px;
+      height: 20px;
+      background: #3e92cc;
+    }
+
+    /* ── PERSON CARD ── */
+    .person-card {
+      background: #ffffff;
+      border: 1px solid #dde3ed;
+      border-radius: 20px;
+      padding: 28px 24px 24px;
+      text-align: center;
+      width: 240px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 20px rgba(10, 36, 99, 0.08);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .person-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--card-accent, linear-gradient(90deg, #0a2463, #3e92cc));
+      border-radius: 20px 20px 0 0;
+    }
+
+    .person-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(10, 36, 99, 0.18);
+      border-color: #3e92cc;
+    }
+
+    /* ── PHOTO CIRCLE ── */
+    .person-photo-wrap {
+      position: relative;
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 16px;
+    }
+
+    .person-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 16px rgba(10, 36, 99, 0.15);
+      display: block;
+      background: #eef1f6;
+      transition: transform 0.3s ease;
+    }
+
+    .person-card:hover .person-photo {
+      transform: scale(1.05);
+    }
+
+    /* Placeholder shown when no photo */
+    .person-photo-placeholder {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0a2463, #3e92cc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 16px rgba(10, 36, 99, 0.15);
+      margin: 0 auto;
+    }
+
+    /* Online dot indicator */
+    .person-status-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2.5px solid #fff;
+      background: #2dc653;
+    }
+
+    /* ── CARD TEXT ── */
+    .person-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #0d1b35;
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .person-position {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #3e92cc;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .person-dept {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--badge-bg, #0a2463);
+      padding: 3px 10px;
+      border-radius: 99px;
+      margin-bottom: 10px;
+    }
+
+    .person-contact {
+      font-size: 11px;
+      color: #8a95a6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    /* ── TOP CARD (HSE Manager) — larger ── */
+    .person-card.card-top {
+      width: 280px;
+      padding: 32px 28px 26px;
+    }
+
+    .person-card.card-top .person-photo-wrap {
+      width: 140px;
+      height: 140px;
+    }
+
+    .person-card.card-top .person-photo,
+    .person-card.card-top .person-photo-placeholder {
+      width: 140px;
+      height: 140px;
+      font-size: 44px;
+    }
+
+    .person-card.card-top .person-name {
+      font-size: 16px;
+    }
+
+    .person-card.card-top .person-position {
+      font-size: 12px;
+    }
+
+    .person-card.card-top::before {
+      height: 5px;
+      background: linear-gradient(90deg, #ffb703, #e6a200);
+    }
+
+    /* ── MIDDLE CARD (Supervisor) ── */
+    .person-card.card-mid::before {
+      background: linear-gradient(90deg, #3e92cc, #5aa8e0);
+    }
+
+    /* ── BOTTOM CARDS (Officers) ── */
+    .person-card.card-bottom::before {
+      background: linear-gradient(90deg, #2dc653, #1fa36e);
+    }
+
+    /* ── ABOUT SECTION ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .vision-mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .vm-card {
+      background: #fff;
+      border: 1px solid #dde3ed;
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgba(10, 36, 99, 0.06);
+      transition: all 0.3s;
+    }
+
+    .vm-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(10, 36, 99, 0.12);
+    }
+
+    .vm-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .vm-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #0a2463;
+      margin-bottom: 10px;
+    }
+
+    .vm-text {
+      font-size: 13.5px;
+      color: #4a5568;
+      line-height: 1.75;
+    }
+
+    /* ── STATS ROW ── */
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-stat {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .about-stat:hover {
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .about-stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #ffb703;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .about-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ── VALUE PILLS ── */
+    .values-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+
+    .value-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: rgba(62, 146, 204, 0.1);
+      border: 1px solid rgba(62, 146, 204, 0.25);
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #0a2463;
+      transition: all 0.2s;
+    }
+
+    .value-pill:hover {
+      background: #0a2463;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(10, 36, 99, 0.2);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .vision-mission-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .person-card {
+        width: 170px;
+      }
+
+      .person-card.card-top {
+        width: 280px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .org-level {
+        gap: 14px;
+      }
+
+      .person-card {
+        width: 150px;
+        padding: 22px 16px 18px;
+      }
+
+      .person-card.card-top {
+        width: 180px;
+      }
+
+      .person-photo,
+      .person-photo-placeholder {
+        width: 80px;
+        height: 80px;
+      }
+
+      .person-photo-wrap {
+        width: 80px;
+        height: 80px;
+      }
+
+      .person-card.card-top .person-photo,
+      .person-card.card-top .person-photo-placeholder {
+        width: 96px;
+        height: 96px;
+      }
+
+      .person-card.card-top .person-photo-wrap {
+        width: 96px;
+        height: 96px;
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .org-connector-branch::after {
+        left: 15%;
+        right: 15%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAVIGATION ════════════════════════════════════════════ -->
+  <nav class="navbar transparent" role="navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" style="display:flex; align-items:center;">
+        <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+          style="height: 52px; width: auto; object-fit: contain; transform: translateY(4px) translateX(-4px);">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="health.html">Kesehatan</a></li>
+        <li><a href="safety.html">Keselamatan</a></li>
+        <li><a href="environment.html">Lingkungan</a></li>
+        <li><a href="permit.html">Izin Kerja</a></li>
+        <li><a href="about.html" class="active">Tentang</a></li>
+        <li><a href="safety.html#report" class="nav-cta">Lapor Observasi</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Beralih navigasi"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- ═══ PAGE HERO ══════════════════════════════════════════════ -->
+  <section class="page-hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=1400&q=70" alt="HSE Team"
+        loading="eager" />
+    </div>
+    <div class="hero-geo">
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+    </div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-gradient"
+      style="background:linear-gradient(135deg,rgba(7,26,74,0.97) 0%,rgba(10,36,99,0.90) 55%,rgba(62,146,204,0.50) 100%);">
+    </div>
+    <div class="hero-content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Beranda</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current">Tentang</span>
+      </nav>
+      <div class="page-hero-badge"
+        style="background:rgba(255,183,3,0.15);border:1px solid rgba(255,183,3,0.35);color:#ffb703;">
+        🛡️ Departemen HSE — FMC-37
+      </div>
+      <h1 class="hero-title" style="max-width:700px;">
+        Tentang <span class="accent-word">HSE FMC-37</span>
+      </h1>
+      <p class="hero-subtitle">
+        Tim HSE FMC-37 berkomitmen penuh untuk memelihara operasional wilayah kerja kerja yang terjamin aman, menjunjung
+        kesehatan, dan mengawasi keseimbangan berkelanjutan secara lintas seluruh pabrik wilayah.
+      </p>
+      <div class="hero-actions">
+        <a href="#team" class="btn btn-primary">Bertemu Anggota Tim</a>
+        <a href="#about-us" class="btn btn-outline">Penjelasan Misi Kami</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HSE STATS ══════════════════════════════════════════════ -->
+  <section class="section section-dark">
+    <div class="about-stats">
+      <div class="about-stat reveal reveal-delay-1">
+        <div class="about-stat-num" data-count="2840" data-suffix="+">0+</div>
+        <div class="about-stat-label">Jam Kerja Aman</div>
+      </div>
+      <div class="about-stat reveal reveal-delay-2">
+        <div class="about-stat-num" data-count="0" data-suffix="">0</div>
+        <div class="about-stat-label">Insiden Kerja (LTI)</div>
+      </div>
+      <div class="about-stat reveal reveal-delay-3">
+        <div class="about-stat-num" data-count="98" data-suffix="%">0%</div>
+        <div class="about-stat-label">Kepatuhan Izin PTW</div>
+      </div>
+      <div class="about-stat reveal reveal-delay-4">
+        <div class="about-stat-num" data-count="6" data-suffix="">0</div>
+        <div class="about-stat-label">Staf Personel HSE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT US ═══════════════════════════════════════════════ -->
+  <section class="section" id="about-us">
+    <div class="container">
+      <div class="about-grid">
+        <!-- Text -->
+        <div class="reveal-left">
+          <div class="section-eyebrow" style="justify-content:flex-start;">Tentang Kami</div>
+          <h2
+            style="font-family:'Poppins',sans-serif;font-size:clamp(1.6rem,2.5vw,2.4rem);font-weight:800;color:#0a2463;line-height:1.2;margin-bottom:16px;">
+            HSE Department<br />FMC-37
+          </h2>
+          <p style="font-size:15px;color:#4a5568;line-height:1.85;margin-bottom:20px;">
+            HSE FMC-37 adalah tim yang berdedikasi dalam memastikan keselamatan, kesehatan, dan perlindungan lingkungan
+            di seluruh area operasi PT. Industri Prima. Kami bekerja tanpa henti untuk membangun budaya zero-harm yang
+            tertanam dalam setiap aspek pekerjaan.
+          </p>
+          <p style="font-size:15px;color:#4a5568;line-height:1.85;margin-bottom:28px;">
+            Dengan pendekatan sistematis berbasis risiko, kami mengintegrasikan standar internasional ISO 45001 dan ISO
+            14001 ke dalam seluruh proses operasional untuk memberikan perlindungan terbaik bagi seluruh karyawan dan
+            lingkungan sekitar.
+          </p>
+
+          <div class="values-row" style="justify-content:flex-start;">
+            <span class="value-pill">🎯 Tanpa Insiden Kerja (Zero Harm)</span>
+            <span class="value-pill">⚖️ Standar ISO 45001</span>
+            <span class="value-pill">🌿 Standar ISO 14001</span>
+            <span class="value-pill">🤝 Kerja Tim Sehat</span>
+            <span class="value-pill">📋 Kepatuhan Prosedural</span>
+            <span class="value-pill">💡 Peningkatan Berkelanjutan Mutu</span>
+          </div>
+        </div>
+
+        <!-- Vision Mission Cards -->
+        <div class="reveal-right">
+          <div class="vision-mission-grid">
+            <div class="vm-card">
+              <div class="vm-icon" style="background:rgba(255,183,3,0.12);">🎯</div>
+              <div class="vm-title">Visi Unggulan</div>
+              <div class="vm-text">Menjadi tim departemen panutan bidang HSE terlatih secara matang demi mendukung
+                eksekusi industri standar global serta menyelenggarakan jaminan riwayat nol insiden kecelakaan murni
+                (Zero Accident).</div>
+            </div>
+            <div class="vm-card">
+              <div class="vm-icon" style="background:rgba(62,146,204,0.12);">🚀</div>
+              <div class="vm-title">Misi Utama</div>
+              <div class="vm-text">Mengintegrasikan program manajemen kontrol HSE dalam balutan strategi proaktif di
+                semua alur operasional internal tanpa menolerir kelemahan proteksi karyawan manapun selama bertugas.
+              </div>
+            </div>
+            <div class="vm-card">
+              <div class="vm-icon" style="background:rgba(45,198,83,0.12);">💎</div>
+              <div class="vm-title">Nilai Moral Terpadu</div>
+              <div class="vm-text">Tanggung jawab murni dilandasi nilai loyalitas moral untuk menjaga serta
+                mensosialisasikan pentingnya kesejahteraan tubuh sehingga menjadi prinsip keseharian semua pihak.</div>
+            </div>
+            <div class="vm-card">
+              <div class="vm-icon" style="background:rgba(230,57,70,0.12);">🛡️</div>
+              <div class="vm-title">Dasar Komitmen Etos</div>
+              <div class="vm-text">Rela melaporkan penemuan ganjal tak wajar pada atasan sebelum berinisiatif,
+                membawakan dedikasi murni ke ruang pekerjaan guna menyuarakannya bersama kawan sejawat rekanan.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ POSTCARD GRID (BERITA & DOKUMENTASI) ═══════════════════ -->
+  <section class="section" id="news">
+    <div class="container">
+      <div class="postcard-grid reveal">
+
+        <!-- Card 1 -->
+        <a href="https://forms.gle/ISI_LINK_GOOGLE_FORM_KAMU" target="_blank"
+          style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap">
+              <span class="postcard-date">Present</span>
+              <img
+                src="https://www.computerworld.com/wp-content/uploads/2025/07/1663717-0-78659200-1752253626-google-forms-cheat-sheet-16x9-1.jpg?quality=50&strip=all"
+                alt="Ramadhan Kareem">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">Google Form</div>
+              <h3 class="postcard-title">Permit</h3>
+              <p class="postcard-desc">LIST</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="https://forms.gle/ISI_LINK_GOOGLE_FORM_KAMU" target="_blank"
+          style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap">
+              <span class="postcard-date">Present</span>
+              <img
+                src="https://www.computerworld.com/wp-content/uploads/2025/07/1663717-0-78659200-1752253626-google-forms-cheat-sheet-16x9-1.jpg?quality=50&strip=all"
+                alt="Ramadhan Kareem">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">Google Form</div>
+              <h3 class="postcard-title">Permit</h3>
+              <p class="postcard-desc">LIST</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="https://forms.gle/ISI_LINK_GOOGLE_FORM_KAMU" target="_blank"
+          style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap">
+              <span class="postcard-date">Present</span>
+              <img
+                src="https://www.computerworld.com/wp-content/uploads/2025/07/1663717-0-78659200-1752253626-google-forms-cheat-sheet-16x9-1.jpg?quality=50&strip=all"
+                alt="Ramadhan Kareem">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">Google Form</div>
+              <h3 class="postcard-title">Permit</h3>
+              <p class="postcard-desc">LIST</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="https://forms.gle/ISI_LINK_GOOGLE_FORM_KAMU" target="_blank"
+          style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap">
+              <span class="postcard-date">Present</span>
+              <img
+                src="https://www.computerworld.com/wp-content/uploads/2025/07/1663717-0-78659200-1752253626-google-forms-cheat-sheet-16x9-1.jpg?quality=50&strip=all"
+                alt="Ramadhan Kareem">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">Google Form</div>
+              <h3 class="postcard-title">Permit</h3>
+              <p class="postcard-desc">LIST</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 5 -->
+        <a href="https://forms.gle/ISI_LINK_GOOGLE_FORM_KAMU" target="_blank"
+          style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap">
+              <span class="postcard-date">Present</span>
+              <img
+                src="https://www.computerworld.com/wp-content/uploads/2025/07/1663717-0-78659200-1752253626-google-forms-cheat-sheet-16x9-1.jpg?quality=50&strip=all"
+                alt="Ramadhan Kareem">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">Google Form</div>
+              <h3 class="postcard-title">Permit</h3>
+              <p class="postcard-desc">LIST</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 6 -->
+        <a href="https://forms.gle/ISI_LINK_GOOGLE_FORM_KAMU" target="_blank"
+          style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap">
+              <span class="postcard-date">Present</span>
+              <img
+                src="https://www.computerworld.com/wp-content/uploads/2025/07/1663717-0-78659200-1752253626-google-forms-cheat-sheet-16x9-1.jpg?quality=50&strip=all"
+                alt="Ramadhan Kareem">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">Google Form</div>
+              <h3 class="postcard-title">Permit</h3>
+              <p class="postcard-desc">LIST</p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ORGANIZATIONAL CHART ═══════════════════════════════════ -->
+  <section class="section section-alt" id="team">
+    <div class="org-wrap">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Tim HSE FMC-37</div>
+        <h2 class="section-title reveal reveal-delay-1">Struktur Organisasi</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Tim HSE FMC-37 terdiri dari 6 profesional berpengalaman yang bekerja bersama untuk memastikan keselamatan
+          operasional.
+        </p>
+      </div>
+
+      <!-- ════ LEVEL 1 — HSE Manager ════ -->
+      <div class="org-level reveal">
+        <div class="person-card card-top">
+          <div class="person-photo-wrap">
+            <!--
+              ════════════════════════════════════════
+              GANTI FOTO: ubah src="" di bawah ini
+              Contoh: src="images/foto-manager.jpg"
+              atau   : src="https://link-foto.com/foto.jpg"
+              ════════════════════════════════════════
+            -->
+            <img class="person-photo"
+              src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Joko_Widodo_2014_official_portrait.jpg"
+              alt="HSE Manager" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="person-photo-placeholder" style="display:none;">👨‍💼</div>
+            <div class="person-status-dot" style="background:#ffb703;" title="HSE Manager"></div>
+          </div>
+          <div class="person-name">Agus Kuswanto ST, SST, M.PSI</div>
+          <div class="person-position">HSE Manager</div>
+          <div class="person-dept" style="--badge-bg:#0a2463;">🏅 Management</div>
+          <a href="https://wa.me/628110001100" class="person-contact whatsapp-link" target="_blank"
+            title="Hubungi via WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Connector: Manager → Supervisor -->
+      <div class="org-connector">
+        <div class="org-connector-line"></div>
+      </div>
+
+      <!-- ════ LEVEL 2 — HSE Supervisor ════ -->
+      <div class="org-level reveal reveal-delay-1">
+        <div class="person-card card-mid">
+          <div class="person-photo-wrap">
+            <!--
+              ════════════════════════════════════════
+              GANTI FOTO: ubah src="" di bawah ini
+              ════════════════════════════════════════
+            -->
+            <img class="person-photo" src="" alt="HSE Supervisor"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="person-photo-placeholder" style="display:none;">👨‍🔧</div>
+            <div class="person-status-dot"></div>
+          </div>
+          <div class="person-name">Nama Supervisor</div>
+          <div class="person-position">HSE Supervisor</div>
+          <div class="person-dept" style="--badge-bg:#3e92cc;">⚙️ Supervisor</div>
+          <a href="https://wa.me/628110001110" class="person-contact whatsapp-link" target="_blank"
+            title="Hubungi via WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Connector: Supervisor → 4 Officers (branching) -->
+      <div
+        style="display:flex;flex-direction:column;align-items:center;height:40px;position:relative;width:100%;max-width:900px;margin:0 auto;">
+        <!-- vertical line down from supervisor -->
+        <div style="width:2px;height:20px;background:#3e92cc;margin:0 auto;"></div>
+        <!-- horizontal branch line -->
+        <div style="width:75%;max-width:680px;height:2px;background:#3e92cc;position:relative;margin:0 auto;">
+          <!-- 4 drop lines -->
+          <div
+            style="position:absolute;top:0;left:12.5%;width:2px;height:20px;background:#3e92cc;transform:translateX(-50%);">
+          </div>
+          <div
+            style="position:absolute;top:0;left:37.5%;width:2px;height:20px;background:#3e92cc;transform:translateX(-50%);">
+          </div>
+          <div
+            style="position:absolute;top:0;left:62.5%;width:2px;height:20px;background:#3e92cc;transform:translateX(-50%);">
+          </div>
+          <div
+            style="position:absolute;top:0;left:87.5%;width:2px;height:20px;background:#3e92cc;transform:translateX(-50%);">
+          </div>
+        </div>
+      </div>
+
+      <!-- ════ LEVEL 3 — 4 HSE Officers ════ -->
+      <div class="org-level reveal reveal-delay-2">
+
+        <!-- Officer 1 -->
+        <div class="person-card card-bottom">
+          <div class="person-photo-wrap">
+            <!--
+              ════════════════════════════════════════
+              GANTI FOTO: ubah src="" di bawah ini
+              ════════════════════════════════════════
+            -->
+            <img class="person-photo" src="" alt="HSE Officer 1"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="person-photo-placeholder"
+              style="display:none;background:linear-gradient(135deg,#1a5c1e,#2dc653);">👷</div>
+            <div class="person-status-dot"></div>
+          </div>
+          <div class="person-name">Nama Officer 1</div>
+          <div class="person-position">Personel HSE<br />Operasional</div>
+          <div class="person-dept" style="--badge-bg:#2dc653;">🦺 Divisi Operasional</div>
+          <a href="https://wa.me/628110001121" class="person-contact whatsapp-link" target="_blank"
+            title="Hubungi via WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+
+        <!-- Officer 2 -->
+        <div class="person-card card-bottom">
+          <div class="person-photo-wrap">
+            <!--
+              ════════════════════════════════════════
+              GANTI FOTO: ubah src="" di bawah ini
+              ════════════════════════════════════════
+            -->
+            <img class="person-photo" src="" alt="HSE Officer 2"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="person-photo-placeholder"
+              style="display:none;background:linear-gradient(135deg,#1a5c1e,#2dc653);">👷</div>
+            <div class="person-status-dot"></div>
+          </div>
+          <div class="person-name">Nama Officer 2</div>
+          <div class="person-position">Personel HSE<br />Pemeliharaan Terpadu</div>
+          <div class="person-dept" style="--badge-bg:#2dc653;">🔧 Pemeliharaan Lini</div>
+          <a href="https://wa.me/628110001122" class="person-contact whatsapp-link" target="_blank"
+            title="Hubungi via WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+
+        <!-- Officer 3 -->
+        <div class="person-card card-bottom">
+          <div class="person-photo-wrap">
+            <!--
+              ════════════════════════════════════════
+              GANTI FOTO: ubah src="" di bawah ini
+              ════════════════════════════════════════
+            -->
+            <img class="person-photo" src="" alt="HSE Officer 3"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="person-photo-placeholder"
+              style="display:none;background:linear-gradient(135deg,#1a5c1e,#2dc653);">👷</div>
+            <div class="person-status-dot"></div>
+          </div>
+          <div class="person-name">Nama Officer 3</div>
+          <div class="person-position">Personel HSE<br />Kelestarian Lingkungan</div>
+          <div class="person-dept" style="--badge-bg:#1fa36e;">🌿 Tata Ekologi Luar</div>
+          <a href="https://wa.me/628110001123" class="person-contact whatsapp-link" target="_blank"
+            title="Hubungi via WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+
+        <!-- Officer 4 -->
+        <div class="person-card card-bottom">
+          <div class="person-photo-wrap">
+            <!--
+              ════════════════════════════════════════
+              GANTI FOTO: ubah src="" di bawah ini
+              ════════════════════════════════════════
+            -->
+            <img class="person-photo" src="" alt="HSE Officer 4"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
+            <div class="person-photo-placeholder"
+              style="display:none;background:linear-gradient(135deg,#1a5c1e,#2dc653);">👷</div>
+            <div class="person-status-dot"></div>
+          </div>
+          <div class="person-name">Nama Officer 4</div>
+          <div class="person-position">Personel HSE<br />Struktur Konstruksi</div>
+          <div class="person-dept" style="--badge-bg:#2dc653;">🏗️ Konstruksi Gedung</div>
+          <a href="https://wa.me/628110001124" class="person-contact whatsapp-link" target="_blank"
+            title="Hubungi via WhatsApp">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+
+      </div><!-- end org-level -->
+
+    </div><!-- end org-wrap -->
+  </section>
+
+
+  <!-- ═══ CTA ════════════════════════════════════════════════════ -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-title reveal">Hubungi Tim HSE FMC-37</h2>
+      <p class="cta-desc reveal reveal-delay-1">Ada pertanyaan tentang keselamatan kerja, permit, atau laporan
+        observasi? Tim kami siap membantu Anda.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="reveal reveal-delay-2">
+        <a href="safety.html#report" class="btn btn-primary btn-lg">📋 Submit Observasi</a>
+        <a href="permit.html#request-permit" class="btn btn-outline btn-lg">📲 Request Permit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ══════════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+            style="height: 64px; width: auto; object-fit: contain; margin-bottom: 20px; transform: translateX(-6px);">
+        </div>
+        <p class="footer-desc">Tim HSE FMC-37 berkomitmen untuk zero harm di seluruh area operasi.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Halaman Utama</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Situs Beranda</a></li>
+          <li><a href="health.html">Kesehatan Pekerja</a></li>
+          <li><a href="safety.html">Keamanan Eksekusi</a></li>
+          <li><a href="environment.html">Penjagaan Ekologi Lingkungan</a></li>
+          <li><a href="permit.html">Sistem Izin Kerja PTW</a></li>
+          <li><a href="about.html">Tentang Organisasi</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Akses Singkat Terpadu</div>
+        <ul class="footer-links">
+          <li><a href="safety.html#report">Formulir Lapor Observasi Temuan Bahaya</a></li>
+          <li><a href="permit.html#request-permit">Kirim Izin PTW Tertulis</a></li>
+          <li><a href="admin-gallery.html">Menu Galeri Dasbor Admin</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Kontak Departemen HSE</div>
+        <ul class="footer-links" style="gap:14px;">
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📞 Telepon Darurat: <strong
+              style="color:#fff;">085388881989</strong></li>
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📧 Elektronik Surat: <strong
+              style="color:#fff;">Aguskuswanto@rdmpbpnjo.co.id</strong></li>
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📍 Karang Joang, Kec. Balikpapan Utara</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2026 Departemen Rekayasa Mutu HSE FMC-37. Dikelola Mutlak Seluruh Hak Cipta
+        Perusahaan Pribadi.</div>
+      <div class="footer-bottom-links"><a href="#">Nota Kesepakatan Perlindungan Data Perusahaan</a><a href="#">Syarat
+          dan Klausul Validasi Mutu Hukum Operasional</a></div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

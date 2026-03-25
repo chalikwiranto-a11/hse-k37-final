@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manajemen Keselamatan — Portal HSE</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <nav class="navbar transparent" role="navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" style="display:flex; align-items:center;">
+        <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+          style="height: 52px; width: auto; object-fit: contain; transform: translateY(4px) translateX(-4px);">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="health.html">Kesehatan</a></li>
+        <li><a href="safety.html" class="active">Keselamatan</a></li>
+        <li><a href="environment.html">Lingkungan</a></li>
+        <li><a href="permit.html">Izin Kerja</a></li>
+        <li><a href="about.html">Tentang</a></li>
+        <li><a href="#report" class="nav-cta">Laporkan Observasi</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Beralih navigasi"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1400&q=70" alt="Inspeksi Keselamatan"
+        loading="eager" />
+    </div>
+    <div class="hero-geo">
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+    </div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-gradient"
+      style="background:linear-gradient(135deg,rgba(7,26,74,0.97) 0%,rgba(10,36,99,0.90) 50%,rgba(62,146,204,0.5) 100%);">
+    </div>
+    <div class="hero-content">
+      <nav class="breadcrumb"><a href="index.html">Beranda</a><span class="breadcrumb-sep">›</span><span
+          class="breadcrumb-current">Keselamatan</span></nav>
+      <div class="page-hero-badge"
+        style="background:rgba(62,146,204,0.15);border:1px solid rgba(62,146,204,0.35);color:#60c6ff;">⛑️ Sistem
+        Manajemen Keselamatan</div>
+      <h1 class="hero-title" style="max-width:680px;">Sistem Manajemen <span class="accent-word">Keselamatan</span></h1>
+      <p class="hero-subtitle">Pendekatan sistematis dan proaktif terhadap identifikasi bahaya, pengendalian risiko,
+        pelaporan insiden, dan peningkatan keselamatan berkelanjutan di seluruh kegiatan operasional.</p>
+      <div class="hero-actions">
+        <a href="#hira" class="btn btn-primary">Telusuri SMK</a>
+        <a href="#report" class="btn btn-outline">Laporkan Insiden</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY STATISTICS -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">KPI Keselamatan</div>
+        <h2 class="section-title reveal reveal-delay-1">Kinerja Keselamatan — 2025</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card reveal reveal-delay-1" style="--stat-color:#2dc653;">
+          <div class="stat-icon-bg" style="background:rgba(45,198,83,0.12);">🏆</div>
+          <div class="stat-number" data-count="0" data-suffix="">0</div>
+          <div class="stat-label">Cedera Hilang Waktu (LTI)</div>
+          <div class="stat-sublabel">Nihil LTI — Tahun Ini</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2" style="--stat-color:#3e92cc;">
+          <div class="stat-icon-bg" style="background:rgba(62,146,204,0.12);">📋</div>
+          <div class="stat-number" data-count="218" data-suffix="">0</div>
+          <div class="stat-label">Observasi Keselamatan</div>
+          <div class="stat-sublabel">Disampaikan kuartal ini</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3" style="--stat-color:#ffb703;">
+          <div class="stat-icon-bg" style="background:rgba(255,183,3,0.12);">⚠️</div>
+          <div class="stat-number" data-count="17" data-suffix="">0</div>
+          <div class="stat-label">Hampir Celaka (Near Miss)</div>
+          <div class="stat-sublabel">Pelajaran dibagikan ke seluruh area</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4" style="--stat-color:#e63946;">
+          <div class="stat-icon-bg" style="background:rgba(230,57,70,0.12);">🦺</div>
+          <div class="stat-number" data-count="100" data-suffix="%">0%</div>
+          <div class="stat-label">Kepatuhan APD</div>
+          <div class="stat-sublabel">Inspeksi area terakhir</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAZARD IDENTIFICATION -->
+  <section class="section" id="hira">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Manajemen Risiko</div>
+        <h2 class="section-title reveal reveal-delay-1">Identifikasi Bahaya &amp; Penilaian Risiko (HIRA)</h2>
+        <p class="section-desc reveal reveal-delay-2">Proses HIRA kami secara sistematis mengidentifikasi bahaya di
+          tempat kerja dan menerapkan kendali yang sesuai untuk menghilangkan atau meminimalkan risiko.</p>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card reveal reveal-delay-1" style="--feature-color:#e63946;">
+          <div class="feature-icon" style="background:rgba(230,57,70,0.1);">🔍</div>
+          <div class="feature-title">Identifikasi Bahaya</div>
+          <div class="feature-desc">Survei tempat kerja sistematis, Analisis Keselamatan Kerja (JSA), dan daftar risiko
+            spesifik tugas diperbarui setiap triwulan serta ditinjau oleh kepala departemen.</div>
+        </div>
+        <div class="feature-card reveal reveal-delay-2" style="--feature-color:#ffb703;">
+          <div class="feature-icon" style="background:rgba(255,183,3,0.1);">⚖️</div>
+          <div class="feature-title">Penilaian Risiko</div>
+          <div class="feature-desc">Matriks risiko Kemungkinan × Konsekuensi, analisis Bow-Tie untuk bahaya besar, dan
+            penerapan prinsip ALARP (As Low As Reasonably Practicable).</div>
+        </div>
+        <div class="feature-card reveal reveal-delay-3" style="--feature-color:#3e92cc;">
+          <div class="feature-icon" style="background:rgba(62,146,204,0.1);">🛡️</div>
+          <div class="feature-title">Langkah Pengendalian</div>
+          <div class="feature-desc">Hierarki pengendalian diterapkan — eliminasi, substitusi, pengendalian rekayasa,
+            pengendalian administratif, dan APD (Alat Pelindung Diri) sebagai upaya terakhir.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INCIDENT REPORTING + OBSERVATION SPLIT -->
+  <section class="section section-alt" id="incident">
+    <div class="container">
+      <div class="split-section">
+        <div class="split-text reveal-left">
+          <div class="section-eyebrow">Manajemen Insiden</div>
+          <h2 class="split-title">Pelaporan &amp; Investigasi Insiden</h2>
+          <p class="split-desc">Semua insiden, situasi hampir celaka (near miss), dan kondisi tidak aman harus segera
+            dilaporkan. Proses investigasi kami berfokus pada identifikasi akar penyebab untuk mencegah kejadian serupa
+            terulang kembali.</p>
+          <ul class="split-list">
+            <li>Pemberitahuan awal dalam kurun waktu 1 jam setelah insiden</li>
+            <li>Laporan awal disampaikan dalam kurun waktu 24 jam</li>
+            <li>Analisis akar penyebab (RCA) diselesaikan dalam kurun waktu 14 hari</li>
+            <li>Rencana tindakan korektif dengan kejelasan penanggung jawab</li>
+            <li>Pembelajaran yang dibagikan ke seluruh departemen</li>
+          </ul>
+          <a href="#report" class="btn btn-dark">Laporkan Insiden</a>
+        </div>
+        <div class="split-visual reveal-right">
+          <div class="split-visual-placeholder">📊</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY OBSERVATION (4 cards) -->
+  <section class="section" id="observation">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Program Observasi</div>
+        <h2 class="section-title reveal reveal-delay-1">Kategori Observasi Keselamatan</h2>
+        <p class="section-desc reveal reveal-delay-2">Program observasi keselamatan kami mendorong seluruh karyawan
+          untuk melaporkan praktik positif maupun area yang memerlukan perbaikan.</p>
+      </div>
+      <div class="nav-cards-grid">
+        <div class="nav-card reveal reveal-delay-1" style="--card-color:#2dc653;--card-bg:rgba(45,198,83,0.1);">
+          <div class="nav-card-icon">👍</div>
+          <div class="nav-card-title">Praktik Baik (Good Practice)</div>
+          <div class="nav-card-desc">Mengenali dan mendokumentasikan perilaku keselamatan yang positif dan praktik
+            terbaik yang layak dibagikan.</div>
+          <span class="nav-card-link tag tag-green" style="border-radius:99px;">Tindakan Positif</span>
+        </div>
+        <div class="nav-card reveal reveal-delay-2" style="--card-color:#e63946;--card-bg:rgba(230,57,70,0.1);">
+          <div class="nav-card-icon">⚠️</div>
+          <div class="nav-card-title">Kondisi Tidak Aman (Unsafe Condition)</div>
+          <div class="nav-card-desc">Bahaya fisik, peralatan yang rusak, ketidakteraturan, atau perlindungan alat yang
+            kurang memadai.</div>
+          <span class="nav-card-link tag tag-red" style="border-radius:99px;">Perlu Tindakan Segera</span>
+        </div>
+        <div class="nav-card reveal reveal-delay-3" style="--card-color:#ffb703;--card-bg:rgba(255,183,3,0.1);">
+          <div class="nav-card-icon">🚫</div>
+          <div class="nav-card-title">Tindakan Tidak Aman (Unsafe Act)</div>
+          <div class="nav-card-desc">Observasi perilaku yang mencakup ketidakpatuhan terhadap prosedur dan pengabaian
+            sistem keselamatan.</div>
+          <span class="nav-card-link tag tag-amber" style="border-radius:99px;">Tindakan Korektif</span>
+        </div>
+        <div class="nav-card reveal reveal-delay-4" style="--card-color:#3e92cc;--card-bg:rgba(62,146,204,0.1);">
+          <div class="nav-card-icon">💡</div>
+          <div class="nav-card-title">Hampir Celaka (Near Miss)</div>
+          <div class="nav-card-desc">Kejadian yang berpotensi menyebabkan cedera maupun kerusakan — kunci utama untuk
+            peningkatan keselamatan proaktif.</div>
+          <span class="nav-card-link tag tag-blue" style="border-radius:99px;">Laporkan Sekarang</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPORT FORM SECTION — WhatsApp Integrated -->
+  <section class="section section-alt" id="report">
+    <div class="container" style="max-width:680px;">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Formulir Observasi</div>
+        <h2 class="section-title reveal reveal-delay-1">Sampaikan Observasi Keselamatan</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Laporan akan langsung dikirim ke WhatsApp Petugas HSE setelah form diisi.
+        </p>
+      </div>
+
+      <!-- WA Info banner -->
+      <div class="reveal"
+        style="display:flex;align-items:center;gap:14px;padding:14px 20px;background:#e7fce8;border:1.5px solid #a8e6ab;border-radius:14px;margin-bottom:24px;">
+        <span style="font-size:28px;flex-shrink:0;">📲</span>
+        <div>
+          <div style="font-size:13.5px;font-weight:700;color:#1a5c1e;">Terintegrasi WhatsApp</div>
+          <div style="font-size:12.5px;color:#2e7d32;margin-top:2px;">Setelah menekan Kirim, laporan secara otomatis
+            dikirimkan ke nomor Petugas HSE via aplikasi WhatsApp. Pastikan WhatsApp aktif di perangkat Anda!</div>
+        </div>
+      </div>
+
+      <div class="reveal"
+        style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:36px;box-shadow:var(--shadow-md);">
+        <form id="wa-observation-form" onsubmit="submitToWhatsApp(event)">
+
+          <!-- Row 1: Nama & No HP -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div>
+              <label class="wa-label">👤 Nama Pelapor *</label>
+              <input id="f-name" type="text" class="wa-input" placeholder="Nama lengkap Anda" required />
+            </div>
+            <div>
+              <label class="wa-label">📞 No. HP / WhatsApp</label>
+              <input id="f-phone" type="tel" class="wa-input" placeholder="08xx-xxxx-xxxx" />
+            </div>
+          </div>
+
+          <!-- Row 2: Lokasi & Departemen -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div>
+              <label class="wa-label">📍 Lokasi Kejadian *</label>
+              <input id="f-location" type="text" class="wa-input" placeholder="cth: Drilling Floor A-3" required />
+            </div>
+            <div>
+              <label class="wa-label">🏢 Departemen</label>
+              <select id="f-dept" class="wa-input" style="appearance:none;background-image:url(\"
+                data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none'
+                xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5'
+                stroke-linecap='round' /%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 12px
+                center;cursor:pointer;">
+                <option value="">Pilih departemen…</option>
+                <option>Operasional (Operations)</option>
+                <option>Pemeliharaan (Maintenance)</option>
+                <option>Konstruksi (Construction)</option>
+                <option>Logistik (Logistics)</option>
+                <option>Teknik (Engineering)</option>
+                <option>HSE</option>
+                <option>Administrasi (Administration)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 3: Kategori & Tingkat Bahaya -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div>
+              <label class="wa-label">🏷️ Kategori Observasi *</label>
+              <select id="f-category" class="wa-input" required style="appearance:none;background-image:url(\"
+                data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none'
+                xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5'
+                stroke-linecap='round' /%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 12px
+                center;cursor:pointer;">
+                <option value="">Pilih kategori…</option>
+                <option value="⚠️ Unsafe Condition">⚠️ Unsafe Condition (Kondisi Tidak Aman)</option>
+                <option value="🚫 Unsafe Act">🚫 Unsafe Act (Tindakan Tidak Aman)</option>
+                <option value="💡 Near Miss">💡 Near Miss (Hampir Celaka)</option>
+                <option value="✅ Good Practice">✅ Good Practice (Praktik Baik)</option>
+              </select>
+            </div>
+            <div>
+              <label class="wa-label">🔴 Tingkat Risiko</label>
+              <select id="f-risk" class="wa-input" style="appearance:none;background-image:url(\"
+                data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none'
+                xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5'
+                stroke-linecap='round' /%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 12px
+                center;cursor:pointer;">
+                <option value="🟢 Low">🟢 Rendah (Low)</option>
+                <option value="🟡 Medium">🟡 Sedang (Medium)</option>
+                <option value="🔴 High">🔴 Tinggi (High)</option>
+                <option value="⛔ Critical">⛔ Kritis (Critical)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Tanggal & Waktu -->
+          <div style="margin-bottom:16px;">
+            <label class="wa-label">📅 Tanggal & Waktu Kejadian *</label>
+            <input id="f-datetime" type="datetime-local" class="wa-input" required />
+          </div>
+
+          <!-- Deskripsi -->
+          <div style="margin-bottom:16px;">
+            <label class="wa-label">📝 Deskripsi Kejadian *</label>
+            <textarea id="f-desc" class="wa-input" rows="4" required
+              placeholder="Jelaskan secara mendetail apa yang Anda lihat. Apa yang sedang terjadi? Siapa saja yang terlibat di dalamnya? Apa dampak potensial dari kejadian tersebut?"
+              style="resize:vertical;min-height:100px;"></textarea>
+          </div>
+
+          <!-- Tindakan sementara -->
+          <div style="margin-bottom:20px;">
+            <label class="wa-label">🛠️ Tindakan Sementara yang Sudah Dilakukan</label>
+            <input id="f-action" type="text" class="wa-input"
+              placeholder="cth: Area telah di-barikade, mesin segera dimatikan, dll. (opsional)" />
+          </div>
+
+          <!-- Urgent checkbox -->
+          <div
+            style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff8e6;border:1.5px solid #ffe08a;border-radius:12px;margin-bottom:24px;cursor:pointer;"
+            onclick="document.getElementById('f-urgent').click()">
+            <input type="checkbox" id="f-urgent"
+              style="width:18px;height:18px;accent-color:#e63946;cursor:pointer;flex-shrink:0;" />
+            <label for="f-urgent"
+              style="font-size:13.5px;font-weight:600;color:#7a5500;cursor:pointer;line-height:1.4;">
+              🚨 <strong>MENDESAK (URGENT)</strong> — Situasi berbahaya yang memerlukan tindakan SEGERA (dalam kurun
+              waktu 1 jam)!
+            </label>
+          </div>
+
+          <!-- Submit button -->
+          <button type="submit" id="wa-submit-btn"
+            style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;background:#25d366;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:all 0.2s;box-shadow:0 6px 20px rgba(37,211,102,0.35);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Kirim Laporan via WhatsApp
+          </button>
+
+          <p style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:12px;">
+            Laporan akan dibuka di aplikasi WhatsApp dan dikirim ke Petugas HSE
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .wa-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 7px;
+    }
+
+    .wa-input {
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .wa-input:focus {
+      border-color: #25d366;
+      box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.12);
+      background: #fff;
+    }
+
+    .wa-input::placeholder {
+      color: #bbb;
+    }
+
+    #wa-submit-btn:hover {
+      background: #1ebe5d !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45) !important;
+    }
+
+    @media (max-width: 600px) {
+      #wa-observation-form>div[style*="grid-template-columns"] {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+    }
+  </style>
+
+  <script>
+    // ════════════════════════════════════════════════
+    //  KONFIGURASI — GANTI NOMOR WA HSE OFFICER DI SINI
+    // ════════════════════════════════════════════════
+    const HSE_WA_NUMBER = '6285388881989';
+    //  Format: 62 + nomor tanpa angka 0 di depan
+    //  Contoh: 0812-3456-7890 → 6281234567890
+    // ════════════════════════════════════════════════
+
+    function submitToWhatsApp(e) {
+      e.preventDefault();
+
+      const nama = document.getElementById('f-name').value.trim();
+      const hp = document.getElementById('f-phone').value.trim() || 'Tidak dicantumkan';
+      const lokasi = document.getElementById('f-location').value.trim();
+      const dept = document.getElementById('f-dept').value || 'Tidak disebutkan';
+      const kategori = document.getElementById('f-category').value;
+      const risiko = document.getElementById('f-risk').value;
+      const waktu = document.getElementById('f-datetime').value;
+      const deskripsi = document.getElementById('f-desc').value.trim();
+      const tindakan = document.getElementById('f-action').value.trim() || 'Belum ada tindakan';
+      const urgent = document.getElementById('f-urgent').checked;
+
+      // Format tanggal
+      const tgl = waktu ? new Date(waktu).toLocaleString('id-ID', {
+        day: '2-digit', month: 'long', year: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      }) : 'Tidak disebutkan';
+
+      // Susun pesan WA
+      const urgentLine = urgent ? '\n🚨 *STATUS: MENDESAK — TINDAKAN SEGERA DIPERLUKAN!*\n' : '';
+
+      const pesan = `${urgentLine}
+🛡️ *LAPORAN OBSERVASI HSE*
+${'─'.repeat(30)}
+
+👤 *Pelapor:* ${nama}
+📞 *Kontak:* ${hp}
+🏢 *Departemen:* ${dept}
+📅 *Waktu:* ${tgl}
+
+📍 *Lokasi:* ${lokasi}
+🏷️ *Kategori:* ${kategori}
+${risiko ? `⚠️ *Tingkat Risiko:* ${risiko}` : ''}
+
+📝 *Deskripsi Kejadian:*
+${deskripsi}
+
+🛠️ *Tindakan Sementara:*
+${tindakan}
+
+${'─'.repeat(30)}
+_Laporan dikirim melalui Portal HSE_
+_${new Date().toLocaleString('id-ID')}_
+`.trim();
+
+      // Encode dan buka WA
+      const encoded = encodeURIComponent(pesan);
+      const waUrl = `https://wa.me/${HSE_WA_NUMBER}?text=${encoded}`;
+
+      // Animasi tombol
+      const btn = document.getElementById('wa-submit-btn');
+      btn.innerHTML = '⏳ Sedang Membuka WhatsApp…';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+
+        btn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        ✅ WhatsApp Berhasil Dibuka!`;
+        btn.style.background = '#128c7e';
+
+        // Reset form setelah 4 detik
+        setTimeout(() => {
+          document.getElementById('wa-observation-form').reset();
+          document.getElementById('f-datetime').value = new Date().toISOString().slice(0, 16);
+          btn.innerHTML = `
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Kirim Laporan via WhatsApp`;
+          btn.style.background = '#25d366';
+          btn.disabled = false;
+        }, 4000);
+      }, 600);
+    }
+
+    // Set default datetime ke sekarang
+    document.getElementById('f-datetime').value = new Date().toISOString().slice(0, 16);
+  </script>
+
+  <!-- GALLERY -->
+  <section class="section" id="gallery-safety">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Dokumentasi Foto</div>
+        <h2 class="section-title reveal reveal-delay-1">Galeri Kampanye Keselamatan</h2>
+      </div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+            style="height: 64px; width: auto; object-fit: contain; margin-bottom: 20px; transform: translateX(-6px);">
+        </div>
+        <p class="footer-desc">Berkomitmen penuh pada nol bahaya di seluruh wilayah kegiatan operasional.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Tautan Cepat</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="health.html">Kesehatan</a></li>
+          <li><a href="safety.html">Keselamatan</a></li>
+          <li><a href="environment.html">Lingkungan</a></li>
+          <li><a href="permit.html">Izin Kerja (PTW)</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Pusat Data Keselamatan</div>
+        <ul class="footer-links">
+          <li><a href="#">Daftar HIRA</a></li>
+          <li><a href="#">Basis Data Insiden</a></li>
+          <li><a href="#">Templat JSA</a></li>
+          <li><a href="#">Peringatan Keselamatan (Alert)</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Keadaan Darurat</div>
+        <ul class="footer-links" style="gap:14px;">
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">🚨 Ekstensi Darurat: <strong
+              style="color:#fff;">085388881989
+            </strong></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2025 Portal Resmi Departemen HSE. Segala hak dilindungi oleh undang-undang.
+      </div>
+      <div class="footer-bottom-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat Penggunaan</a></div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Kembali ke atas">↑</button>
+
+  <script src="js/script.js"></script>
+  <script>
+    function handleObservationSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = '✅ Observasi Berhasil Disampaikan!';
+      btn.style.background = 'var(--success)';
+      btn.disabled = true;
+      setTimeout(() => { e.target.reset(); btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/></svg> Sampaikan Observasi'; btn.style.background = ''; btn.disabled = false; }, 3000);
+    }
+    document.addEventListener('DOMContentLoaded', async () => {
+      const container = document.getElementById('gallery-grid');
+      if (container) { const { data } = await fetchHsePhotos({ category: 'safety' }); renderGalleryCards(container, data); }
+    });
+  </script>
+</body>
+
+</html>

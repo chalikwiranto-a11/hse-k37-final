@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Izin Kerja (PTW) — Portal HSE</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .ptw-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: var(--transition);
+    }
+
+    .ptw-step:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--secondary);
+      transform: translateX(6px);
+    }
+
+    .ptw-step-num {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .ptw-step-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+
+    .ptw-step-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .permit-status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    .status-active {
+      background: rgba(45, 198, 83, 0.12);
+      color: var(--success);
+    }
+
+    .status-pending {
+      background: rgba(255, 183, 3, 0.12);
+      color: #b37d00;
+    }
+
+    .status-closed {
+      background: rgba(100, 116, 139, 0.12);
+      color: #64748b;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar transparent" role="navigation">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" style="display:flex; align-items:center;">
+        <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+          style="height: 52px; width: auto; object-fit: contain; transform: translateY(4px) translateX(-4px);">
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="health.html">Kesehatan</a></li>
+        <li><a href="safety.html">Keselamatan</a></li>
+        <li><a href="environment.html">Lingkungan</a></li>
+        <li><a href="permit.html" class="active">Izin Kerja</a></li>
+        <li><a href="about.html">Tentang</a></li>
+        <li><a href="#request-permit" class="nav-cta">Ajukan Izin</a></li>
+      </ul>
+      <button class="hamburger" aria-label="Beralih navigasi"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1400&q=70" alt="Permit to work"
+        loading="eager" />
+    </div>
+    <div class="hero-geo">
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+    </div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-gradient"
+      style="background:linear-gradient(135deg,rgba(74,10,10,0.97) 0%,rgba(99,10,10,0.90) 50%,rgba(204,62,62,0.45) 100%);">
+    </div>
+    <div class="hero-content">
+      <nav class="breadcrumb"><a href="index.html">Beranda</a><span class="breadcrumb-sep">›</span><span
+          class="breadcrumb-current">Izin Kerja (PTW)</span></nav>
+      <div class="page-hero-badge"
+        style="background:rgba(230,57,70,0.15);border:1px solid rgba(230,57,70,0.35);color:#ff9090;">📋 Sistem Izin
+        Kerja Terpadu</div>
+      <h1 class="hero-title" style="max-width:680px;">Sistem Izin Kerja <span class="accent-word">(PTW)</span></h1>
+      <p class="hero-subtitle">Sistem manajemen keselamatan tertulis dan terdokumentasi yang memastikan semua aktivitas
+        pekerjaan nonrutin dan berisiko tinggi telah diotorisasi, direncanakan, serta dieksekusi dengan standar keamanan
+        penuh.</p>
+      <div class="hero-actions">
+        <a href="#permit-types" class="btn btn-primary">Lihat Jenis Izin</a>
+        <a href="#request-permit" class="btn btn-outline">Ajukan Izin Baru</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PTW STATS -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Kinerja PTW</div>
+        <h2 class="section-title reveal reveal-delay-1">Statistik Izin Kerja — 2025</h2>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card reveal reveal-delay-1" style="--stat-color:#ffb703;">
+          <div class="stat-icon-bg" style="background:rgba(255,183,3,0.12);">📋</div>
+          <div class="stat-number" data-count="847" data-suffix="">0</div>
+          <div class="stat-label">Izin Diterbitkan</div>
+          <div class="stat-sublabel">Total tahun berjalan</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2" style="--stat-color:#2dc653;">
+          <div class="stat-icon-bg" style="background:rgba(45,198,83,0.12);">✅</div>
+          <div class="stat-number" data-count="98" data-suffix="%">0%</div>
+          <div class="stat-label">Tingkat Kepatuhan PTW</div>
+          <div class="stat-sublabel">Temuan audit resmi</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3" style="--stat-color:#3e92cc;">
+          <div class="stat-icon-bg" style="background:rgba(62,146,204,0.12);">⏱️</div>
+          <div class="stat-number" data-count="24" data-suffix=" jam">0 jam</div>
+          <div class="stat-label">Rata-rata Waktu Proses</div>
+          <div class="stat-sublabel">Dari pengajuan ke persetujuan</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4" style="--stat-color:#e63946;">
+          <div class="stat-icon-bg" style="background:rgba(230,57,70,0.12);">🚫</div>
+          <div class="stat-number" data-count="0" data-suffix="">0</div>
+          <div class="stat-label">Pelanggaran Izin</div>
+          <div class="stat-sublabel">Nihil pelanggaran tahun ini</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERMIT TYPE CARDS -->
+  <section class="section" id="permit-types">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Kategori Izin</div>
+        <h2 class="section-title reveal reveal-delay-1">Jenis Izin Kerja (Permit To Work)</h2>
+        <p class="section-desc reveal reveal-delay-2">Setiap jenis izin dirancang khusus untuk aktivitas berisiko tinggi
+          tertentu dan memerlukan tindakan pencegahan, persetujuan, serta pemantauan yang ketat.</p>
+      </div>
+
+      <div class="permit-grid">
+        <!-- Hot Work -->
+        <div class="permit-card reveal reveal-delay-1" style="--permit-color:#e63946;">
+          <div class="permit-icon" style="background:rgba(230,57,70,0.1);">🔥</div>
+          <div class="permit-body">
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+              <div class="permit-title" style="margin:0;">Izin Kerja Panas (Hot Work)</div>
+              <span class="permit-status-indicator status-active">● Aktif</span>
+            </div>
+            <div class="permit-desc">Untuk semua aktivitas yang menghasilkan panas, percikan api, atau nyala api terbuka
+              — seperti pengelasan, pemotongan, gerinda. Memerlukan pengawasan api (fire watch), izin gas test, dan
+              isolasi area.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              <span class="permit-tag">🔥 Pengelasan</span>
+              <span class="permit-tag">⚡ Pemotongan</span>
+              <span class="permit-tag">🔧 Gerinda</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Confined Space -->
+        <div class="permit-card reveal reveal-delay-2" style="--permit-color:#8e44ad;">
+          <div class="permit-icon" style="background:rgba(142,68,173,0.1);">⛽</div>
+          <div class="permit-body">
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+              <div class="permit-title" style="margin:0;">Izin Masuk Ruang Terbatas</div>
+              <span class="permit-status-indicator status-pending">● Tertunda</span>
+            </div>
+            <div class="permit-desc">Untuk memasuki tangki, bejana, saluran pembuangan, atau ruang tertutup dengan akses
+              terbatas. Wajib melakukan gas test, pemantauan berkelanjutan, menyediakan standby man, dan rencana
+              evakuasi darurat.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              <span class="permit-tag">🧪 Gas Test</span>
+              <span class="permit-tag">👷 Standby Man</span>
+              <span class="permit-tag">🚨 Rencana Penyelamatan</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Working at Height -->
+        <div class="permit-card reveal reveal-delay-3" style="--permit-color:#ffb703;">
+          <div class="permit-icon" style="background:rgba(255,183,3,0.1);">🏗️</div>
+          <div class="permit-body">
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+              <div class="permit-title" style="margin:0;">Izin Kerja di Ketinggian</div>
+              <span class="permit-status-indicator status-active">● Aktif</span>
+            </div>
+            <div class="permit-desc">Pekerjaan yang dilakukan di atas ketinggian 1,8 meter. Membutuhkan sertifikat
+              inspeksi perancah (scaffold tag), tali pengaman tubuh penuh (full-body harness), verifikasi titik jangkar,
+              dan area terbatas di bawahnya.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              <span class="permit-tag">🪜 Tag Perancah</span>
+              <span class="permit-tag">🦺 Full Harness</span>
+              <span class="permit-tag">⛔ Zona Eksklusi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Electrical Work -->
+        <div class="permit-card reveal reveal-delay-4" style="--permit-color:#3e92cc;">
+          <div class="permit-icon" style="background:rgba(62,146,204,0.1);">⚡</div>
+          <div class="permit-body">
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+              <div class="permit-title" style="margin:0;">Izin Kerja Kelistrikan</div>
+              <span class="permit-status-indicator status-active">● Aktif</span>
+            </div>
+            <div class="permit-desc">Untuk semua pemeliharaan kelistrikan bertegangan di atas 50V. Wajib menerapkan
+              Lockout/Tagout (LOTO). Membutuhkan ahli listrik tersertifikasi, persetujuan resmi, dan sertifikat isolasi
+              daya.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              <span class="permit-tag">🔒 LOTO</span>
+              <span class="permit-tag">🧑‍🔧 Teknisi Listrik</span>
+              <span class="permit-tag">📜 Sertifikat Isolasi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Excavation -->
+        <div class="permit-card reveal reveal-delay-1" style="--permit-color:#1fa36e;">
+          <div class="permit-icon" style="background:rgba(31,163,110,0.1);">⛏️</div>
+          <div class="permit-body">
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+              <div class="permit-title" style="margin:0;">Penggalian & Pembongkaran</div>
+              <span class="permit-status-indicator status-closed">● Ditutup</span>
+            </div>
+            <div class="permit-desc">Aktivitas penggalian pipa, pembuatan parit, atau pembongkaran tanah. Wajib
+              melakukan pendeteksian utilitas bawah tanah, pelindung tepi parit, serta penilaian struktur tanah sebelum
+              pekerjaan dimulai.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              <span class="permit-tag">🗺️ Survei CAD</span>
+              <span class="permit-tag">📡 CAT Scan</span>
+              <span class="permit-tag">🧱 Perlindungan Tepi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lifting Operations -->
+        <div class="permit-card reveal reveal-delay-2" style="--permit-color:#2c3e50;">
+          <div class="permit-icon" style="background:rgba(44,62,80,0.1);">🏋️</div>
+          <div class="permit-body">
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+              <div class="permit-title" style="margin:0;">Operasi Pengangkatan (Lifting)</div>
+              <span class="permit-status-indicator status-pending">● Tertunda</span>
+            </div>
+            <div class="permit-desc">Pengangkatan kritis yang menggunakan crane, kerekan (hoist), atau peralatan
+              rigging. Harus disertai lifting plan, kalkulasi beban statis dinamis, rigger bersertifikat sah, dan
+              operator peralatan berpengalaman.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              <span class="permit-tag">📐 Lifting Plan</span>
+              <span class="permit-tag">🎖️ Rigger Bersertifikat</span>
+              <span class="permit-tag">🏗️ Lisensi Crane</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PTW PROCESS STEPS -->
+  <section class="section section-alt" id="process">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Alur Kerja PTW</div>
+        <h2 class="section-title reveal reveal-delay-1">Bagaimana Proses Izin Kerja (PTW) Berlangsung</h2>
+        <p class="section-desc reveal reveal-delay-2">Setiap izin kerja harus mengikuti 6 tahap prosedur terstruktur
+          untuk memastikan penerapan dan pengendalian bahaya teridentifikasi secara teliti sebelum pekerjaan dimulai.
+        </p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px;max-width:800px;margin:0 auto;">
+        <div class="ptw-step reveal reveal-delay-1">
+          <div class="ptw-step-num">01</div>
+          <div>
+            <div class="ptw-step-title">Pengajuan — Pemohon Mengajukan Permohonan PTW</div>
+            <div class="ptw-step-desc">Penanggung jawab pelaksana pekerjaan (Performing Authority) wajib melengkapi form
+              permohonan PTW dengan jelas, menjabarkan rincian pekerjaan, lingkup ruang lokasi, jadwal waktu durasi,
+              potensi bahaya temuan, dan mitigasi serta langkah keamanan.</div>
+          </div>
+        </div>
+        <div class="ptw-step reveal reveal-delay-2">
+          <div class="ptw-step-num">02</div>
+          <div>
+            <div class="ptw-step-title">Penilaian Risiko Skala — Tinjauan Evaluasi Berkas JSA & HIRA</div>
+            <div class="ptw-step-desc">Pemenuhan prosedur Job Safety Analysis telah dilakukan secara menyeluruh terhadap
+              rancangan tugas. Berbagai tingkat bahasan bahaya dinilai berkesesuaian dengan matrik standar bahaya untuk
+              memperoleh pengendalian mutlak terdokumentasi akurat.</div>
+          </div>
+        </div>
+        <div class="ptw-step reveal reveal-delay-3">
+          <div class="ptw-step-num">03</div>
+          <div>
+            <div class="ptw-step-title">Inspeksi Kesehatan Keselamatan K3 — Verifikasi Lapangan Departemen HSE</div>
+            <div class="ptw-step-desc">Petugas verifikator HSE mengulas aplikasi, memvalidasi bukti sertifikasi
+              kepatuhan LOTO, memeriksa batas izin keabsahan pekerja teknis kompeten, menilai kecocokan alat protektif
+              tambahan sebelum proses ditinjau dan divalidasi tandatangan resmi kontrol HSE.</div>
+          </div>
+        </div>
+        <div class="ptw-step reveal reveal-delay-4">
+          <div class="ptw-step-num">04</div>
+          <div>
+            <div class="ptw-step-title">Otorisasi Hak Berjalan Pekerjaan — Legalitas Penanggung Jawab Area (Issuing
+              Authority)</div>
+            <div class="ptw-step-desc">Otoritas yang berwenang selaku tuan rumah pemilik ruang lingkup (Pengawas Area/
+              Kepala Departemen/ Manager Site) memandu persetujuan penerbitan permit formal. Permit tersebut memiliki
+              durasi tenggang sah di waktu tercatat saja dan tidak selamanya berlaku tanpa validasi harian tertulis
+              rutin.</div>
+          </div>
+        </div>
+        <div class="ptw-step reveal reveal-delay-5">
+          <div class="ptw-step-num">05</div>
+          <div>
+            <div class="ptw-step-title">Penyuluhan Edukasi Briefing Terjadwal Mingguan / Harian Singkat Kerja (Toolbox
+              Talk/ TBM) </div>
+            <div class="ptw-step-desc">Secara menyeluruh tim kelompok perkerja terlibat dipanggil untuk menerima
+              pengarahan mengenai resiko, poin langkah kerja, titik zona titik larangan dsb. Setelahnya pekerja yang
+              tersangkut paut wajib memberikan persetujuan cap/ tanda tangan langsung kehadiran pemahaman K3 tanpa
+              terlewati.</div>
+          </div>
+        </div>
+        <div class="ptw-step reveal reveal-delay-6">
+          <div class="ptw-step-num">06</div>
+          <div>
+            <div class="ptw-step-title">Penyelesaian Berkas (Closure) & Pengembalian Semula Area Lahan Netral Tertib
+            </div>
+            <div class="ptw-step-desc">Bertepatan tugas usai dituntaskan, seluruh kelistrikan aktif dibuka kembali /
+              segel isolasi dibuka, personil pengelola serah terima jaminan kondisi rapi dan tak ada tumpahan yang tidak
+              dibersihkan, setelah sempurna departemen wewenang mengakhiri status riwayat operasional tersebut sebagai
+              pekerjaan aman telah berakhir.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUEST PERMIT FORM — WhatsApp Integrated -->
+  <section class="section" id="request-permit">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-eyebrow reveal">Pengajuan Online</div>
+        <h2 class="section-title reveal reveal-delay-1">Buat Permohonan Izin Baru</h2>
+        <p class="section-desc reveal reveal-delay-2" style="margin:0 auto;">Lengkapi formulir permohonan awal di bawah
+          ini. Tim HSE kami akan langsung bertindak memproses data Anda dan menghubungi kembali untuk meneruskan
+          tinjauan prosedur formal JSA lanjutan.</p>
+      </div>
+
+      <!-- WA Info banner -->
+      <div class="reveal reveal-delay-3"
+        style="display:flex;align-items:center;gap:14px;padding:14px 20px;background:#e7fce8;border:1.5px solid #a8e6ab;border-radius:12px;margin-bottom:16px;max-width:800px;margin-left:auto;margin-right:auto;">
+        <span style="font-size:24px;flex-shrink:0;">📲</span>
+        <div>
+          <div style="font-size:13.5px;font-weight:700;color:#1a5c1e;">Terintegrasi WhatsApp</div>
+          <div style="font-size:12.5px;color:#2e7d32;margin-top:2px;">Pengajuan PTW akan dikirim ke WA PTW Controller.
+            Proses persetujuan min. 24 jam untuk permit standar.</div>
+        </div>
+      </div>
+
+      <!-- Warning banner -->
+      <div class="reveal reveal-delay-3"
+        style="display:flex;align-items:center;gap:14px;padding:14px 20px;background:#fff8e6;border:1.5px solid #ffe08a;border-radius:12px;margin-bottom:24px;max-width:800px;margin-left:auto;margin-right:auto;">
+        <span style="font-size:24px;flex-shrink:0;color:#f59e0b;">⚠️</span>
+        <div style="font-size:13.5px;color:#7a5500;line-height:1.5;">
+          <strong>Penting:</strong> Pekerjaan tidak boleh dimulai sebelum permit yang ditandatangani dipegang oleh
+          Performing Authority. Persetujuan lisan tidak berlaku.
+        </div>
+      </div>
+
+      <div class="permit-form-wrapper reveal reveal-delay-4"
+        style="background:#ffffff;border:1px solid var(--border);border-radius:24px;padding:36px;box-shadow:0 12px 32px rgba(0,0,0,0.05);max-width:800px;margin:0 auto;position:relative;">
+        <form id="ptw-wa-form" onsubmit="submitPTWtoWhatsApp(event)">
+
+          <div class="form-group row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div class="col">
+              <label class="ptw-label" for="applicantName">👤 Nama Pemohon *</label>
+              <input type="text" id="applicantName" class="ptw-input" required placeholder="Nama lengkap Anda">
+            </div>
+            <div class="col">
+              <label class="ptw-label" for="phone">📞 No. HP / WhatsApp *</label>
+              <input type="tel" id="phone" class="ptw-input" required placeholder="08xx-xxxx-xxxx">
+            </div>
+          </div>
+
+          <div class="form-group row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div class="col">
+              <label class="ptw-label" for="permitType">📋 Jenis Permit *</label>
+              <select id="permitType" class="ptw-input ptw-select" required>
+                <option value="">Pilih jenis permit...</option>
+                <option value="Hot Work">Hot Work Permit</option>
+                <option value="Confined Space">Confined Space Permit</option>
+                <option value="Working at Height">Working at Height Permit</option>
+                <option value="Electrical">Electrical Permit</option>
+                <option value="Excavation">Excavation Permit</option>
+                <option value="Lifting">Lifting Permit</option>
+              </select>
+            </div>
+            <div class="col">
+              <label class="ptw-label" for="department">🏢 Departemen *</label>
+              <select id="department" class="ptw-input ptw-select" required>
+                <option value="">Pilih departemen...</option>
+                <option>Operasional</option>
+                <option>Pemeliharaan</option>
+                <option>Konstruksi</option>
+                <option>HSE</option>
+                <option>Engineering</option>
+                <option>Kontraktor Eksternal</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div class="col">
+              <label class="ptw-label" for="location">📍 Lokasi Pekerjaan *</label>
+              <input type="text" id="location" class="ptw-input" required placeholder="cth: Tank Farm Area 7">
+            </div>
+            <div class="col">
+              <label class="ptw-label" for="startDate">📅 Tanggal Rencana *</label>
+              <input type="date" id="startDate" class="ptw-input" required>
+            </div>
+          </div>
+
+          <div class="form-group row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+            <div class="col">
+              <label class="ptw-label" for="startTime">🕒 Jam Mulai *</label>
+              <input type="time" id="startTime" class="ptw-input" required>
+            </div>
+            <div class="col">
+              <label class="ptw-label" for="endTime">🕒 Jam Selesai (Estimasi)</label>
+              <input type="time" id="endTime" class="ptw-input">
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="ptw-label" for="workerCount">👷 Jumlah Pekerja Terlibat</label>
+            <input type="number" id="workerCount" class="ptw-input" placeholder="cth: 4 orang" min="1">
+          </div>
+
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="ptw-label" for="workDescription">📝 Deskripsi Pekerjaan *</label>
+            <textarea id="workDescription" class="ptw-input" rows="4" required
+              placeholder="Jelaskan pekerjaan yang akan dilakukan secara detail. Termasuk metode kerja, peralatan yang digunakan, dan potensi bahaya yang teridentifikasi."
+              style="resize:vertical;min-height:80px;"></textarea>
+          </div>
+
+          <div class="form-group" style="margin-bottom:20px;">
+            <label class="ptw-label" for="hazards">⚠️ Bahaya yang Teridentifikasi & Pengendalian</label>
+            <textarea id="hazards" class="ptw-input" rows="2"
+              placeholder="cth: Bahaya kebakaran → Fire watch standby, gas test clearance, APAR tersedia (opsional)"
+              style="resize:vertical;min-height:60px;"></textarea>
+          </div>
+
+          <div class="form-checkbox"
+            style="background:#fff8e6; padding:16px; border:1.5px solid #ffe08a; border-radius:12px; display:flex; align-items:flex-start; gap:10px; margin-bottom:24px; cursor:pointer;"
+            onclick="document.getElementById('declaration').click()">
+            <input type="checkbox" id="declaration" required
+              style="margin-top:4px; width:18px; height:18px; accent-color:#e63946; flex-shrink:0; cursor:pointer;"
+              onclick="event.stopPropagation()">
+            <label for="declaration"
+              style="font-size:13.5px; font-weight:600; color:#7a5500; font-family:'Inter',sans-serif; line-height:1.5; cursor:pointer; margin:0;">
+              ✅ <strong>Saya mengonfirmasi</strong> bahwa seluruh informasi di atas benar. Job Safety Analysis (JSA)
+              telah didiskusikan & semua rambu K3 dipenuhi secara ketat.
+            </label>
+          </div>
+
+          <button type="submit" class="btn" id="ptw-submit-btn"
+            style="background:#25d366; color:#fff; border:none; width:100%; justify-content:center; padding:15px 24px; font-size:15px; font-weight:700; border-radius:12px; box-shadow:0 6px 20px rgba(37,211,102,0.35); transition:all 0.2s; display:flex; align-items:center; gap:10px; cursor:pointer;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+            </svg>
+            Kirim Pengajuan Permit via WhatsApp
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .ptw-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 7px;
+    }
+
+    .ptw-input {
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-family: inherit;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .ptw-input:focus {
+      border-color: #25d366;
+      box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.12);
+      background: #fff;
+    }
+
+    .ptw-input::placeholder {
+      color: #bbb;
+    }
+
+    .ptw-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      cursor: pointer;
+    }
+
+    #ptw-wa-btn:hover {
+      background: #1ebe5d !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45) !important;
+    }
+
+    @media (max-width: 600px) {
+      #ptw-wa-form>div[style*="grid-template-columns"] {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+    }
+  </style>
+
+  <script>
+    // ════════════════════════════════════════════════
+    //  KONFIGURASI — GANTI NOMOR WA PTW CONTROLLER
+    // ════════════════════════════════════════════════
+    const PTW_WA_NUMBER = '6285388881989';
+    //  Format: 62 + nomor tanpa angka 0 di depan
+    //  Contoh: 0812-3456-7890 → 6281234567890
+    // ════════════════════════════════════════════════
+
+    // Set tanggal default = besok
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    document.getElementById('startDate').value = tomorrow.toISOString().slice(0, 10);
+
+    function submitPTWtoWhatsApp(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('applicantName').value;
+      const dep = document.getElementById('department').value;
+      const type = document.getElementById('permitType').value;
+      const loc = document.getElementById('location').value;
+      const startDate = document.getElementById('startDate').value;
+      const dur = document.getElementById('duration').value;
+      const desc = document.getElementById('workDescription').value;
+      const hazards = document.getElementById('hazards').value || 'Tidak ada bahaya spesifik yang diidentifikasi.';
+      const declaration = document.getElementById('declaration').checked;
+
+      if (!declaration) {
+        alert('Anda harus menyetujui deklarasi untuk melanjutkan.');
+        return;
+      }
+
+      const dateStr = new Date(startDate).toLocaleDateString('id-ID');
+
+      // Format the message for WhatsApp
+      const waMessage =
+        `*PERMOHONAN IZIN KERJA BARU* 📋
+
+*Nama Pemohon:* ${name}
+*Departemen/Kontraktor:* ${dep}
+*Jenis Izin:* ${type}
+*Lokasi Kerja:* ${loc}
+*Tanggal Mulai:* ${dateStr}
+*Durasi:* ${dur} hari
+
+*Deskripsi Pekerjaan:*
+${desc}
+
+*Identifikasi Bahaya:*
+${hazards}
+
+_Mohon periksa dan proses PTW ini. Saya mengerti pekerjaan DILARANG dimulai sebelum izin kerja diterbitkan._`;
+
+      const encodedMessage = encodeURIComponent(waMessage);
+
+      // Change to your actual HSE WhatsApp number
+      const waNumber = '6282245995805';
+
+      // Build the wa.me link
+      const waLink = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+
+      // Show a brief success alert then redirect
+      const btn = document.getElementById('submitPermitBtn');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = 'Mengarahkan ke Aplikasi WhatsApp... ⏳';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        window.open(waLink, '_blank');
+        btn.innerHTML = '✅ Terkirim! Menunggu Konfirmasi...';
+        btn.style.backgroundColor = '#28a745'; // Green color
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.style.backgroundColor = ''; // Reset to default
+          btn.disabled = false;
+          document.getElementById('ptw-wa-form').reset();
+          document.getElementById('startDate').value = tomorrow.toISOString().slice(0, 10);
+        }, 5000);
+      }, 1000);
+    }
+  </script>
+
+  <!-- CTA -->
+  <section class="cta-section" style="background:linear-gradient(135deg,#c0392b,#e74c3c); padding:80px 20px;">
+    <div class="cta-inner" style="max-width:800px; margin:0 auto; text-align:center;">
+      <h2 class="cta-title reveal" style="text-align:center; margin-bottom:16px;">Jangan Pernah Bekerja Tanpa Izin Valid
+      </h2>
+      <p class="cta-desc reveal reveal-delay-1"
+        style="text-align:center; margin-bottom:32px; font-size:17px; opacity:0.95;">Sistem Izin Kerja (PTW) ada untuk
+        melindungi Anda dan rekan kerja. Kepatuhan adalah wajib. Pelanggaran akan mengakibatkan penghentian kerja
+        seketika.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="reveal reveal-delay-2">
+        <a href="#request-permit" class="btn btn-lg"
+          style="background:#ffb703;color:#000;border:none;padding:12px 24px;font-weight:700;">📋 Ajukan Permit
+          Sekarang</a>
+        <a href="#" class="btn btn-outline btn-lg"
+          style="border-color:rgba(255,255,255,0.4);color:#fff;padding:12px 24px;">📘 Manual Prosedur PTW</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+            style="height: 64px; width: auto; object-fit: contain; margin-bottom: 20px; transform: translateX(-6px);">
+        </div>
+        <p class="footer-desc">Keselamatan Anda adalah prioritas utama kami. Tidak ada izin = Tidak boleh bekerja.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Tautan Kilat</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="health.html">Kesehatan</a></li>
+          <li><a href="safety.html">Keselamatan</a></li>
+          <li><a href="environment.html">Lingkungan</a></li>
+          <li><a href="permit.html">Izin Kerja (PTW)</a></li>
+          <li><a href="about.html">Tentang Kami</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Sumber Daya PTW</div>
+        <ul class="footer-links">
+          <li><a href="#">Prosedur PTW</a></li>
+          <li><a href="#">Templat JSA</a></li>
+          <li><a href="#">Standar Lockout/Tagout</a></li>
+          <li><a href="#">Registrasi Izin Khusus</a></li>
+          <li><a href="#">Sertifikasi Pelatihan</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Otoritas PTW Khusus</div>
+        <ul class="footer-links" style="gap:14px;">
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📧 <strong
+              style="color:#fff;">Aguskuswanto@rdmpbpnjo.co.id</strong></li>
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">⏰ Tersedia darurat 24/7</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">© 2026 Portal Resmi Departemen HSE. Segala hak dilindungi oleh undang-undang.
+      </div>
+      <div class="footer-bottom-links"><a href="#">Privasi</a><a href="#">Syarat Penggunaan</a></div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Back to top">↑</button>
+  <script src="js/script.js"></script>
+  <script>
+    function handlePermitSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('ptw-submit-btn');
+      btn.innerHTML = '⏳ Submitting to HSE System…';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = '✅ Application Submitted — Ref: PTW-2025-' + Math.floor(Math.random() * 9000 + 1000);
+        btn.style.background = 'var(--success)';
+        setTimeout(() => {
+          e.target.reset();
+          btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg> Submit PTW Application';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 4000);
+      }, 1800);
+    }
+  </script>
+</body>
+
+</html>
