@@ -817,12 +817,16 @@ function handleFileSelect(e) {
   if (!file) return;
   if (file.size > 10 * 1024 * 1024) { showToast('❌ File terlalu besar (maks 10MB)', 'danger'); return; }
 
-  selectedFile = URL.createObjectURL(file);
-  const thumb = document.getElementById('thumb-preview');
-  thumb.src = selectedFile;
-  thumb.style.display = 'block';
-  document.getElementById('inp-url').value = '';
-  document.getElementById('url-preview-wrap').style.display = 'none';
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    selectedFile = event.target.result; // Save as Base64 Data URL
+    const thumb = document.getElementById('thumb-preview');
+    thumb.src = selectedFile;
+    thumb.style.display = 'block';
+    document.getElementById('inp-url').value = '';
+    document.getElementById('url-preview-wrap').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
 }
 
 /* Drop zone */
