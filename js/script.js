@@ -587,3 +587,63 @@ function formatDate(dateStr) {
       </div>`;
   }
 })();
+
+/* ── 12. PRIVACY POLICY MODAL ────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+  const privacyLinks = Array.from(document.querySelectorAll('a')).filter(a => a.textContent.trim() === 'Kebijakan Privasi');
+  if (privacyLinks.length === 0) return;
+
+  const modalHTML = `
+    <div id="privacy-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:99999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);">
+      <div style="background:#fff;border-radius:16px;width:100%;max-width:600px;max-height:85vh;overflow-y:auto;padding:32px;position:relative;box-shadow:0 24px 80px rgba(0,0,0,0.2);animation:modal-pop 0.3s ease;text-align:left;">
+        <button id="close-privacy" style="position:absolute;top:20px;right:20px;background:#f0f4fa;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-weight:bold;color:#64748b;transition:0.2s;display:flex;align-items:center;justify-content:center;font-size:16px;">✕</button>
+        <h2 style="font-family:'Poppins', sans-serif;font-size:24px;color:#0a2463;margin-bottom:8px;">Kebijakan Privasi & Komitmen Operasional</h2>
+        <div style="font-weight:600;color:#3e92cc;margin-bottom:4px;font-family:'Inter', sans-serif;">RDMP JO Kariangau 37</div>
+        <div style="font-size:12px;color:#64748b;margin-bottom:24px;font-family:'Inter', sans-serif;">Terakhir diperbarui: 25/03/2026</div>
+        
+        <h3 style="font-family:'Poppins', sans-serif;font-size:18px;color:#0d1b35;margin-bottom:12px;">Komitmen Keselamatan dan Kepatuhan SOP</h3>
+        <div style="color:#475569;font-size:14.5px;line-height:1.7;font-family:'Inter', sans-serif;">
+          <p style="margin-bottom:12px;">RDMP JO Kariangau 37 berkomitmen untuk menjunjung tinggi standar keselamatan kerja serta kepatuhan terhadap seluruh prosedur operasional yang berlaku.</p>
+          <p style="margin-bottom:12px;">Seluruh aktivitas, baik dalam proses pemuatan (loading) maupun pembongkaran (unloading) material, wajib dilaksanakan sesuai dengan Standar Operasional Prosedur (SOP) yang telah ditetapkan.</p>
+          <p style="margin-bottom:12px;">Perusahaan menegaskan bahwa setiap bentuk penyimpangan terhadap SOP, baik karena kelalaian maupun alasan keterlambatan operasional, tidak dapat dibenarkan. Keterlambatan dalam pengiriman material yang disebabkan oleh kepatuhan terhadap SOP dan aspek keselamatan kerja merupakan hal yang dapat diterima, dibandingkan dengan tindakan yang berpotensi membahayakan keselamatan individu maupun lingkungan kerja.</p>
+          <p style="margin-bottom:12px;">Dengan demikian, seluruh pihak yang terlibat diharapkan untuk:</p>
+          <ul style="margin-bottom:12px;padding-left:20px;">
+            <li style="margin-bottom:6px;">Mengutamakan keselamatan kerja di atas kecepatan operasional</li>
+            <li style="margin-bottom:6px;">Mematuhi seluruh prosedur yang telah ditetapkan tanpa pengecualian</li>
+            <li style="margin-bottom:6px;">Menghindari normalisasi terhadap praktik kerja yang tidak sesuai SOP</li>
+          </ul>
+          <p>Komitmen ini merupakan bagian integral dari upaya perusahaan dalam menciptakan lingkungan kerja yang aman, tertib, dan profesional.</p>
+        </div>
+      </div>
+    </div>
+    <style>
+      @keyframes modal-pop { from { opacity: 0; transform: scale(0.95) translateY(10px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+      #close-privacy:hover { background: #e63946 !important; color: #fff !important; }
+    </style>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+  const modal = document.getElementById('privacy-modal');
+  const closeBtn = document.getElementById('close-privacy');
+
+  privacyLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  });
+});
