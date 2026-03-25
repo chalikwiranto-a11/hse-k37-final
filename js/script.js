@@ -435,28 +435,25 @@ const FALLBACK_BG = {
   permit:      'linear-gradient(135deg, #7a1010, #e63946)',
 };
 
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbw0L9cjwOUNmoKGTnLiEsbS3lOtwB5ITbhrcQygpuzWss0xm2oCq_F-_y4XEzA6cHoCIw/exec';
+
 /**
  * Mengambil data foto.
- *
- * LOGIKA SINKRONISASI:
- * - Jika localStorage ada data → pakai itu (hasil edit/hapus dari admin panel)
- * - Jika localStorage kosong  → pakai HSE_PHOTOS_DATA (data default)
- *
- * Dengan ini: hapus di admin panel = hilang di website, tambah = muncul di website.
+ * Membaca langsung dari Google Sheets Database.
  */
 async function fetchHsePhotos(params = {}) {
-  await new Promise(resolve => setTimeout(resolve, 200));
-
-  let data;
+  let data = [];
 
   try {
-    const saved = localStorage.getItem('hse_gallery_photos');
-    if (saved) {
-      data = JSON.parse(saved); // pakai data admin panel (sudah include hapus/tambah)
-    } else {
-      data = [...HSE_PHOTOS_DATA]; // pertama kali: pakai default
+    const res = await fetch(GAS_URL);
+    data = await res.json();
+    
+    // Jika data kosong atau error dari server, gunakan default
+    if (!Array.isArray(data) || data.length === 0) {
+      data = [...HSE_PHOTOS_DATA];
     }
-  } catch {
+  } catch (err) {
+    console.error('[HSE Gallery] Error fetching from server. Fallback to default.', err);
     data = [...HSE_PHOTOS_DATA];
   }
 

@@ -664,29 +664,29 @@ let photos       = [];
 let activeFilter = 'all';
 let selectedFile = null; // blob URL from file upload
 
-/* ── LOAD / SAVE ─────────────────────────────────────────────── */
-function loadPhotos() {
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbw0L9cjwOUNmoKGTnLiEsbS3lOtwB5ITbhrcQygpuzWss0xm2oCq_F-_y4XEzA6cHoCIw/exec';
+
+/* ── LOAD / SAVE (TO GOOGLE SHEETS) ──────────────────────────── */
+async function loadPhotos() {
+  document.getElementById('photo-count-label').textContent = 'Mengambil data dari server...';
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      // Pakai data dari localStorage — sudah include semua perubahan (tambah/hapus)
-      photos = JSON.parse(saved);
+    const res = await fetch(GAS_URL);
+    const data = await res.json();
+    if (Array.isArray(data) && data.length > 0) {
+      photos = data;
     } else {
-      // Pertama kali buka: inisialisasi dari DEFAULT_PHOTOS
       photos = [...DEFAULT_PHOTOS];
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(photos));
     }
-  } catch {
+  } catch (err) {
+    showToast('⚠️ Gagal memuat data dari server', 'danger');
     photos = [...DEFAULT_PHOTOS];
   }
 }
 
-function savePhotos() {
-  try {
-    // Simpan SEMUA foto yang ada sekarang (termasuk status hapus foto default)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(photos));
-  }
-  catch { showToast('⚠️ Storage penuh. Gunakan URL foto saja.', 'danger'); }
+async function savePhotos() {
+  // We no longer rely exclusively on savePhotos() for batch saving, 
+  // as we send distinct POST requests on add/edit/delete.
+  // But we still update local array to keep UI fast.
 }
 
 /* ── TOAST ───────────────────────────────────────────────────── */
@@ -858,7 +858,7 @@ function previewFromUrl(url) {
 }
 
 /* ── ADD PHOTO ───────────────────────────────────────────────── */
-function addPhoto() {
+async function addPhoto() {
   const title    = document.getElementById('inp-title').value.trim();
   const location = document.getElementById('inp-location').value.trim();
   const category = document.getElementById('inp-category').value;
@@ -882,13 +882,25 @@ function addPhoto() {
     desc,
   };
 
+  // Optimistic UI update
   photos.unshift(newPhoto);
-  savePhotos();
   renderSummary();
   renderTable();
-  syncToMainScript();
-  showToast('✅ Foto berhasil ditambahkan ke gallery!');
   resetForm();
+
+  // Save to Google Sheets
+  try {
+    showToast('⏳ Menyimpan ke server...', 'success');
+    await fetch(GAS_URL + '?action=add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(newPhoto),
+      redirect: 'follow'
+    });
+    showToast('✅ Foto berhasil dipublikasikan!');
+  } catch (err) {
+    showToast('❌ Gagal menghubungi server', 'danger');
+  }
 }
 
 /* ── RESET FORM ──────────────────────────────────────────────── */
@@ -902,14 +914,27 @@ function resetForm() {
 }
 
 /* ── DELETE PHOTO ────────────────────────────────────────────── */
-function deletePhoto(id) {
+async function deletePhoto(id) {
   if (!confirm('Yakin hapus foto ini dari gallery?')) return;
+  
+  // Optimistic UI update
   photos = photos.filter(p => p.id !== id);
-  savePhotos();
   renderSummary();
   renderTable();
-  syncToMainScript();
-  showToast('🗑️ Foto dihapus');
+
+  // Delete from Google Sheets
+  try {
+    showToast('⏳ Menghapus dari server...', 'success');
+    await fetch(GAS_URL + '?action=delete', {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({id: id}),
+      redirect: 'follow'
+    });
+    showToast('🗑️ Foto dihapus dari server');
+  } catch (err) {
+    showToast('❌ Gagal menghapus', 'danger');
+  }
 }
 
 /* ── EDIT MODAL ──────────────────────────────────────────────── */
@@ -937,7 +962,7 @@ function saveEdit() {
   if (idx === -1) return;
 
   const cat = document.getElementById('edit-category').value;
-  photos[idx] = {
+  const updatedPhoto = {
     ...photos[idx],
     img:      document.getElementById('edit-url').value.trim(),
     title:    document.getElementById('edit-title').value.trim(),
@@ -949,12 +974,21 @@ function saveEdit() {
     tagClass: 'tag-' + (cat === 'safety' ? 'blue' : cat === 'health' ? 'green' : cat === 'environment' ? 'green' : 'red'),
   };
 
-  savePhotos();
+  photos[idx] = updatedPhoto;
   renderSummary();
   renderTable();
-  syncToMainScript();
   closeEditModal();
-  showToast('💾 Perubahan berhasil disimpan!');
+
+  fetch(GAS_URL + '?action=edit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(updatedPhoto),
+    redirect: 'follow'
+  }).then(() => {
+    showToast('💾 Perubahan berhasil disimpan di server!');
+  }).catch(() => {
+    showToast('❌ Gagal menyimpan ke server', 'danger');
+  });
 }
 
 /* Close modal clicking backdrop */
@@ -999,8 +1033,7 @@ function handleImport(e) {
 
 /* ── SYNC TO MAIN SCRIPT.JS (via localStorage) ───────────────── */
 function syncToMainScript() {
-  // script.js di index.html, gallery, dll akan baca dari localStorage ini
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(photos));
+  // Not heavily used anymore since we fetch from Google Sheets
 }
 
 /* ── HARD RESET — sync semua device ─────────────────────────── */
@@ -1036,9 +1069,13 @@ function hardResetGallery() {
 /* ── INIT ────────────────────────────────────────────────────── */
 document.getElementById('inp-date').value = new Date().toISOString().slice(0, 10);
 
-loadPhotos();
-renderSummary();
-renderTable();
+async function initAdmin() {
+  await loadPhotos();
+  renderSummary();
+  renderTable();
+}
+
+initAdmin();
 </script>
 
 </body>
