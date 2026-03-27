@@ -24,6 +24,12 @@
         <li><a href="environment.html">Lingkungan</a></li>
         <li><a href="permit.html">Izin Kerja</a></li>
         <li><a href="about.html">Tentang</a></li>
+        <li>
+          <div class="lang-switcher" id="lang-switcher">
+            <button class="active" data-lang="id" title="Bahasa Indonesia">🇮🇩 ID</button>
+            <button data-lang="en" title="English">🇬🇧 EN</button>
+          </div>
+        </li>
         <li><a href="#report" class="nav-cta">Laporkan Observasi</a></li>
       </ul>
       <button class="hamburger" aria-label="Beralih navigasi"><span></span><span></span><span></span></button>
@@ -149,7 +155,8 @@
           <a href="#report" class="btn btn-dark">Laporkan Insiden</a>
         </div>
         <div class="split-visual reveal-right">
-          <div class="split-visual-placeholder">📊</div>
+          <img src="https://shasolo.com/wp-content/uploads/2023/11/keselamatan-kerja-k3.jpg"
+            alt="Komitmen Operasional HSE" loading="lazy">
         </div>
       </div>
     </div>
@@ -544,6 +551,7 @@ _${new Date().toLocaleString('id-ID')}_
   <button class="back-to-top" aria-label="Kembali ke atas">↑</button>
 
   <script src="js/script.js"></script>
+  <script src="js/lang-switcher.js"></script>
   <script>
     function handleObservationSubmit(e) {
       e.preventDefault();

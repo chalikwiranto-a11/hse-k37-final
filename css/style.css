@@ -1216,6 +1216,7 @@ button {
   gap: 24px;
   margin-top: 32px;
 }
+
 .postcard {
   background: var(--surface);
   border-radius: 16px;
@@ -1226,16 +1227,19 @@ button {
   display: flex;
   flex-direction: column;
 }
+
 .postcard:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 32px rgba(10, 36, 99, 0.12);
 }
+
 .postcard-img-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 16/10;
   overflow: hidden;
 }
+
 .postcard-img-wrap img {
   width: 100%;
   height: 100%;
@@ -1243,9 +1247,11 @@ button {
   display: block;
   transition: transform 0.5s ease;
 }
+
 .postcard:hover .postcard-img-wrap img {
   transform: scale(1.05);
 }
+
 .postcard-date {
   position: absolute;
   top: 16px;
@@ -1259,12 +1265,14 @@ button {
   box-shadow: 0 4px 10px rgba(249, 115, 22, 0.3);
   z-index: 2;
 }
+
 .postcard-content {
   padding: 24px 28px 32px 28px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
+
 .postcard-eyebrow {
   color: #f97316;
   font-size: 11px;
@@ -1273,6 +1281,7 @@ button {
   letter-spacing: 0.08em;
   margin-bottom: 10px;
 }
+
 .postcard-title {
   font-family: 'Inter', sans-serif;
   font-size: 19px;
@@ -1281,6 +1290,7 @@ button {
   margin-bottom: 12px;
   line-height: 1.4;
 }
+
 .postcard-desc {
   font-size: 14.5px;
   color: var(--muted);
@@ -2189,5 +2199,58 @@ footer {
   form>div[style*="grid-template-columns"] {
     display: flex !important;
     flex-direction: column !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LANGUAGE SWITCHER
+   ══════════════════════════════════════════════════════════════ */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+  padding: 3px;
+  margin: 0 6px;
+  flex-shrink: 0;
+}
+
+.lang-switcher button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  border-radius: 99px;
+  padding: 5px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.lang-switcher button.active {
+  background: #F5A623;
+  color: #1a1a1a;
+  box-shadow: 0 2px 8px rgba(245, 166, 35, 0.35);
+}
+
+.lang-switcher button:not(.active) {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.lang-switcher button:not(.active):hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .lang-switcher {
+    margin: 8px 0;
+    justify-content: center;
+    align-self: center;
   }
 }

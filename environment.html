@@ -24,6 +24,12 @@
         <li><a href="environment.html" class="active">Lingkungan</a></li>
         <li><a href="permit.html">Izin Kerja</a></li>
         <li><a href="about.html">Tentang</a></li>
+        <li>
+          <div class="lang-switcher" id="lang-switcher">
+            <button class="active" data-lang="id" title="Bahasa Indonesia">🇮🇩 ID</button>
+            <button data-lang="en" title="English">🇬🇧 EN</button>
+          </div>
+        </li>
         <li><a href="index.html#report-section" class="nav-cta">Laporkan Observasi</a></li>
       </ul>
       <button class="hamburger" aria-label="Beralih navigasi"><span></span><span></span><span></span></button>
@@ -153,7 +159,9 @@
     <div class="container">
       <div class="split-section reverse">
         <div class="split-visual reveal-left">
-          <div class="split-visual-placeholder" style="background:linear-gradient(135deg,#0a4a30,#1fa36e);">🌿</div>
+          <div class="split-visual-placeholder" style="background:linear-gradient(135deg,#0a4a30,#1fa36e);"><img
+              src="https://www.konsultanamdalsulawesi.com/wp-content/uploads/2024/07/Layanan-Arah-Melindo-Resources-2-min.jpg"
+              alt="Komitmen Operasional HSE" loading="lazy"></div>
         </div>
         <div class="split-text reveal-right">
           <div class="section-eyebrow">Kepatuhan Peraturan Regulasi Terkait</div>
@@ -307,6 +315,7 @@
 
   <button class="back-to-top" aria-label="Kembali menuju bilah laman atas ">↑</button>
   <script src="js/script.js"></script>
+  <script src="js/lang-switcher.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       const container = document.getElementById('gallery-grid');

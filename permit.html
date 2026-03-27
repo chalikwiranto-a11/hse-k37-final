@@ -96,6 +96,12 @@
         <li><a href="environment.html">Lingkungan</a></li>
         <li><a href="permit.html" class="active">Izin Kerja</a></li>
         <li><a href="about.html">Tentang</a></li>
+        <li>
+          <div class="lang-switcher" id="lang-switcher">
+            <button class="active" data-lang="id" title="Bahasa Indonesia">🇮🇩 ID</button>
+            <button data-lang="en" title="English">🇬🇧 EN</button>
+          </div>
+        </li>
         <li><a href="#request-permit" class="nav-cta">Ajukan Izin</a></li>
       </ul>
       <button class="hamburger" aria-label="Beralih navigasi"><span></span><span></span><span></span></button>
@@ -726,6 +732,7 @@ _Mohon periksa dan proses PTW ini. Saya mengerti pekerjaan DILARANG dimulai sebe
 
   <button class="back-to-top" aria-label="Back to top">↑</button>
   <script src="js/script.js"></script>
+  <script src="js/lang-switcher.js"></script>
   <script>
     function handlePermitSubmit(e) {
       e.preventDefault();
