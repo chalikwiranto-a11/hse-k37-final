@@ -37,39 +37,611 @@
     </div>
   </nav>
 
-  <!-- ═══ PAGE HERO ════════════════════════════════════════════ -->
-  <section class="page-hero">
-    <div class="hero-bg">
-      <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1400&q=70" alt="Program kesehatan"
-        loading="eager" />
-    </div>
-    <div class="hero-geo">
-      <div class="geo-circle"></div>
-      <div class="geo-circle"></div>
-      <div class="geo-circle"></div>
-    </div>
-    <div class="hero-grid-overlay"></div>
-    <div class="hero-gradient"
-      style="background:linear-gradient(135deg,rgba(7,74,30,0.97) 0%,rgba(10,99,50,0.88) 50%,rgba(45,198,83,0.4) 100%);">
-    </div>
-    <div class="hero-content">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Beranda</a>
-        <span class="breadcrumb-sep">›</span>
-        <span class="breadcrumb-current">Kesehatan</span>
-      </nav>
-      <div class="page-hero-badge"
-        style="background:rgba(45,198,83,0.15);border:1px solid rgba(45,198,83,0.35);color:#4ade80;">
-        🏥 Departemen Kesehatan Kerja
+  <!-- ═══ 3D HEALTH HERO ═══════════════════════════════════════ -->
+  <style>
+    /* ── Health Hero — 3D Clinical Sentinel ── */
+    .health-hero {
+      position: relative;
+      width: 100%;
+      min-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0a1628 0%, #0d2137 60%, #0f2940 100%);
+    }
+
+    .health-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(81, 227, 108, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Ambient glow orbs */
+    .health-hero::after {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(45, 198, 83, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .health-hero-inner {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 100px 40px 40px;
+      width: 100%;
+    }
+
+    /* Left text */
+    .hh-content {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .hh-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(188, 203, 184, 0.8);
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    .hh-breadcrumb a {
+      color: rgba(188, 203, 184, 0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .hh-breadcrumb a:hover {
+      color: #51e36c;
+    }
+
+    .hh-breadcrumb .sep {
+      font-size: 12px;
+      opacity: 0.5;
+    }
+
+    .hh-breadcrumb .current {
+      color: #51e36c;
+    }
+
+    .hh-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 99px;
+      background: rgba(45, 198, 83, 0.1);
+      border: 1px solid rgba(45, 198, 83, 0.25);
+      backdrop-filter: blur(20px);
+      width: fit-content;
+    }
+
+    .hh-badge span {
+      font-size: 12px;
+      font-weight: 700;
+      color: #51e36c;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hh-title {
+      font-family: 'Poppins', 'Manrope', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.08;
+      color: #d7e3fc;
+      letter-spacing: -0.02em;
+    }
+
+    .hh-title .accent {
+      color: #F5A623;
+    }
+
+    .hh-subtitle {
+      max-width: 540px;
+      font-size: 17px;
+      color: rgba(188, 203, 184, 0.85);
+      line-height: 1.75;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hh-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hh-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2dc653, #51e36c);
+      color: #002106;
+      font-weight: 700;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(81, 227, 108, 0.35);
+      transition: all 0.3s ease;
+    }
+
+    .hh-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(81, 227, 108, 0.5);
+    }
+
+    .hh-btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 12px;
+      background: transparent;
+      border: 1.5px solid rgba(215, 227, 252, 0.2);
+      color: #d7e3fc;
+      font-weight: 700;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .hh-btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(215, 227, 252, 0.4);
+      transform: translateY(-2px);
+    }
+
+    /* Right 3D floating elements */
+    .hh-visual {
+      position: relative;
+      height: 520px;
+    }
+
+    /* Body silhouette */
+    .hh-silhouette {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0.12;
+    }
+
+    .hh-silhouette img {
+      height: 100%;
+      object-fit: contain;
+      filter: grayscale(1) invert(1) brightness(1.5);
+    }
+
+    /* ECG SVG */
+    .hh-ecg {
+      position: absolute;
+      top: 50%;
+      left: -5%;
+      width: 110%;
+      height: 120px;
+      transform: translateY(-50%);
+      z-index: 10;
+      opacity: 0.7;
+      filter: drop-shadow(0 0 12px rgba(81, 227, 108, 0.4));
+    }
+
+    .hh-ecg svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hh-ecg path {
+      stroke: #51e36c;
+      stroke-width: 2.5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 2000;
+      stroke-dashoffset: 2000;
+      animation: ecg-draw 3s ease forwards, ecg-glow 2s ease-in-out infinite alternate 3s;
+    }
+
+    @keyframes ecg-draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes ecg-glow {
+      0% {
+        filter: drop-shadow(0 0 4px rgba(81, 227, 108, 0.3));
+      }
+
+      100% {
+        filter: drop-shadow(0 0 12px rgba(81, 227, 108, 0.6));
+      }
+    }
+
+    /* Medical shield */
+    .hh-shield {
+      position: absolute;
+      top: 12%;
+      right: 15%;
+      width: 88px;
+      height: 88px;
+      background: rgba(42, 53, 72, 0.45);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(81, 227, 108, 0.15);
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: rotate(12deg);
+      filter: drop-shadow(0 0 20px rgba(81, 227, 108, 0.25));
+      animation: float-slow 6s ease-in-out infinite;
+      z-index: 15;
+    }
+
+    .hh-shield-icon {
+      font-size: 44px;
+      line-height: 1;
+    }
+
+    @keyframes float-slow {
+
+      0%,
+      100% {
+        transform: rotate(12deg) translateY(0);
+      }
+
+      50% {
+        transform: rotate(12deg) translateY(-14px);
+      }
+    }
+
+    /* Floating capsule badge */
+    .hh-capsule {
+      position: absolute;
+      bottom: 22%;
+      right: 20%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 99px;
+      background: rgba(42, 53, 72, 0.5);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 185, 85, 0.3);
+      transform: rotate(-6deg);
+      animation: float-slow2 7s ease-in-out infinite;
+      z-index: 15;
+    }
+
+    .hh-capsule span:first-child {
+      font-size: 18px;
+    }
+
+    .hh-capsule span:last-child {
+      font-size: 11px;
+      font-weight: 700;
+      color: #ffb955;
+      letter-spacing: 0.05em;
+      font-family: 'Inter', sans-serif;
+    }
+
+    @keyframes float-slow2 {
+
+      0%,
+      100% {
+        transform: rotate(-6deg) translateY(0);
+      }
+
+      50% {
+        transform: rotate(-6deg) translateY(-10px);
+      }
+    }
+
+    /* Floating heartbeat badge */
+    .hh-heartbeat {
+      position: absolute;
+      top: 18%;
+      left: 8%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 99px;
+      background: rgba(42, 53, 72, 0.5);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(81, 227, 108, 0.2);
+      animation: float-slow3 5s ease-in-out infinite;
+      z-index: 15;
+    }
+
+    .hh-heartbeat span:first-child {
+      font-size: 20px;
+    }
+
+    .hh-heartbeat span:last-child {
+      font-size: 12px;
+      font-weight: 700;
+      color: #51e36c;
+      font-family: 'Inter', sans-serif;
+    }
+
+    @keyframes float-slow3 {
+
+      0%,
+      100% {
+        transform: translateY(0) translateX(0);
+      }
+
+      50% {
+        transform: translateY(-12px) translateX(6px);
+      }
+    }
+
+    /* DNA helix badge */
+    .hh-dna {
+      position: absolute;
+      bottom: 35%;
+      left: 5%;
+      width: 56px;
+      height: 56px;
+      background: rgba(42, 53, 72, 0.45);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 185, 85, 0.15);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      animation: float-slow 8s ease-in-out infinite reverse;
+      z-index: 15;
+    }
+
+    /* Stats bar */
+    .hh-stats {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 40px 50px;
+    }
+
+    .hh-stat-card {
+      background: rgba(42, 53, 72, 0.35);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(134, 149, 131, 0.12);
+      padding: 28px 24px;
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .hh-stat-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 15px rgba(81, 227, 108, 0.08);
+    }
+
+    .hh-stat-num {
+      font-family: 'Barlow Condensed', 'Manrope', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #51e36c;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .hh-stat-num.amber {
+      color: #ffb955;
+    }
+
+    .hh-stat-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(188, 203, 184, 0.7);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hh-stat-bar {
+      width: 48px;
+      height: 4px;
+      background: rgba(81, 227, 108, 0.15);
+      border-radius: 99px;
+      margin-top: 6px;
+      overflow: hidden;
+    }
+
+    .hh-stat-bar-fill {
+      height: 100%;
+      background: #51e36c;
+      border-radius: 99px;
+    }
+
+    .hh-stat-bar-fill.amber {
+      background: #ffb955;
+    }
+
+    /* Pulse dots */
+    .hh-pulse-dots {
+      display: flex;
+      gap: 4px;
+      margin-top: 6px;
+    }
+
+    .hh-pulse-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ffb955;
+    }
+
+    .hh-pulse-dot.active {
+      animation: pulse-dot 1.5s ease-in-out infinite;
+    }
+
+    .hh-pulse-dot.dim {
+      opacity: 0.25;
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.8);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .health-hero-inner {
+        grid-template-columns: 1fr;
+        padding: 120px 24px 40px;
+      }
+
+      .hh-visual {
+        display: none;
+      }
+
+      .hh-stats {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 24px 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hh-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        padding: 0 16px 32px;
+      }
+
+      .hh-stat-card {
+        padding: 20px 16px;
+      }
+
+      .hh-stat-num {
+        font-size: 2rem;
+      }
+
+      .health-hero-inner {
+        padding: 100px 16px 30px;
+      }
+    }
+  </style>
+
+  <section class="health-hero">
+    <div class="health-hero-inner">
+      <!-- Left Content -->
+      <div class="hh-content">
+        <nav class="hh-breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Beranda</a>
+          <span class="sep">›</span>
+          <span class="current">Kesehatan</span>
+        </nav>
+        <div class="hh-badge">
+          <span style="font-size:16px;">🏥</span>
+          <span>Departemen Kesehatan Kerja</span>
+        </div>
+        <h1 class="hh-title">Manajemen <span class="accent">Kesehatan</span> Kerja</h1>
+        <p class="hh-subtitle hero-subtitle">Melindungi kesejahteraan karyawan melalui program medis yang komprehensif,
+          pengawasan
+          kesehatan berkala, dan inisiatif kesehatan proaktif.</p>
+        <div class="hh-actions">
+          <a href="#programs" class="hh-btn-primary">Lihat Program →</a>
+          <a href="#gallery-health" class="hh-btn-outline">Lihat Galeri</a>
+        </div>
       </div>
-      <h1 class="hero-title" style="max-width:640px;">Manajemen <span class="accent-word">Kesehatan</span> Kerja</h1>
-      <p class="hero-subtitle">Melindungi kesejahteraan karyawan melalui program medis yang komprehensif, pengawasan
-        kesehatan berkala, dan inisiatif kesehatan proaktif.</p>
-      <div class="hero-actions">
-        <a href="#programs" class="btn btn-primary">Lihat Program</a>
-        <a href="#gallery-health" class="btn btn-outline">Lihat Galeri</a>
+
+      <!-- Right: 3D Floating Elements -->
+      <div class="hh-visual">
+        <!-- Body silhouette -->
+        <div class="hh-silhouette">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsISqmr2bEJbLatgFceAAcYxv17-1i-_MKxe9DKMKLrjud7xMQNVoSOuu4rCxQb7fdtbrc6LyU1O4txx6Pzmx5ySuZy5AnCdWhaRIL8ucFKze0jJ7S7ZuddxMNEGTgekLYb-48c-iOLivADGS5F-xaBM_MUtaE1-XcmY1fLvmc9nDaPXpDcjEGzUtrCs3um4OVI7R16WPDUYZbE2Y2xSbVex6UZCqzh5P5WNv5BKl8MjqB3pyqfg727Js_1DO-Ca4AOSB4Be_TCt8"
+            alt="Medical body silhouette" loading="eager">
+        </div>
+        <!-- ECG heartbeat line -->
+        <div class="hh-ecg">
+          <svg viewBox="0 0 800 200" preserveAspectRatio="none">
+            <path
+              d="M0 100 L100 100 L120 40 L140 160 L160 100 L300 100 L320 20 L340 180 L360 100 L500 100 L520 70 L540 130 L560 100 L800 100">
+            </path>
+          </svg>
+        </div>
+
       </div>
-    </div>
+
+      <!-- Stats bar -->
+      <div class="hh-stats">
+        <div class="hh-stat-card">
+          <div class="hh-stat-num">100%</div>
+          <div class="hh-stat-label">Cakupan MCU</div>
+          <div class="hh-stat-bar">
+            <div class="hh-stat-bar-fill" style="width:100%"></div>
+          </div>
+        </div>
+        <div class="hh-stat-card">
+          <div class="hh-stat-num">98%</div>
+          <div class="hh-stat-label">Cakupan Vaksinasi</div>
+          <div class="hh-stat-bar">
+            <div class="hh-stat-bar-fill" style="width:98%"></div>
+          </div>
+        </div>
+        <div class="hh-stat-card">
+          <div class="hh-stat-num">100%</div>
+          <div class="hh-stat-label">Kepatuhan FTW</div>
+          <div class="hh-stat-bar">
+            <div class="hh-stat-bar-fill" style="width:100%"></div>
+          </div>
+        </div>
+        <div class="hh-stat-card">
+          <div class="hh-stat-num amber">&lt; 5 <span style="font-size:1.2rem;">min</span></div>
+          <div class="hh-stat-label">Rata-rata Waktu Tanggap</div>
+          <div class="hh-pulse-dots">
+            <div class="hh-pulse-dot active"></div>
+            <div class="hh-pulse-dot dim"></div>
+            <div class="hh-pulse-dot dim"></div>
+          </div>
+        </div>
+      </div>
   </section>
 
   <!-- ═══ KEY PROGRAMS ═════════════════════════════════════════ -->
