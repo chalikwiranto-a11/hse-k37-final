@@ -1221,7 +1221,6 @@
     //  Contoh: 0812-3456-7890 → 6281234567890
     // ════════════════════════════════════════════════
 
-    // Set tanggal default = besok
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     document.getElementById('startDate').value = tomorrow.toISOString().slice(0, 10);
@@ -1230,11 +1229,14 @@
       e.preventDefault();
 
       const name = document.getElementById('applicantName').value;
+      const phone = document.getElementById('phone').value;
       const dep = document.getElementById('department').value;
       const type = document.getElementById('permitType').value;
       const loc = document.getElementById('location').value;
       const startDate = document.getElementById('startDate').value;
-      const dur = document.getElementById('duration').value;
+      const startTime = document.getElementById('startTime').value;
+      const endTime = document.getElementById('endTime').value || 'Selesai pekerjaan';
+      const workerCount = document.getElementById('workerCount').value || '-';
       const desc = document.getElementById('workDescription').value;
       const hazards = document.getElementById('hazards').value || 'Tidak ada bahaya spesifik yang diidentifikasi.';
       const declaration = document.getElementById('declaration').checked;
@@ -1251,16 +1253,18 @@
         `*PERMOHONAN IZIN KERJA BARU* 📋
 
 *Nama Pemohon:* ${name}
+*No. HP/WA:* ${phone}
 *Departemen/Kontraktor:* ${dep}
 *Jenis Izin:* ${type}
 *Lokasi Kerja:* ${loc}
-*Tanggal Mulai:* ${dateStr}
-*Durasi:* ${dur} hari
+*Tanggal:* ${dateStr}
+*Waktu:* ${startTime} s/d ${endTime}
+*Jumlah Pekerja:* ${workerCount} orang
 
 *Deskripsi Pekerjaan:*
 ${desc}
 
-*Identifikasi Bahaya:*
+*Identifikasi Bahaya & Pengendalian:*
 ${hazards}
 
 _Mohon periksa dan proses PTW ini. Saya mengerti pekerjaan DILARANG dimulai sebelum izin kerja diterbitkan._`;
@@ -1268,29 +1272,28 @@ _Mohon periksa dan proses PTW ini. Saya mengerti pekerjaan DILARANG dimulai sebe
       const encodedMessage = encodeURIComponent(waMessage);
 
       // Change to your actual HSE WhatsApp number
-      const waNumber = '6282245995805';
+      const waNumber = '6285388881989'; // Matches the number used in safety.html
 
       // Build the wa.me link
       const waLink = `https://wa.me/${waNumber}?text=${encodedMessage}`;
 
-      // Show a brief success alert then redirect
-      const btn = document.getElementById('submitPermitBtn');
+      const btn = document.getElementById('ptw-submit-btn');
       const originalText = btn.innerHTML;
-      btn.innerHTML = 'Mengarahkan ke Aplikasi WhatsApp... ⏳';
+      
+      // Buka WA segera untuk mencegah pemblokiran popup browser
+      window.open(waLink, '_blank');
+
+      btn.innerHTML = '✅ Terkirim! Menunggu Konfirmasi...';
+      btn.style.backgroundColor = '#28a745'; // Green color
       btn.disabled = true;
 
       setTimeout(() => {
-        window.open(waLink, '_blank');
-        btn.innerHTML = '✅ Terkirim! Menunggu Konfirmasi...';
-        btn.style.backgroundColor = '#28a745'; // Green color
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.style.backgroundColor = ''; // Reset to default
-          btn.disabled = false;
-          document.getElementById('ptw-wa-form').reset();
-          document.getElementById('startDate').value = tomorrow.toISOString().slice(0, 10);
-        }, 5000);
-      }, 1000);
+        btn.innerHTML = originalText;
+        btn.style.backgroundColor = ''; // Reset to default
+        btn.disabled = false;
+        document.getElementById('ptw-wa-form').reset();
+        document.getElementById('startDate').value = tomorrow.toISOString().slice(0, 10);
+      }, 5000);
     }
   </script>
 
