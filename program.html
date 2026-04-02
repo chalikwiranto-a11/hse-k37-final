@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program HSE — Portal Departemen HSE</title>
+  <meta name="description"
+    content="Inisiatif dan kampanye departemen HSE untuk meningkatkan budaya keselamatan, kesehatan, dan lingkungan yang proaktif." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/logo-rdmp.png?v=2" type="image/png" />
+  <style>
+    /* Add specific styles for the program cards here if needed */
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAVIGATION ══════════════════════════════════════════ -->
+  <nav class="navbar transparent" role="navigation" aria-label="Navigasi Utama">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" style="display:flex; align-items:center;">
+        <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+          style="height: 52px; width: auto; object-fit: contain; transform: translateY(4px) translateX(-4px);">
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="health.html">Kesehatan</a></li>
+        <li><a href="safety.html">Keselamatan</a></li>
+        <li><a href="environment.html">Lingkungan</a></li>
+        <li><a href="permit.html">Izin Kerja</a></li>
+        <li><a href="program.html" class="active">Program HSE</a></li>
+        <li><a href="about.html">Tentang</a></li>
+
+        <!-- Language Switcher -->
+        <li>
+          <div class="lang-switcher" id="lang-switcher">
+            <button class="active" data-lang="id" title="Bahasa Indonesia">🇮🇩 ID</button>
+            <button data-lang="en" title="English">🇬🇧 EN</button>
+          </div>
+        </li>
+
+        <li><a href="#report-section" class="nav-cta">Laporkan Observasi</a></li>
+      </ul>
+
+      <button class="hamburger" aria-label="Beralih navigasi" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ════════════════════════════════════════════════ -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-bg">
+      <video src="https://relevant-beige-twyciw8sgz.edgeone.app/cover.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <div class="hero-geo">
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+    </div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-gradient"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Inisiatif & Kampanye Berkelanjutan</div>
+
+      <h1 class="hero-title">
+        Program<br />
+        <span class="accent-word">HSE</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Mengembangkan budaya keselamatan dan kesehatan yang proaktif melalui program inovatif dan partisipasi seluruh
+        karyawan di setiap lini.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#programs" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          Jelajahi Program
+        </a>
+        <a href="#calendar" class="btn btn-outline btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Jadwal Kampanye
+        </a>
+      </div>
+
+      <div class="hero-stats-strip">
+        <div class="hero-stat">
+          <div class="hero-stat-value">12</div>
+          <div class="hero-stat-label">Program Aktif</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">85%</div>
+          <div class="hero-stat-label">Partisipasi Karyawan</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">4</div>
+          <div class="hero-stat-label">Kampanye Besar Tahunan</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">24</div>
+          <div class="hero-stat-label">Sesi Pelatihan Selesai</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ HSE PROGRAMS GRID ═════════════════════ -->
+  <section class="section" id="programs">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Program Terkini</div>
+        <h2 class="section-title reveal reveal-delay-1">Inisiatif Terpadu Departemen HSE</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Berikut adalah program dan kampanye yang sedang berjalan untuk meningkatkan mutu keselamatan, kesehatan kerja,
+          dan perlindungan lingkungan.
+        </p>
+      </div>
+
+      <div class="nav-cards-grid">
+        <a href="#" class="nav-card reveal reveal-delay-1" style="--card-color:#ffb703;--card-bg:rgba(255,183,3,0.1);">
+          <div class="nav-card-icon">🏆</div>
+          <div class="nav-card-title">Penghargaan HSE</div>
+          <div class="nav-card-desc">Program apresiasi bulanan bagi pekerja dan departemen dengan kinerja keselamatan
+            terbaik.
+          </div>
+          <span class="nav-card-link">Lihat Detail →</span>
+        </a>
+
+        <a href="#" class="nav-card reveal reveal-delay-2" style="--card-color:#3e92cc;--card-bg:rgba(62,146,204,0.1);">
+          <div class="nav-card-icon">🧠</div>
+          <div class="nav-card-title">Sadar Keselamatan</div>
+          <div class="nav-card-desc">Kampanye proaktif peningkatan kesadaran perilaku aman saat bekerja di area risiko
+            tinggi.</div>
+          <span class="nav-card-link">Lihat Detail →</span>
+        </a>
+
+        <a href="#" class="nav-card reveal reveal-delay-3" style="--card-color:#2dc653;--card-bg:rgba(45,198,83,0.1);">
+          <div class="nav-card-icon">🏃</div>
+          <div class="nav-card-title">Kebugaran Jasmani</div>
+          <div class="nav-card-desc">Inisiatif kesehatan setiap Jumat untuk menjaga fisik agar tetap bugar sebelum
+            memulai aktivitas.</div>
+          <span class="nav-card-link">Lihat Detail →</span>
+        </a>
+
+        <a href="#" class="nav-card reveal reveal-delay-4" style="--card-color:#1fa36e;--card-bg:rgba(31,163,110,0.1);">
+          <div class="nav-card-icon">♻️</div>
+          <div class="nav-card-title">Zero Waste Hero</div>
+          <div class="nav-card-desc">Mendorong pembatasan limbah rumah tangga dan industri di lingkungan pabrik dan mes.
+          </div>
+          <span class="nav-card-link">Lihat Detail →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MANDATORY GOOGLE FORMS ═══════════════════════════════ -->
+  <section class="section section-alt" id="mandatory-forms">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Campaign</div>
+        <h2 class="section-title reveal reveal-delay-1">Mandatory</h2>
+      </div>
+
+      <div class="postcard-grid cols-4 reveal reveal-delay-2">
+
+        <!-- Card 1 -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScvvb4BnpuPKQoPcKG_dVsJguxNYerwJjPikBKpsK52smvBCA/viewform?usp=header"
+          target="_blank" style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap img-contain">
+              <span class="postcard-date">Click Here</span>
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">PDF</div>
+              <h3 class="postcard-title">Link Induction</h3>
+              <p class="postcard-desc"></p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdn-g0etrgK11g6FH5QzKM6fTf54PMcu5k5k8TznG5ZspmQg/viewform?usp=header"
+          target="_blank" style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap img-contain">
+              <span class="postcard-date">Click Here</span>
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">PDF</div>
+              <h3 class="postcard-title">Link Inspection Apart</h3>
+              <p class="postcard-desc"></p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScNW5sUKmpsa-HAmUBKsdBViujCFeKJBYM2m77igTLEdDF5Dw/viewform?usp=header"
+          target="_blank" style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap img-contain">
+              <span class="postcard-date">Click Here</span>
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">PDF</div>
+              <h3 class="postcard-title">Link Inspection Rigger (Lifting Equipment)</h3>
+              <p class="postcard-desc"></p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 4 -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScNW5sUKmpsa-HAmUBKsdBViujCFeKJBYM2m77igTLEdDF5Dw/viewform?usp=header"
+          target="_blank" style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap img-contain">
+              <span class="postcard-date">Click Here</span>
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">PDF</div>
+              <h3 class="postcard-title">Link Inspection Rigger (Lifting Equipment)</h3>
+              <p class="postcard-desc"></p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MANDATORY GOOGLE FORMS ═══════════════════════════════ -->
+  <section class="section section-alt" id="mandatory-forms">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Campaign</div>
+        <h2 class="section-title reveal reveal-delay-1">Inspection</h2>
+      </div>
+
+      <div class="postcard-grid cols-4 reveal reveal-delay-2">
+
+        <!-- Card 1 -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScvvb4BnpuPKQoPcKG_dVsJguxNYerwJjPikBKpsK52smvBCA/viewform?usp=header"
+          target="_blank" style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap img-contain">
+              <span class="postcard-date">Click Here</span>
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">PDF</div>
+              <h3 class="postcard-title">Link Induction</h3>
+              <p class="postcard-desc"></p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdn-g0etrgK11g6FH5QzKM6fTf54PMcu5k5k8TznG5ZspmQg/viewform?usp=header"
+          target="_blank" style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap img-contain">
+              <span class="postcard-date">Click Here</span>
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">PDF</div>
+              <h3 class="postcard-title">Link Inspection Apart</h3>
+              <p class="postcard-desc"></p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScNW5sUKmpsa-HAmUBKsdBViujCFeKJBYM2m77igTLEdDF5Dw/viewform?usp=header"
+          target="_blank" style="text-decoration:none; color:inherit; display:block; height:100%;">
+          <div class="postcard" style="height:100%;">
+            <div class="postcard-img-wrap img-contain">
+              <span class="postcard-date">Click Here</span>
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+            </div>
+            <div class="postcard-content">
+              <div class="postcard-eyebrow">PDF</div>
+              <h3 class="postcard-title">Link Inspection Rigger (Lifting Equipment)</h3>
+              <p class="postcard-desc"></p>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ REPORT OBSERVATION CTA ═══════════════════════════════ -->
+  <section class="cta-section" id="report-section">
+    <div class="cta-inner">
+      <div class="section-eyebrow reveal" style="justify-content:center;color:rgba(255,255,255,0.7);">Keterlibatan Aktif
+      </div>
+      <h2 class="cta-title reveal reveal-delay-1">Punya Ide Program Keselamatan?</h2>
+      <p class="cta-desc reveal reveal-delay-2">
+        Kami selalu terbuka dengan saran konstruktif dari setiap individu. Suarakan ide inisiatif Anda yang dapat
+        meningkatkan mutu HSE bersama di lingkungan kita.
+      </p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="reveal reveal-delay-3">
+        <a href="safety.html#report" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+          </svg>
+          Kirim Usulan Program
+        </a>
+        <a href="permit.html" class="btn btn-outline btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+          </svg>
+          Ajukan Izin Kerja PTW
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ══════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+            style="height: 64px; width: auto; object-fit: contain; margin-bottom: 20px; transform: translateX(-6px);">
+        </div>
+        <p class="footer-desc">
+          Berdedikasi tinggi demi mencapai kebudayaan nihil bahaya melalui pematuhan standar operasional, penjagaan mutu
+          kesehatan kerja, dan konservasi alam yang ketat dan disiplin.
+        </p>
+        <div class="footer-socials">
+          <div class="footer-social-btn" title="Email">📧</div>
+          <div class="footer-social-btn" title="Teams">💬</div>
+          <div class="footer-social-btn" title="Laporan">📊</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Tautan Cepat</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="health.html">Kesehatan Kerja</a></li>
+          <li><a href="safety.html">Manajemen Keselamatan</a></li>
+          <li><a href="environment.html">Pengawasan Lingkungan</a></li>
+          <li><a href="permit.html">Izin Kerja (PTW)</a></li>
+          <li><a href="program.html">Program HSE</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Fasilitas Lainnya</div>
+        <ul class="footer-links">
+          <li><a href="#">Peraturan &amp; Kebijakan</a></li>
+          <li><a href="#">Prosedur Tanggap Darurat</a></li>
+          <li><a href="#">Kalender Pelatihan</a></li>
+          <li><a href="#">Jurnal Insiden HSE</a></li>
+          <li><a href="#">Kewajiban Pengawasan Hukum</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Kontak HSE Divisi</div>
+        <ul class="footer-links" style="gap:14px;">
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📞 Posko Siaga: <strong
+              style="color:#fff;">085388881989</strong></li>
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📧 <strong
+              style="color:#fff;">Agus.kuswanto@rdmpbpnjo.co.id</strong></li>
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📍 Karang Joang, Kec. Balikpapan Utara</li>
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">⏰ Senin–Minggu: 06:45–17:45 WITA</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">
+        © 2026 Portal Resmi Departemen HSE. Segala hak dilindungi oleh undang-undang.
+      </div>
+      <div class="footer-bottom-links">
+        <a href="#">Kebijakan Privasi</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Kembali ke atas">↑</button>
+
+  <script src="js/script.js"></script>
+  <script src="js/lang-switcher.js"></script>
+</body>
+
+</html>

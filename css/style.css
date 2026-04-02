@@ -1217,6 +1217,16 @@ button {
   margin-top: 32px;
 }
 
+.postcard-grid.cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .postcard-grid.cols-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .postcard {
   background: var(--surface);
   border-radius: 16px;
@@ -1246,6 +1256,15 @@ button {
   object-fit: cover;
   display: block;
   transition: transform 0.5s ease;
+}
+
+.postcard-img-wrap.img-contain {
+  background: #f3f6f9;
+}
+
+.postcard-img-wrap.img-contain img {
+  object-fit: contain;
+  padding: 36px;
 }
 
 .postcard:hover .postcard-img-wrap img {
@@ -1299,13 +1318,15 @@ button {
 }
 
 @media (max-width: 992px) {
-  .postcard-grid {
+  .postcard-grid,
+  .postcard-grid.cols-4 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .postcard-grid {
+  .postcard-grid,
+  .postcard-grid.cols-4 {
     grid-template-columns: 1fr;
   }
 }
