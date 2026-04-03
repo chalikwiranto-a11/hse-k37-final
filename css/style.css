@@ -613,6 +613,24 @@ button {
   transform: translateY(-2px);
 }
 
+.btn-wa {
+  background: #0b1f4b;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(11, 31, 75, 0.15);
+}
+
+.btn-wa:hover {
+  background: #112d6a;
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 31, 75, 0.25);
+}
+
 .btn-sm {
   padding: 8px 18px;
   font-size: 13px;
@@ -1221,6 +1239,13 @@ button {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.postcard-grid.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (max-width: 1200px) {
   .postcard-grid.cols-4 {
     grid-template-columns: repeat(3, 1fr);
@@ -1319,14 +1344,16 @@ button {
 
 @media (max-width: 992px) {
   .postcard-grid,
-  .postcard-grid.cols-4 {
+  .postcard-grid.cols-4,
+  .postcard-grid.cols-2 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
   .postcard-grid,
-  .postcard-grid.cols-4 {
+  .postcard-grid.cols-4,
+  .postcard-grid.cols-2 {
     grid-template-columns: 1fr;
   }
 }
