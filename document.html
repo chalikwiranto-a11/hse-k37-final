@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document HSE-37 — Portal Departemen HSE</title>
+  <meta name="description"
+    content="Inisiatif dan kampanye departemen HSE untuk meningkatkan budaya keselamatan, kesehatan, dan lingkungan yang proaktif." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="assets/logo-rdmp.png?v=2" type="image/png" />
+  <style>
+    /* Add specific styles for the program cards here if needed */
+    .program-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ NAVIGATION ══════════════════════════════════════════ -->
+  <nav class="navbar transparent" role="navigation" aria-label="Navigasi Utama">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" style="display:flex; align-items:center;">
+        <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+          style="height: 52px; width: auto; object-fit: contain; transform: translateY(4px) translateX(-4px);">
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="health.html">Kesehatan</a></li>
+        <li><a href="safety.html">Keselamatan</a></li>
+        <li><a href="environment.html">Lingkungan</a></li>
+        <li><a href="permit.html">Izin Kerja</a></li>
+        <li><a href="document.html" class="active">Document HSE-37</a></li>
+        <li><a href="program.html">Program HSE</a></li>
+        <li><a href="about.html">Tentang</a></li>
+
+        <!-- Language Switcher -->
+        <li>
+          <div class="lang-switcher" id="lang-switcher">
+            <button class="active" data-lang="id" title="Bahasa Indonesia">🇮🇩 ID</button>
+            <button data-lang="en" title="English">🇬🇧 EN</button>
+          </div>
+        </li>
+
+        <li><a href="#report-section" class="nav-cta">Laporkan Observasi</a></li>
+      </ul>
+
+      <button class="hamburger" aria-label="Beralih navigasi" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ════════════════════════════════════════════════ -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-bg">
+      <video src="https://relevant-beige-twyciw8sgz.edgeone.app/cover.mp4" autoplay loop muted playsinline></video>
+    </div>
+    <div class="hero-geo">
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+      <div class="geo-circle"></div>
+    </div>
+    <div class="hero-grid-overlay"></div>
+    <div class="hero-gradient"></div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">Inisiatif & Kampanye Berkelanjutan</div>
+
+      <h1 class="hero-title">
+        Document<br />
+        <span class="accent-word">HSE-37</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Mengembangkan budaya keselamatan dan kesehatan yang proaktif melalui program inovatif dan partisipasi seluruh
+        karyawan di setiap lini.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#programs" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          Jelajahi Program
+        </a>
+        <a href="#calendar" class="btn btn-outline btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          Jadwal Kampanye
+        </a>
+      </div>
+
+      <div class="hero-stats-strip">
+        <div class="hero-stat">
+          <div class="hero-stat-value">12</div>
+          <div class="hero-stat-label">Program Aktif</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">85%</div>
+          <div class="hero-stat-label">Partisipasi Karyawan</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">4</div>
+          <div class="hero-stat-label">Kampanye Besar Tahunan</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">24</div>
+          <div class="hero-stat-label">Sesi Pelatihan Selesai</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DOCUMENT LIBRARY ═════════════════════════════════════ -->
+  <section class="section doc-section-dark" id="programs">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal">Perpustakaan Dokumen</div>
+        <h2 class="section-title reveal reveal-delay-1">Dokumen HSE Kariangau-37</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Kumpulan dokumen resmi HSE meliputi program mandatory, inspection, monitoring, dan dokumen umum lainnya.
+        </p>
+      </div>
+
+      <div class="doc-search-wrap reveal reveal-delay-2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input type="text" id="doc-search" placeholder="Cari dokumen..." autocomplete="off">
+      </div>
+
+      <div class="doc-grid reveal reveal-delay-3" id="doc-grid">
+
+        <!-- ── General ─────────────────────────── -->
+        <a href="https://drive.google.com/file/d/1zkEwygjYGJoN3yjHIHqSvbifBhoufFgJ/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HIRAC (Control Instrument)</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1xE7VWUvfGCADzktQ5BRX87dzQM45rBMM/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HIRAC (Potential Of Major Accident Hazard (MAH))</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <a href="https://drive.google.com/file/d/1x20DVtflpWsjL1UxSPaB28VErYYEcw9N/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HIRAC (Electrical)</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1civNMO862JamnN6UUgUS5uqM0xygpIU-/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HIRAC (Commisioning Operations)</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <!-- ── Mandatory ───────────────────────── -->
+        <a href="https://drive.google.com/file/d/1CCMs9CUiwhopnZun9rpp_ngbSoN1gvM6/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HIRAC (Mechanical)</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/19F0xtDHL7WWduay3H4FwJtTgaee8UAzd/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HIRAC (Precommisioning)</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/11LSB7eIsCnql2G9iNVGeWOJXV0iCL1RJ/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HIRAC (PIPING)</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1-dT4NxdOSmlNWC4BfORjmOsf52ZY4301/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HIRAC (General Common)</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/110Shpsbw0JVyulsoZbqhZX5VcO-vH4ZN/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Waste Management Plan</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1TO0Quu8E_D2XDCJ7cIdOmu9fNJd6v7wR/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Spill Prevention Response Plan</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <!-- ── Inspection ──────────────────────── -->
+        <a href="https://drive.google.com/file/d/1IR2p883jotFkpj5ozyDW7YnJQ9q4N0_c/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Health Management Plan</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1IR2p883jotFkpj5ozyDW7YnJQ9q4N0_c/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Construction Environmental Control Plan</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1BzoyQohSSJZUGLBXv_0rJq1-1rRM34T4/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Security Plan</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1kb_m0TKeAbSCvxvQr3f7hSpr3hy29rpL/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Project HSE Plan</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1FgjmirYx5g24rR6mHCrgeDwv7VebJXaj/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Site Specific Procedure For Confined Space Entry</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1-ZZkuZiF_OYSSWCw1XOLHiFocTQe6apM/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Site-Specific Procedure For Covid-19 Prevention</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1zq1zdahztzQPUZ_7G53qGiNBG8W0qVSa/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Fatigue Management Procedure</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1Qr-vkJCceX4_SzcZB14eawXs8JjUttNB/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HAZARDOUS MATERIAL HANDLING PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1EdfWBjFLwb2oozI7ntNaePmFrC_dbe2y/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">SITE SPECIFIC PROCEDURE FOR MARINE WORKS</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <!-- ── Monitoring ──────────────────────── -->
+        <a href="https://drive.google.com/file/d/1ZFnsxtGyZOEjoYyCtICqMLEE8aJbZVb8/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Safety Sign Specification</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1NBtWICrE9dLh217lW1Sairt_u-shimb6/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">PROJECT EMERGENCY HANDLING PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1boCV3-kAbOWfHzZcjeTwjjUtZdwrqUOC/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">WORK PERMIT PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1Uss5kPXzqOElAUt3yBwokEEhhdFseZ1V/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">ELECTRICAL EQUIPMENT AND ASSURED GROUNDING PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1VG0oleHlatfusH6eNzFmgmwKLOHaHtLY/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HSE TRAINING PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <a href="https://drive.google.com/file/d/1egKtb9vhwERCK-pUJTk2Ddm04CgNBUOO/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">FIRE PREVENTION AND PROTECTION PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <a href="https://drive.google.com/file/d/182ZsHtw5FmajMvSUcIoN6PikX3zXi049/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">LOTO PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+        <a href="https://drive.google.com/file/d/1uGuLQP8uMhw7TSCgUtt7emrQtiX_hfys/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">TRANSPORTATION AND JOURNEY MANAGEMENT PLAN</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1-lIKhWScB9G6AOdgWtNz3ZOobgBqRmzr/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">HEAT STRESS PREVENTION AND MANAGEMENT PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1xbrjRrPzhgpWfBb49klP2WbDvsurIv3t/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Crane and Lifting Operation Procedure</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1AdYdgvyb27JtP6dwHHjgjPpZ5ILKgJUc/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">CUTTING, WELDING, AND GRINDING PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1eqS3pl1m8IqSR7jMjsrrTGHbcxxvJGKD/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Barricade and Signboard Procedure</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1u_eWFgKEyD68ct6DiSKmJt1sTRirhl8_/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">SITE SPECIFIC PROCEDURE FOR RADIOGRAPHIC</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1dIQk3pjWGQ8dDYJacigsVVa_uPM62Hyt/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">INCIDENT INVESTIGATION AND REPORTING PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1OenQ2z7AhvUtt4v9fSokk2-gh9KGxm2x/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">SCAFFOLDING PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1sEptgPnQyqJpLj2j7YkamU5TUJqpHZCD/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">FLAMMABLE AND COMBUSTIBLE LIQUID STORAGE AND FUEL STORAGE PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/18SKKbIFYeE70scSMFPWOjjR0eYnretpF/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">EXCAVATION AND TRENCHING WORK PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/15C0jLczPsCnomXWi1n2wX6G4gjPJW6AP/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">Night Out of Hours Work Procedure</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1Eos-kVximLJPaKAtx9ILegRXh0z92XnY/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">ILLNESS NOTIFICATION AND REPORTING PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1Rf3FfyVyQOUwh7_floTyre-OSTSPABDV/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">PREVENTIVE MAINTENANCE AND INSPECTION OF PLANT, TOOLS & EQUIPMENT</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/174pq1zOhVZX6DeQ2ww_2OW65sFjDywt6/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">MEDICAL SURVEILLANCE PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1gr9uAia8xbrbHLdtICIYwnA0kDk4e9TI/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">WORKING AT HEIGHT PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+        <a href="https://drive.google.com/file/d/1fdCQMlDJuo_zHweRm2TjKTKzwFvXogrE/view?usp=sharing" target="_blank"
+          class="doc-link">
+          <div class="doc-link-icon"><img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="PDF"></div>
+          <span class="doc-link-title">NONCONFORMITY AND CORRECTIVE ACTION PROCEDURE</span>
+          <svg class="doc-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </a>
+
+
+        <!-- ── Tambahkan dokumen baru di sini ──── -->
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="doc-pagination" id="doc-pagination"></div>
+
+    </div>
+  </section>
+
+  <!-- ═══ REPORT OBSERVATION CTA ═══════════════════════════════ -->
+  <section class="cta-section" id="report-section">
+    <div class="cta-inner">
+      <div class="section-eyebrow reveal" style="justify-content:center;color:rgba(255,255,255,0.7);">Keterlibatan Aktif
+      </div>
+      <h2 class="cta-title reveal reveal-delay-1">Butuh Dokumen Lainnya?</h2>
+      <p class="cta-desc reveal reveal-delay-2">
+        Hubungi tim HSE untuk mendapatkan dokumen tambahan atau mengajukan permintaan dokumen baru.
+      </p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="reveal reveal-delay-3">
+        <a href="safety.html#report" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+          </svg>
+          Sampaikan Observasi
+        </a>
+        <a href="permit.html" class="btn btn-outline btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+          </svg>
+          Ajukan Izin Kerja PTW
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Document Search + Pagination Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const PER_PAGE = 20;
+      const grid = document.getElementById('doc-grid');
+      const paginationEl = document.getElementById('doc-pagination');
+      const search = document.getElementById('doc-search');
+      const allLinks = Array.from(grid.querySelectorAll('.doc-link'));
+      let currentPage = 1;
+      let filtered = allLinks.slice();
+
+      function render() {
+        var totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
+        if (currentPage > totalPages) currentPage = totalPages;
+        var start = (currentPage - 1) * PER_PAGE;
+        var end = start + PER_PAGE;
+
+        allLinks.forEach(function (el) { el.style.display = 'none'; });
+        filtered.forEach(function (el, i) {
+          el.style.display = (i >= start && i < end) ? '' : 'none';
+        });
+
+        // Empty message
+        var msg = grid.querySelector('.doc-empty-msg');
+        if (filtered.length === 0) {
+          if (!msg) { msg = document.createElement('div'); msg.className = 'doc-empty-msg'; grid.appendChild(msg); }
+          msg.textContent = 'Tidak ada dokumen yang cocok dengan "' + search.value + '"';
+          msg.style.display = '';
+        } else if (msg) { msg.style.display = 'none'; }
+
+        // Pagination buttons
+        paginationEl.innerHTML = '';
+        if (totalPages <= 1) return;
+
+        // Prev
+        var prev = document.createElement('button');
+        prev.textContent = '‹';
+        prev.disabled = currentPage === 1;
+        prev.onclick = function () { currentPage--; render(); scrollToGrid(); };
+        paginationEl.appendChild(prev);
+
+        // Page numbers
+        for (var p = 1; p <= totalPages; p++) {
+          var btn = document.createElement('button');
+          btn.textContent = p;
+          if (p === currentPage) btn.className = 'active';
+          btn.onclick = (function (pg) { return function () { currentPage = pg; render(); scrollToGrid(); }; })(p);
+          paginationEl.appendChild(btn);
+        }
+
+        // Next
+        var next = document.createElement('button');
+        next.textContent = '›';
+        next.disabled = currentPage === totalPages;
+        next.onclick = function () { currentPage++; render(); scrollToGrid(); };
+        paginationEl.appendChild(next);
+
+        // Info
+        var info = document.createElement('span');
+        info.className = 'doc-page-info';
+        info.textContent = 'Halaman ' + currentPage + ' dari ' + totalPages + ' (' + filtered.length + ' dokumen)';
+        paginationEl.appendChild(info);
+      }
+
+      function scrollToGrid() {
+        var target = document.getElementById('programs');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Search filter
+      search.addEventListener('input', function () {
+        var q = this.value.toLowerCase().trim();
+        filtered = allLinks.filter(function (el) {
+          return !q || el.querySelector('.doc-link-title').textContent.toLowerCase().includes(q);
+        });
+        currentPage = 1;
+        render();
+      });
+
+      render();
+    });
+  </script>
+
+  <!-- ═══ FOOTER ══════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo-rdmp.png" alt="RDMP Balikpapan JO"
+            style="height: 64px; width: auto; object-fit: contain; margin-bottom: 20px; transform: translateX(-6px);">
+        </div>
+        <p class="footer-desc">
+          Berdedikasi tinggi demi mencapai kebudayaan nihil bahaya melalui pematuhan standar operasional, penjagaan mutu
+          kesehatan kerja, dan konservasi alam yang ketat dan disiplin.
+        </p>
+        <div class="footer-socials">
+          <div class="footer-social-btn" title="Email">📧</div>
+          <div class="footer-social-btn" title="Teams">💬</div>
+          <div class="footer-social-btn" title="Laporan">📊</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Tautan Cepat</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="health.html">Kesehatan Kerja</a></li>
+          <li><a href="safety.html">Manajemen Keselamatan</a></li>
+          <li><a href="environment.html">Pengawasan Lingkungan</a></li>
+          <li><a href="permit.html">Izin Kerja (PTW)</a></li>
+          <li><a href="document.html" class="active">Document HSE-37</a></li>
+          <li><a href="program.html">Program HSE</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Fasilitas Lainnya</div>
+        <ul class="footer-links">
+          <li><a href="#">Peraturan &amp; Kebijakan</a></li>
+          <li><a href="#">Prosedur Tanggap Darurat</a></li>
+          <li><a href="#">Kalender Pelatihan</a></li>
+          <li><a href="#">Jurnal Insiden HSE</a></li>
+          <li><a href="#">Kewajiban Pengawasan Hukum</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Kontak HSE Divisi</div>
+        <ul class="footer-links" style="gap:14px;">
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📞 Posko Siaga: <strong
+              style="color:#fff;">085388881989</strong></li>
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📧 <strong
+              style="color:#fff;">Agus.kuswanto@rdmpbpnjo.co.id</strong></li>
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">📍 Karang Joang, Kec. Balikpapan Utara</li>
+          <li style="color:rgba(255,255,255,0.5);font-size:14px;">⏰ Senin–Minggu: 06:45–17:45 WITA</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-text">
+        © 2026 Portal Resmi Departemen HSE. Segala hak dilindungi oleh undang-undang.
+      </div>
+      <div class="footer-bottom-links">
+        <a href="#">Kebijakan Privasi</a>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" aria-label="Kembali ke atas">↑</button>
+
+  <script src="js/script.js"></script>
+  <script src="js/lang-switcher.js"></script>
+</body>
+
+</html>
