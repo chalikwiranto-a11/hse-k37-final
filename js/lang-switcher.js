@@ -66,6 +66,7 @@
     'Jelajahi PTW →':      'Explore PTW →',
     'Dasbor Kinerja':                          'Performance Dashboard',
     'Statistik HSE — Berjalan di Tahun 2025':  'HSE Statistics — Year 2025 Running',
+    'Statistik HSE — Berjalan di Tahun 2026':  'HSE Statistics — Year 2026 Running',
     'Indikator kinerja keselamatan terpantau secara real-time di seluruh lokasi dan departemen kerja.':
       'Safety performance indicators monitored in real-time across all work locations and departments.',
     'Total Observasi':             'Total Observations',
@@ -510,6 +511,17 @@
     'Pemeliharaan Terpadu': 'Integrated Maintenance',
     'Operasional': 'Operational',
 
+    /* ═══ DOCUMENT.HTML ════════════════════════════════════════ */
+    'Document HSE-37':       'Document HSE-37',
+    'Perpustakaan Dokumen':  'Document Library',
+    'Dokumen HSE Kariangau-37': 'HSE Kariangau-37 Documents',
+    'Kumpulan dokumen resmi HSE Kariangau-37 meliputi Dokumen mandatory, inspection, monitoring, dan dokumen umum lainnya.':
+      'Official HSE Kariangau-37 document collection including mandatory documents, inspection, monitoring, and other general documents.',
+    'Cari dokumen...':       'Search documents...',
+    'Butuh Dokumen Lainnya?': 'Need More Documents?',
+    'Hubungi tim HSE untuk mendapatkan dokumen tambahan atau mengajukan permintaan dokumen baru.':
+      'Contact the HSE team to obtain additional documents or submit new document requests.',
+
     /* ═══ PROGRAM.HTML ═════════════════════════════════════════ */
     'Program HSE': 'HSE Program',
     'Program HSE — Portal Departemen HSE': 'HSE Program — HSE Department Portal',
@@ -597,7 +609,8 @@
       '.footer-desc', '.feature-desc', '.nav-card-desc', '.permit-desc',
       '.ptw-step-desc', '.vm-text', '.split-title', '.cta-title',
       '.stat-sublabel', '.stat-label', '.feature-title', '.nav-card-title',
-      '.permit-title', '.ptw-step-title'
+      '.permit-title', '.ptw-step-title',
+      '.doc-page-info'
     ];
     document.querySelectorAll(blockSelectors.join(',')).forEach(el => {
       const txt = norm(el.textContent);
@@ -609,6 +622,25 @@
       const txt = norm(el.textContent);
       if (dict[txt]) el.textContent = dict[txt];
     });
+
+    /* 4. Translate placeholders */
+    document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(el => {
+      const ph = norm(el.placeholder);
+      if (dict[ph]) el.placeholder = dict[ph];
+    });
+
+    /* 5. Translate dynamic pagination info */
+    var pageInfo = document.querySelector('.doc-page-info');
+    if (pageInfo) {
+      var m = pageInfo.textContent.match(/(\d+).+(\d+).+(\d+)/);
+      if (m) {
+        if (lang === 'en') {
+          pageInfo.textContent = 'Page ' + m[1] + ' of ' + m[2] + ' (' + m[3] + ' documents)';
+        } else {
+          pageInfo.textContent = 'Halaman ' + m[1] + ' dari ' + m[2] + ' (' + m[3] + ' dokumen)';
+        }
+      }
+    }
 
     /* Update html lang attribute */
     document.documentElement.lang = lang;
