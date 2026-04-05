@@ -2455,3 +2455,315 @@ footer {
     align-self: center;
   }
 }
+/* ──────────────────────────────────────────────────────────────
+   HSE MODAL SYSTEM (Popups)
+   ────────────────────────────────────────────────────────────── */
+.hse-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.hse-modal.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 26, 74, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow-y: auto;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+}
+
+.hse-modal.active .modal-container {
+  transform: translateY(0) scale(1);
+}
+
+.modal-container.mading-size {
+  max-width: 900px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-dark);
+  border: none;
+  font-size: 18px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  background: var(--danger);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.modal-header {
+  padding: 32px 40px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: linear-gradient(to right, var(--bg-dark), var(--surface));
+}
+
+.modal-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(62, 146, 204, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.modal-icon.alert { background: rgba(230, 57, 70, 0.1); color: var(--danger); }
+.modal-icon.training { background: rgba(255, 183, 3, 0.1); color: var(--accent-dark); }
+
+.modal-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 4px;
+}
+
+.modal-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.modal-body {
+  padding: 32px 40px;
+  flex: 1;
+}
+
+.quote {
+  font-style: italic;
+  color: var(--text-secondary);
+  border-left: 4px solid var(--secondary);
+  padding-left: 20px;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.modal-section-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ── Modal Table Styles ───────────────────────────────────────── */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  margin-bottom: 32px;
+}
+
+.modal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.modal-table th {
+  text-align: left;
+  background: var(--bg-dark);
+  padding: 12px 16px;
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 2px solid var(--border);
+}
+
+.modal-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.modal-table tr:hover td {
+  background: rgba(62, 146, 204, 0.03);
+}
+
+.modal-table strong {
+  color: var(--primary);
+}
+
+.modal-footer-note {
+  background: var(--bg-dark);
+  padding: 24px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ── Emergency Flow Styles ────────────────────────────────────── */
+.emergency-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.flow-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: var(--bg-dark);
+  border-radius: var(--radius-md);
+  border-left: 6px solid #ccc;
+  transition: var(--transition);
+}
+
+.flow-item.red { border-left-color: var(--danger); background: rgba(230, 57, 70, 0.05); }
+.flow-item.orange { border-left-color: #f59e0b; background: rgba(245, 158, 11, 0.05); }
+.flow-item.amber { border-left-color: #fbbf24; background: rgba(251, 191, 36, 0.05); }
+.flow-item.green { border-left-color: var(--success); background: rgba(45, 198, 83, 0.05); }
+
+.flow-step {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.flow-content h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--primary);
+}
+
+.flow-content p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.emergency-phone {
+  margin-top: 10px;
+  font-weight: 800;
+  font-size: 18px !important;
+  color: var(--danger) !important;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.contact-card {
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card .label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; margin-bottom: 4px; }
+.contact-card .value { font-size: 16px; font-weight: 700; color: var(--primary); }
+
+.muster-list {
+  padding-left: 20px;
+  list-style: disc;
+  color: var(--text-secondary);
+}
+
+.muster-list li { margin-bottom: 8px; font-size: 14px; }
+
+/* ── Training/Mading Styles ────────────────────────────────────── */
+.training-table .highlight {
+  background: rgba(255, 183, 3, 0.1);
+}
+
+.training-table .highlight td {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.status-done { color: var(--success); font-weight: 600; }
+.status-soon { color: var(--danger); font-weight: 700; }
+
+.mading-section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.poster-wrapper, .mading-wrapper {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border);
+}
+
+.training-poster, .training-mading {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.poster-wrapper:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .modal-container { border-radius: 0; max-height: 100vh; }
+  .modal-header, .modal-body { padding: 24px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .modal-title { font-size: 18px; }
+}

@@ -647,3 +647,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+/* ── 13. HSE MODAL SYSTEM (Fasilitas Lainnya) ────────────────── */
+(function initHSEModals() {
+  const triggerMap = [
+    { id: 'open-policy', modalId: 'policy-modal' },
+    { id: 'open-emergency', modalId: 'emergency-modal' },
+    { id: 'open-training', modalId: 'training-modal' }
+  ];
+
+  triggerMap.forEach(item => {
+    const trigger = document.getElementById(item.id);
+    const modal = document.getElementById(item.modalId);
+    
+    if (!trigger || !modal) return;
+
+    const closeBtn = modal.querySelector('.modal-close');
+    const overlay = modal.querySelector('.modal-overlay');
+
+    const openModal = () => {
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; // Stop scrolling
+    };
+
+    const closeModal = () => {
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', closeModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  });
+})();

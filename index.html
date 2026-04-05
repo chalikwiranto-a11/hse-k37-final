@@ -265,9 +265,8 @@
           </a>
         </div>
         <div class="split-visual reveal-right">
-          <img
-            src="https://thumbs.dreamstime.com/b/hse-health-safety-environment-symbol-icon-illustration-hse-health-safety-environment-symbol-icon-280084138.jpg?w=768"
-            alt="Komitmen Operasional HSE" loading="lazy">
+          <img src="https://mediak3.com/wp-content/uploads/2025/08/LOGO-K3.png" alt="Komitmen Operasional HSE"
+            loading="lazy">
         </div>
       </div>
     </div>
@@ -419,11 +418,9 @@
       <div>
         <div class="footer-col-title">Fasilitas Lainnya</div>
         <ul class="footer-links">
-          <li><a href="#">Peraturan &amp; Kebijakan</a></li>
-          <li><a href="#">Prosedur Tanggap Darurat</a></li>
-          <li><a href="#">Kalender Pelatihan</a></li>
-          <li><a href="#">Jurnal Insiden HSE</a></li>
-          <li><a href="#">Kewajiban Pengawasan Hukum</a></li>
+          <li><a href="javascript:void(0)" id="open-policy">Peraturan &amp; Kebijakan</a></li>
+          <li><a href="javascript:void(0)" id="open-emergency">Prosedur Tanggap Darurat</a></li>
+          <li><a href="javascript:void(0)" id="open-training">Kalender Pelatihan</a></li>
         </ul>
       </div>
 
@@ -451,6 +448,288 @@
   </footer>
 
   <button class="back-to-top" aria-label="Kembali ke atas">↑</button>
+
+  <!-- ═══ MODALS ════════════════════════════════════════════════ -->
+
+  <!-- 1. Peraturan & Kebijakan Modal -->
+  <div id="policy-modal" class="hse-modal" aria-hidden="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Tutup modal">✕</button>
+      <div class="modal-header">
+        <div class="modal-icon">🛡️</div>
+        <div>
+          <h2 class="modal-title">Peraturan & Kebijakan HSE</h2>
+          <p class="modal-subtitle">Keselamatan, Kesehatan & Lingkungan</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="quote">"Keselamatan bukan sekadar kepatuhan — melainkan komitmen kolektif untuk melindungi setiap
+          nyawa dan menjaga kelangsungan operasi. Setiap individu di area kerja bertanggung jawab penuh terhadap
+          keselamatan dirinya sendiri dan rekan kerjanya."</p>
+
+        <h3 class="modal-section-title">10 Golden Rules of Safety</h3>
+        <div class="table-responsive">
+          <table class="modal-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Aturan Emas</th>
+                <th>Deskripsi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><strong>Izin Kerja Wajib</strong></td>
+                <td>Setiap pekerjaan berisiko tinggi WAJIB memiliki Permit to Work (PTW) yang sah dan telah diverifikasi
+                  sebelum dimulai.</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><strong>APD Tanpa Kompromi</strong></td>
+                <td>Penggunaan Alat Pelindung Diri (APD) sesuai standar adalah kewajiban mutlak di seluruh area
+                  operasional.</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><strong>Hentikan Pekerjaan</strong></td>
+                <td>Setiap pekerja memiliki HAK dan KEWAJIBAN untuk menghentikan pekerjaan yang tidak aman (Stop Work
+                  Authority).</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><strong>Laporkan Insiden</strong></td>
+                <td>Seluruh insiden, near-miss, dan kondisi tidak aman wajib dilaporkan dalam waktu 1×24 jam.</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><strong>Isolasi Energi</strong></td>
+                <td>Prosedur Lock Out Tag Out (LOTO) wajib diterapkan pada pekerjaan isolasi sumber energi berbahaya.
+                </td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><strong>Bekerja di Ketinggian</strong></td>
+                <td>Pekerjaan di atas 1,8m wajib menggunakan full body harness dan platform kerja yang telah diinspeksi.
+                </td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><strong>Ruang Terbatas</strong></td>
+                <td>Memasuki confined space hanya diperbolehkan setelah pengujian gas dan izin masuk diterbitkan.</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td><strong>Zona Bebas Asap</strong></td>
+                <td>Merokok hanya diperbolehkan di Designated Smoking Area (DSA). Pelanggaran akan dikenai sanksi tegas.
+                </td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td><strong>Kendaraan & Ops</strong></td>
+                <td>Kecepatan maks 20 km/jam di area plant. Penggunaan sabuk pengaman wajib untuk seluruh kendaraan.
+                </td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td><strong>Kebersihan Area</strong></td>
+                <td>Penerapan prinsip 5R (Ringkas, Rapi, Resik, Rawat, Rajin) wajib dijaga di setiap area kerja.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="modal-footer-note">
+          <p>"Keselamatan adalah nilai tertinggi yang tidak boleh dikompromikan. Kami berkomitmen untuk mencapai budaya
+            NIHIL INSIDEN demi keberlanjutan operasi."</p>
+          <p><strong>— Departemen HSE, RDMP Balikpapan JO</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Prosedur Tanggap Darurat Modal -->
+  <div id="emergency-modal" class="hse-modal" aria-hidden="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-container">
+      <button class="modal-close" aria-label="Tutup modal">✕</button>
+      <div class="modal-header">
+        <div class="modal-icon alert">🚨</div>
+        <div>
+          <h2 class="modal-title">Prosedur Tanggap Darurat</h2>
+          <p class="modal-subtitle">Emergency Response Procedure (ERP)</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="quote">"Kesiapsiagaan adalah kunci keselamatan. Setiap personel wajib memahami dan mampu menjalankan
+          prosedur tanggap darurat secara cepat dan tepat."</p>
+
+        <div class="emergency-flow">
+          <div class="flow-item red">
+            <div class="flow-step">1</div>
+            <div class="flow-content">
+              <h4>Identifikasi & Peringatan</h4>
+              <p>Kenali jenis darurat dan aktifkan alarm atau hubungi Posko Siaga.</p>
+              <p class="emergency-phone">📞 0853 8888 1989</p>
+            </div>
+          </div>
+          <div class="flow-item orange">
+            <div class="flow-step">2</div>
+            <div class="flow-content">
+              <h4>Evakuasi & Perlindungan</h4>
+              <p>Hentikan aktivitas, matikan alat, dan menuju Titik Kumpul (Muster Point) terdekat via jalur evakuasi.
+              </p>
+            </div>
+          </div>
+          <div class="flow-item amber">
+            <div class="flow-step">3</div>
+            <div class="flow-content">
+              <h4>Komunikasi & Koordinasi</h4>
+              <p>Laporkan situasi ke ERT dan lakukan head count di Titik Kumpul. Jangan kembali sebelum status "ALL
+                CLEAR".</p>
+            </div>
+          </div>
+          <div class="flow-item green">
+            <div class="flow-step">4</div>
+            <div class="flow-content">
+              <h4>Penanganan & Pemulihan</h4>
+              <p>Pemadaman/penanganan oleh tim ERT dilanjutkan dengan investigasi dan evaluasi respons.</p>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="modal-section-title">Nomor Darurat Penting</h3>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <span class="label">Posko Siaga HSE</span>
+            <span class="value">085388881989</span>
+          </div>
+          <div class="contact-card">
+            <span class="label">Ambulans Site</span>
+            <span class="value">085257125961</span>
+          </div>
+          <div class="contact-card">
+            <span class="label">Pemadam Kebakaran</span>
+            <span class="value"></span>
+          </div>
+          <div class="contact-card">
+            <span class="label">Security Control</span>
+            <span class="value">BKO RDMPJO Area Kariangau-37</span>
+          </div>
+        </div>
+
+        <h3 class="modal-section-title">Titik Kumpul (Muster Point)</h3>
+        <ul class="muster-list">
+          <li><strong>MP-1:</strong> Area Parkir Utama (Dekat Pos Security)</li>
+          <li><strong>MP-2:</strong> Lapangan Terbuka Sisi Barat (Area TBM)</li>
+          <li><strong>MP-3:</strong> Gerbang Utama Kariangau-37 & Area Luar Office K-37</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Kalender Pelatihan Modal -->
+  <div id="training-modal" class="hse-modal" aria-hidden="true">
+    <div class="modal-overlay"></div>
+    <div class="modal-container mading-size">
+      <button class="modal-close" aria-label="Tutup modal">✕</button>
+      <div class="modal-header">
+        <div class="modal-icon training">📅</div>
+        <div>
+          <h2 class="modal-title">Kalender Pelatihan HSE 2026</h2>
+          <p class="modal-subtitle">Pengembangan Kompetensi & Kesadaran K3</p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <table class="modal-table training-table">
+            <thead>
+              <tr>
+                <th>Bulan</th>
+                <th>Jenis Pelatihan</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Januari</td>
+                <td>Induksi K3 Pekerja Baru</td>
+                <td><span class="status-done">✅ Selesai</span></td>
+              </tr>
+              <tr>
+                <td>Februari</td>
+                <td>Pelatihan P3K (First Aid)</td>
+                <td><span class="status-done">✅ Selesai</span></td>
+              </tr>
+              <tr>
+                <td>Maret</td>
+                <td>Bekerja di Ketinggian</td>
+                <td><span class="status-done">✅ Selesai</span></td>
+              </tr>
+              <tr class="highlight">
+                <td>April</td>
+                <td>🔥 Fire Safety & Emergency</td>
+                <td><span class="status-soon">🔴 Segera</span></td>
+              </tr>
+              <tr>
+                <td>Mei</td>
+                <td>Confined Space Entry</td>
+                <td><span>📋 Terjadwal</span></td>
+              </tr>
+              <tr>
+                <td>Juni</td>
+                <td>LOTO (Lock Out Tag Out)</td>
+                <td><span>📋 Terjadwal</span></td>
+              </tr>
+              <tr>
+                <td>Juli</td>
+                <td>Defensive Driving</td>
+                <td><span>📋 Terjadwal</span></td>
+              </tr>
+              <tr>
+                <td>Agustus</td>
+                <td>Chemical Handling</td>
+                <td><span>📋 Terjadwal</span></td>
+              </tr>
+              <tr>
+                <td>September</td>
+                <td>Simulasi Evakuasi Tahunan</td>
+                <td><span>📋 Terjadwal</span></td>
+              </tr>
+              <tr>
+                <td>Oktober</td>
+                <td>Pengelolaan Limbah B3</td>
+                <td><span>📋 Terjadwal</span></td>
+              </tr>
+              <tr>
+                <td>November</td>
+                <td>Refresher HSE Awareness</td>
+                <td><span>📋 Terjadwal</span></td>
+              </tr>
+              <tr>
+                <td>Desember</td>
+                <td>Review Tahunan</td>
+                <td><span>📋 Terjadwal</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mading-section">
+          <h3 class="modal-section-title">Poster Pelatihan Bulan Ini</h3>
+          <div class="poster-wrapper">
+            <img src="assets/training-poster.png" alt="Poster Pelatihan April 2026" class="training-poster">
+          </div>
+
+          <h3 class="modal-section-title">Mading Foto Pelatihan</h3>
+          <div class="mading-wrapper">
+            <img src="assets/training-mading.png" alt="Mading Dokumentasi Pelatihan" class="training-mading">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
   <script src="js/lang-switcher.js"></script>
