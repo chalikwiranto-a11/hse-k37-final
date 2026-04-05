@@ -937,6 +937,29 @@
             </div>
           </div>
         </div>
+
+        <!-- Cold Work -->
+        <div class="permit-card reveal reveal-delay-3" style="--permit-color:#2980b9;">
+          <div class="permit-icon" style="background:rgba(41,128,185,0.1);">❄️</div>
+          <div class="permit-body">
+            <div
+              style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:8px;">
+              <div class="permit-title" style="margin:0;">Izin Kerja Dingin (Cold Work)</div>
+              <span class="permit-status-indicator status-active">● Aktif</span>
+            </div>
+            <div class="permit-desc">Pekerjaan proyek yang berkaitan dengan aktivitas berisiko, kecuali pekerjaan yang
+              melibatkan api. Penggalian, Pemasangan kabel, Pemasangan perancah, Pengecoran beton, Pengangkatan, Bongkar
+              muat, Radiografi, Pengujian kelistrikan, Pengecatan, Peledakan, dll.</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;">
+              <span class="permit-tag">🔌 Pemasangan Kabel</span>
+              <span class="permit-tag">🏗️ Perancah</span>
+              <span class="permit-tag">🧱 Pengecoran</span>
+              <span class="permit-tag">📦 Bongkar Muat</span>
+              <span class="permit-tag">☢️ Radiografi</span>
+              <span class="permit-tag">🎨 Pengecatan</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1075,6 +1098,7 @@
                 <option value="Electrical">Electrical Permit</option>
                 <option value="Excavation">Excavation Permit</option>
                 <option value="Lifting">Lifting Permit</option>
+                <option value="Cold Work">Cold Work Permit</option>
               </select>
             </div>
             <div class="col">
@@ -1274,7 +1298,7 @@ _Mohon periksa dan proses PTW ini. Saya mengerti pekerjaan DILARANG dimulai sebe
       const encodedMessage = encodeURIComponent(waMessage);
 
       // Change to your actual HSE WhatsApp number
-      const waNumber = '6285388881989'; // Matches the number used in safety.html
+      const waNumber = '6282333109472'; // Matches the number used in safety.html
 
       // Build the wa.me link
       const waLink = `https://wa.me/${waNumber}?text=${encodedMessage}`;
