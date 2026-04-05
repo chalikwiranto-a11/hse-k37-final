@@ -1115,6 +1115,33 @@
             </div>
           </div>
 
+          <!-- Status Permit (Open / Close) -->
+          <div class="form-group" style="margin-bottom:16px;">
+            <label class="ptw-label">📌 Status Permit *</label>
+            <div class="ptw-status-group" id="permitStatusGroup">
+              <label class="ptw-status-option" id="statusOpenLabel">
+                <input type="radio" name="permitStatus" value="OPEN" required>
+                <span class="ptw-status-card ptw-status-open">
+                  <span style="font-size:22px;">🔓</span>
+                  <span>
+                    <strong>Open (Buka)</strong>
+                    <small>Permit baru — pekerjaan akan dimulai</small>
+                  </span>
+                </span>
+              </label>
+              <label class="ptw-status-option" id="statusCloseLabel">
+                <input type="radio" name="permitStatus" value="CLOSE">
+                <span class="ptw-status-card ptw-status-close">
+                  <span style="font-size:22px;">🔒</span>
+                  <span>
+                    <strong>Close (Tutup)</strong>
+                    <small>Permit ditutup — pekerjaan selesai</small>
+                  </span>
+                </span>
+              </label>
+            </div>
+          </div>
+
           <div class="form-group row" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
             <div class="col">
               <label class="ptw-label" for="location">📍 Lokasi Pekerjaan *</label>
@@ -1155,6 +1182,8 @@
               placeholder="cth: Bahaya kebakaran → Fire watch standby, gas test clearance, APAR tersedia (opsional)"
               style="resize:vertical;min-height:60px;"></textarea>
           </div>
+
+
 
           <div class="form-checkbox"
             style="background:#fff8e6; padding:16px; border:1.5px solid #ffe08a; border-radius:12px; display:flex; align-items:flex-start; gap:10px; margin-bottom:24px; cursor:pointer;"
@@ -1230,10 +1259,74 @@
       box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45) !important;
     }
 
+    /* ── Status Permit Radio Cards ── */
+    .ptw-status-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .ptw-status-option {
+      cursor: pointer;
+    }
+
+    .ptw-status-option input[type="radio"] {
+      display: none;
+    }
+
+    .ptw-status-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 12px;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      transition: all 0.25s ease;
+    }
+
+    .ptw-status-card strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+
+    .ptw-status-card small {
+      display: block;
+      font-size: 12px;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    .ptw-status-option input:checked+.ptw-status-open {
+      border-color: #10b981;
+      background: rgba(16, 185, 129, 0.06);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    .ptw-status-option input:checked+.ptw-status-close {
+      border-color: #e63946;
+      background: rgba(230, 57, 70, 0.06);
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.15);
+    }
+
+    .ptw-status-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+
+
     @media (max-width: 600px) {
       #ptw-wa-form>div[style*="grid-template-columns"] {
         display: flex !important;
         flex-direction: column !important;
+      }
+
+      .ptw-status-group {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1267,17 +1360,30 @@
       const hazards = document.getElementById('hazards').value || 'Tidak ada bahaya spesifik yang diidentifikasi.';
       const declaration = document.getElementById('declaration').checked;
 
+      // Get permit status
+      const statusRadio = document.querySelector('input[name="permitStatus"]:checked');
+      if (!statusRadio) {
+        alert('⚠️ Silakan pilih Status Permit (Open / Close) terlebih dahulu.');
+        return;
+      }
+      const permitStatus = statusRadio.value;
+
       if (!declaration) {
         alert('Anda harus menyetujui deklarasi untuk melanjutkan.');
         return;
       }
 
-      const dateStr = new Date(startDate).toLocaleDateString('id-ID');
+      const btn = document.getElementById('ptw-submit-btn');
+      const originalText = btn.innerHTML;
+      const waNumber = '6282333109472';
 
-      // Format the message for WhatsApp
+      const dateStr = new Date(startDate).toLocaleDateString('id-ID');
+      const statusLabel = permitStatus === 'OPEN' ? '🔓 OPEN (Buka)' : '🔒 CLOSE (Tutup)';
+
       const waMessage =
         `*PERMOHONAN IZIN KERJA BARU* 📋
 
+*Status Permit:* ${statusLabel}
 *Nama Pemohon:* ${name}
 *No. HP/WA:* ${phone}
 *Departemen/Kontraktor:* ${dep}
@@ -1296,26 +1402,17 @@ ${hazards}
 _Mohon periksa dan proses PTW ini. Saya mengerti pekerjaan DILARANG dimulai sebelum izin kerja diterbitkan._`;
 
       const encodedMessage = encodeURIComponent(waMessage);
-
-      // Change to your actual HSE WhatsApp number
-      const waNumber = '6282333109472'; // Matches the number used in safety.html
-
-      // Build the wa.me link
       const waLink = `https://wa.me/${waNumber}?text=${encodedMessage}`;
 
-      const btn = document.getElementById('ptw-submit-btn');
-      const originalText = btn.innerHTML;
-
-      // Buka WA segera untuk mencegah pemblokiran popup browser
       window.open(waLink, '_blank');
 
-      btn.innerHTML = '✅ Terkirim! Menunggu Konfirmasi...';
-      btn.style.backgroundColor = '#28a745'; // Green color
+      btn.innerHTML = '✅ Terkirim!';
+      btn.style.backgroundColor = '#28a745';
       btn.disabled = true;
 
       setTimeout(() => {
         btn.innerHTML = originalText;
-        btn.style.backgroundColor = ''; // Reset to default
+        btn.style.backgroundColor = '';
         btn.disabled = false;
         document.getElementById('ptw-wa-form').reset();
         document.getElementById('startDate').value = tomorrow.toISOString().slice(0, 10);

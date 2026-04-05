@@ -474,6 +474,12 @@
     'Sistem Izin Kerja (PTW) ada untuk melindungi Anda dan rekan kerja. Kepatuhan adalah wajib. Pelanggaran akan mengakibatkan penghentian kerja seketika.': 'The Permit to Work (PTW) system is here to protect you and your coworkers. Compliance is mandatory. Violations will result in immediate work stoppage.',
     '📋 Ajukan Permit Sekarang': '📋 Apply Permit Now',
     '📘 Manual Prosedur PTW': '📘 PTW Procedure Manual',
+    '📌 Status Permit *': '📌 Permit Status *',
+    'Open (Buka)': 'Open',
+    'Close (Tutup)': 'Close',
+    'Permit baru — pekerjaan akan dimulai': 'New permit — work to begin',
+    'Permit ditutup — pekerjaan selesai': 'Permit closed — work completed',
+
 
     /* ═══ NEW ADDITIONS (ABOUT & FOOTER) ══════════════════════ */
     'Situs Beranda': 'Home Site',
