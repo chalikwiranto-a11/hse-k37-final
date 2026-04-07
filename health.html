@@ -793,71 +793,193 @@
 
       <div class="reveal"
         style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:36px;box-shadow:var(--shadow-md);">
-        <form id="wa-health-form" onsubmit="submitHealthToWhatsApp(event)">
 
-          <!-- Row 1: Nama & ID Badge -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
-            <div>
-              <label class="wa-label">👤 Nama Lengkap *</label>
-              <input id="h-name" type="text" class="wa-input" placeholder="Nama lengkap Anda" required />
-            </div>
-            <div>
-              <label class="wa-label">🪪 ID Badge *</label>
-              <input id="h-badge" type="text" class="wa-input" placeholder="Nomor ID Badge" required />
-            </div>
-          </div>
-
-          <!-- Row 2: Keluhan -->
-          <div style="margin-bottom:16px;">
-            <label class="wa-label">🩺 Keluhan Utama *</label>
-            <select id="h-keluhan" class="wa-input" required onchange="toggleKeluhanLain()"
-              style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
-              <option value="">Pilih keluhan yang dialami...</option>
-              <option value="Sakit Kepala / Pusing">Sakit Kepala / Pusing</option>
-              <option value="Sesak Nafas / Gangguan Pernapasan">Sesak Nafas / Gangguan Pernapasan</option>
-              <option value="Sakit Pinggang / Nyeri Otot">Sakit Pinggang / Nyeri Otot</option>
-              <option value="Mual / Gangguan Pencernaan">Mual / Gangguan Pencernaan</option>
-              <option value="Cedera Ringan (Luka / Memar)">Cedera Ringan (Luka / Memar)</option>
-              <option value="Lainnya">Lainnya (Sebutkan...)</option>
-            </select>
-          </div>
-
-          <!-- Keluhan Lain (Hidden by default) -->
-          <div id="keluhan-lain-container" style="display:none;margin-bottom:16px;">
-            <label class="wa-label">✍️ Tuliskan Keluhan Anda *</label>
-            <input id="h-keluhan-lain" type="text" class="wa-input"
-              placeholder="Masukkan detail keluhan spesifik Anda..." />
-          </div>
-
-          <!-- Tanggal & Jam Temu -->
-          <div style="margin-bottom:16px;">
-            <label class="wa-label">📅 Rencana Bertemu Dokter (Tanggal & Jam) *</label>
-            <input id="h-datetime" type="datetime-local" class="wa-input" required />
-          </div>
-
-          <!-- Catatan Tambahan -->
-          <div style="margin-bottom:24px;">
-            <label class="wa-label">📝 Catatan Tambahan</label>
-            <textarea id="h-desc" class="wa-input" rows="3"
-              placeholder="Jelaskan bila ada detail tambahan mengenai kondisi Anda (opsional)"
-              style="resize:vertical;min-height:80px;"></textarea>
-          </div>
-
-          <!-- Submit button -->
-          <button type="submit" id="wa-health-submit-btn"
-            style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;background:#25d366;color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer;transition:all 0.2s;box-shadow:0 6px 20px rgba(37, 211, 102, 0.35);">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            </svg>
-            Kirim Konsultasi via WhatsApp
+        <!-- Tabs Navigation -->
+        <div class="health-tabs" style="display:flex; align-items:center;">
+          <button class="health-tab-btn active" onclick="switchHealthTab('konsultasi')" data-tab="konsultasi">
+            🩺 Konsultasi Umum
           </button>
-        </form>
+          <button class="health-tab-btn" onclick="switchHealthTab('mcu')" data-tab="mcu">
+            📋 Follow Up MCU
+          </button>
+
+          <!-- Barcode Icon Button Group (New) -->
+          <div id="mcu-barcode-group" style="margin-left:auto; display:none; align-items:center; gap:8px;">
+            <span style="color:#e6a200; font-size:13px; font-weight:700; letter-spacing:0.02em;">Scan Barcode!</span>
+            <button class="barcode-btn" onclick="openMcuModal()" title="Lihat Prosedur Barcode MCU"
+              style="border:none; background:rgba(62,146,204,0.1); color:var(--secondary); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.3s ease;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M3 17v2a2 2 0 0 0 2 2h2"></path>
+                <rect x="7" y="7" width="10" height="10" rx="2"></rect>
+                <line x1="12" y1="12" x2="12" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+
+        </div>
+
+
+        <!-- Form 1: Konsultasi Kesehatan (Existing) -->
+        <div id="form-konsultasi" class="health-form-content">
+          <form id="wa-health-form" onsubmit="submitHealthToWhatsApp(event)">
+            <!-- Row 1: Nama & ID Badge -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label class="wa-label">👤 Nama Lengkap *</label>
+                <input id="h-name" type="text" class="wa-input" placeholder="Nama lengkap Anda" required />
+              </div>
+              <div>
+                <label class="wa-label">🪪 ID Badge *</label>
+                <input id="h-badge" type="text" class="wa-input" placeholder="Nomor ID Badge" required />
+              </div>
+            </div>
+
+            <!-- Row 2: Keluhan -->
+            <div style="margin-bottom:16px;">
+              <label class="wa-label">🩺 Keluhan Utama *</label>
+              <select id="h-keluhan" class="wa-input" required onchange="toggleKeluhanLain()"
+                style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <option value="">Pilih keluhan yang dialami...</option>
+                <option value="Sakit Kepala / Pusing">Sakit Kepala / Pusing</option>
+                <option value="Sesak Nafas / Gangguan Pernapasan">Sesak Nafas / Gangguan Pernapasan</option>
+                <option value="Sakit Pinggang / Nyeri Otot">Sakit Pinggang / Nyeri Otot</option>
+                <option value="Mual / Gangguan Pencernaan">Mual / Gangguan Pencernaan</option>
+                <option value="Cedera Ringan (Luka / Memar)">Cedera Ringan (Luka / Memar)</option>
+                <option value="Lainnya">Lainnya (Sebutkan...)</option>
+              </select>
+            </div>
+
+            <!-- Keluhan Lain (Hidden by default) -->
+            <div id="keluhan-lain-container" style="display:none;margin-bottom:16px;">
+              <label class="wa-label">✍️ Tuliskan Keluhan Anda *</label>
+              <input id="h-keluhan-lain" type="text" class="wa-input"
+                placeholder="Masukkan detail keluhan spesifik Anda..." />
+            </div>
+
+            <!-- Tanggal & Jam Temu -->
+            <div style="margin-bottom:16px;">
+              <label class="wa-label">📅 Rencana Bertemu Dokter (Tanggal & Jam) *</label>
+              <input id="h-datetime" type="datetime-local" class="wa-input" required />
+            </div>
+
+            <!-- Catatan Tambahan -->
+            <div style="margin-bottom:24px;">
+              <label class="wa-label">📝 Catatan Tambahan</label>
+              <textarea id="h-desc" class="wa-input" rows="3"
+                placeholder="Jelaskan bila ada detail tambahan mengenai kondisi Anda (opsional)"
+                style="resize:vertical;min-height:80px;"></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" id="wa-health-submit-btn" class="wa-submit-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Kirim Konsultasi via WhatsApp
+            </button>
+          </form>
+        </div>
+
+        <!-- Form 2: Follow Up MCU (New) -->
+        <div id="form-mcu" class="health-form-content" style="display:none;">
+          <form id="wa-mcu-form" onsubmit="submitMcuToWhatsApp(event)">
+            <!-- Row 1: Nama & ID Badge -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label class="wa-label">👤 Nama Lengkap *</label>
+                <input id="mcu-name" type="text" class="wa-input" placeholder="Nama lengkap sesuai ID" required />
+              </div>
+              <div>
+                <label class="wa-label">🪪 No ID Badge *</label>
+                <input id="mcu-badge" type="text" class="wa-input" placeholder="Nomor ID Badge" required />
+              </div>
+            </div>
+
+            <!-- Row 2: NIK & Status MCU -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label class="wa-label">🆔 NIK *</label>
+                <input id="mcu-nik" type="text" class="wa-input" placeholder="Masukkan 16 digit NIK" required />
+              </div>
+              <div>
+                <label class="wa-label">📊 Status MCU *</label>
+                <select id="mcu-status" class="wa-input" required onchange="toggleMcuDateLabel()"
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                  <option value="">Pilih Status...</option>
+                  <option value="Sudah">Sudah</option>
+                  <option value="Belum">Belum</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 3: Tanggal Expired ID Badge / Tanggal MCU -->
+            <div style="margin-bottom:24px;">
+              <label class="wa-label" id="mcu-date-label">📅 Tanggal Expired ID Badge *</label>
+              <input id="mcu-exp" type="date" class="wa-input" required />
+            </div>
+
+
+            <!-- Submit button -->
+            <button type="submit" id="wa-mcu-submit-btn" class="wa-submit-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Kirim Follow Up MCU via WhatsApp
+            </button>
+          </form>
+        </div>
       </div>
+
     </div>
   </section>
 
   <style>
+    .health-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+    }
+
+    .health-tab-btn {
+      padding: 10px 20px;
+      border: none;
+      background: none;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      font-family: inherit;
+    }
+
+    .health-tab-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .health-tab-btn.active {
+      color: var(--success);
+    }
+
+    .health-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--success);
+      border-radius: 99px;
+    }
+
     .wa-label {
       display: block;
       font-size: 12px;
@@ -891,23 +1013,153 @@
       color: #bbb;
     }
 
-    #wa-health-submit-btn:hover {
+    .wa-submit-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 24px;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    }
+
+    .wa-submit-btn:hover {
       background: #1ebe5d !important;
       transform: translateY(-2px);
       box-shadow: 0 10px 28px rgba(37, 211, 102, 0.45) !important;
     }
 
     @media (max-width: 600px) {
-      #wa-health-form>div[style*="grid-template-columns"] {
+      .health-tabs {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .health-tab-btn {
+        text-align: left;
+        padding: 12px 0;
+      }
+
+      .health-tab-btn.active::after {
+        bottom: 0;
+      }
+
+      .health-form-content div[style*="grid-template-columns"] {
         display: flex !important;
         flex-direction: column !important;
       }
+    }
+
+    /* Barcode Button Hover */
+    .barcode-btn:hover {
+      background: var(--secondary) !important;
+      color: #fff !important;
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(62, 146, 204, 0.2);
+    }
+
+    /* MCU Modal Animation */
+    .hse-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .hse-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mcu-modal-container {
+      position: relative;
+      width: 90%;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      transform: scale(0.9);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hse-modal.active .mcu-modal-container {
+      transform: scale(1);
+    }
+
+    .mcu-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 32px;
+      height: 32px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      backdrop-filter: blur(4px);
     }
   </style>
 
   <script>
     // Konfigurasi nomor WA untuk Klinik HSE
     const HSE_CLINIC_WA_NUMBER = '6285257125961';
+
+    function switchHealthTab(tabId) {
+      // Show/Hide Barcode group based on tab
+      const barcodeGroup = document.getElementById('mcu-barcode-group');
+      if (tabId === 'mcu') {
+        barcodeGroup.style.display = 'flex';
+      } else {
+        barcodeGroup.style.display = 'none';
+      }
+
+      // Toggle Tab Buttons
+
+      document.querySelectorAll('.health-tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+
+      // Toggle Form Contents
+      document.querySelectorAll('.health-form-content').forEach(content => {
+        content.style.display = 'none';
+      });
+      if (tabId === 'konsultasi') {
+        document.getElementById('form-konsultasi').style.display = 'block';
+      } else {
+        document.getElementById('form-mcu').style.display = 'block';
+      }
+    }
+
+    function toggleMcuDateLabel() {
+      const status = document.getElementById('mcu-status').value;
+      const label = document.getElementById('mcu-date-label');
+      if (status === 'Sudah') {
+        label.innerHTML = '📅 Tanggal MCU *';
+      } else {
+        label.innerHTML = '📅 Tanggal Expired ID Badge *';
+      }
+    }
 
     function toggleKeluhanLain() {
       const select = document.getElementById('h-keluhan');
@@ -960,10 +1212,56 @@ _Pendaftaran via Portal HSE_
 _${new Date().toLocaleString('id-ID')}_
 `.trim();
 
+      sendToWhatsApp(pesan, 'wa-health-submit-btn', 'wa-health-form');
+    }
+
+    function submitMcuToWhatsApp(e) {
+      e.preventDefault();
+
+      const nama = document.getElementById('mcu-name').value.trim();
+      const badge = document.getElementById('mcu-badge').value.trim();
+      const nik = document.getElementById('mcu-nik').value.trim();
+      const statusMcu = document.getElementById('mcu-status').value;
+      const expDate = document.getElementById('mcu-exp').value;
+
+      // Format tanggal (e.g. 15 Januari 2024)
+      const dateObj = new Date(expDate);
+      const formattedDate = dateObj.toLocaleDateString('id-ID', {
+        day: 'numeric', month: 'long', year: 'numeric'
+      });
+
+      let pesan = '';
+      if (statusMcu === 'Belum') {
+        pesan = `PROSEDUR ID BADGE(contoh)
+        
+A. BELUM MCU/SCHEDULE MCU
+Format :
+Nama : ${nama}
+No Id Badge :${badge}
+NIK : ${nik}
+Sudah mcu/belum : BELUM MCU
+Tanggal expt Id badge : ${formattedDate}`;
+      } else {
+        pesan = `PROSEDUR ID BADGE(contoh)
+        
+B. SUDAH MCU : 
+Nama : ${nama}
+No Id Badge :${badge}
+NIK : ${nik}
+Sudah mcu/belum : SUDAH MCU 
+Tanggal MCU : ${formattedDate}
+Note : Hasil Validasi MCU ditunggu waktu validasi -+2 minggu`;
+      }
+
+      sendToWhatsApp(pesan, 'wa-mcu-submit-btn', 'wa-mcu-form');
+    }
+
+    function sendToWhatsApp(pesan, btnId, formId) {
       const encoded = encodeURIComponent(pesan);
       const waUrl = `https://wa.me/${HSE_CLINIC_WA_NUMBER}?text=${encoded}`;
+      const btn = document.getElementById(btnId);
 
-      const btn = document.getElementById('wa-health-submit-btn');
+      const originalHTML = btn.innerHTML;
       btn.innerHTML = '⏳ Membuka WhatsApp...';
       btn.disabled = true;
 
@@ -974,20 +1272,36 @@ _${new Date().toLocaleString('id-ID')}_
         btn.style.background = '#128c7e';
 
         setTimeout(() => {
-          document.getElementById('wa-health-form').reset();
-          toggleKeluhanLain(); // Sembunyikan field 'Lainnya' kembali
+          document.getElementById(formId).reset();
+          if (formId === 'wa-health-form') toggleKeluhanLain();
 
-          btn.innerHTML = `
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-            </svg>
-            Kirim Konsultasi via WhatsApp
-          `;
+          btn.innerHTML = originalHTML;
           btn.style.background = '#25d366';
           btn.disabled = false;
         }, 3000);
       }, 1000);
     }
+
+    // Modal Control Functions
+    function openMcuModal() {
+      document.getElementById('mcu-qr-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMcuModal() {
+      document.getElementById('mcu-qr-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  </script>
+
+  <!-- MCU Barcode Modal -->
+  <div class="hse-modal" id="mcu-qr-modal" onclick="if(event.target===this) closeMcuModal()">
+    <div class="mcu-modal-container">
+      <button class="mcu-modal-close" onclick="closeMcuModal()">✕</button>
+      <img src="assets/mcu/mcu-qr.jpg" alt="MCU Procedure QR Code" style="width: 100%; height: auto; display: block;">
+    </div>
+  </div>
+
   </script>
 
   <!-- ═══ FOOTER ══════════════════════════════════════════════ -->
