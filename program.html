@@ -17,6 +17,260 @@
       gap: 24px;
       margin-top: 40px;
     }
+
+    /* ═══ HSE PROGRAM CAROUSEL STYLES ═══ */
+    .hse-carousel-section {
+      padding: 5rem 2rem;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .hse-carousel-wrapper {
+      position: relative;
+      overflow: hidden;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 0;
+    }
+
+    .hse-carousel-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+      /* Track width will be (totalGroups * 100)% */
+    }
+
+    .hse-slide-group {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      /* Each group occupies exactly 1/N of the track's width */
+      flex: 0 0 calc(100% / var(--total-groups, 3));
+      width: calc(100% / var(--total-groups, 3));
+      padding: 10px;
+      align-items: start;
+      box-sizing: border-box;
+    }
+
+    .hse-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--surface);
+      aspect-ratio: 16 / 10;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+
+    .hse-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .hse-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--secondary-light);
+    }
+
+    .hse-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .hse-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 36, 99, 0);
+      transition: background 0.3s ease;
+      pointer-events: none;
+    }
+
+    .hse-card:hover::after {
+      background: rgba(10, 36, 99, 0.1);
+    }
+
+    .hse-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: rgba(7, 26, 74, 0.85);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+      z-index: 2;
+      pointer-events: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hse-carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--primary);
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+    }
+
+    .hse-carousel-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .hse-carousel-btn:disabled,
+    .hse-carousel-btn[data-hidden="true"] {
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    .hse-btn-prev {
+      left: 0px;
+    }
+
+    .hse-btn-next {
+      right: 0px;
+    }
+
+    .hse-carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 2.5rem;
+    }
+
+    .hse-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s ease;
+    }
+
+    .hse-dot.active {
+      background: var(--success);
+      width: 30px;
+      border-radius: 5px;
+    }
+
+    /* Lightbox Styles */
+    .hse-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hse-lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .hse-lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 26, 74, 0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .hse-lightbox-content {
+      position: relative;
+      z-index: 1;
+      max-width: 90vw;
+      max-height: 90vh;
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hse-lightbox.is-open .hse-lightbox-content {
+      transform: scale(1);
+    }
+
+    .hse-lightbox-img {
+      display: block;
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      object-fit: contain;
+    }
+
+    .hse-lightbox-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .hse-lightbox-close:hover {
+      background: var(--danger);
+      transform: rotate(90deg);
+    }
+
+    @media (max-width: 1024px) {
+      .hse-btn-prev {
+        left: 10px;
+      }
+
+      .hse-btn-next {
+        right: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hse-slide-group {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hse-slide-group {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
   </style>
 </head>
 
@@ -124,6 +378,47 @@
     </div>
   </section>
 
+  <!-- ═══ HSE PROGRAM CAMPAIGN CAROUSEL (NEW) ══════════════════ -->
+  <section id="hse-program-carousel" class="hse-carousel-section">
+    <div class="container" style="max-width:1200px;">
+      <div class="section-header">
+        <div class="section-eyebrow reveal" style="color:var(--success);">Campaign Program</div>
+        <h2 class="section-title reveal reveal-delay-1">Mingguan Kampanye HSE-37</h2>
+        <p class="section-desc reveal reveal-delay-2">
+          Kami menghadirkan fokus keselamatan yang berbeda setiap harinya. Klik pada gambar untuk memperbesar detail
+          kampanye hari ini.
+        </p>
+      </div>
+
+      <div class="hse-carousel-wrapper" id="hseCarouselWrapper">
+        <!-- Track inside wrapper -->
+        <div class="hse-carousel-track" id="hseCarouselTrack">
+          <!-- Slide groups will be rendered by JS -->
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button class="hse-carousel-btn hse-btn-prev" id="hseBtnPrev" aria-label="Slide sebelumnya">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button class="hse-carousel-btn hse-btn-next" id="hseBtnNext" aria-label="Slide berikutnya">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Dot Indicators -->
+      <div class="hse-carousel-dots" id="hseCarouselDots">
+        <!-- Dots rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+
   <!-- ═══ HSE PROGRAMS GRID ═════════════════════ -->
   <section class="section" id="programs">
     <div class="container">
@@ -189,7 +484,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="General PDF 1">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="General PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -205,7 +500,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="General PDF 2">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="General PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -235,7 +530,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -251,7 +546,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -267,7 +562,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -283,7 +578,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -299,7 +594,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -315,7 +610,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -346,7 +641,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -362,7 +657,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -378,7 +673,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -393,7 +688,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -409,7 +704,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -425,7 +720,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -441,7 +736,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -456,7 +751,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -470,7 +765,7 @@
           <div class="postcard" style="height:100%;">
             <div class="postcard-img-wrap img-contain">
               <span class="postcard-date">Click Here</span>
-              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form">
+              <img src="https://cdn-icons-png.flaticon.com/512/136/136522.png" alt="Google Form PDF" loading="lazy">
             </div>
             <div class="postcard-content">
               <div class="postcard-eyebrow">PDF</div>
@@ -652,9 +947,9 @@
             <li style="color:rgba(255,255,255,0.5);font-size:14px;">📍 Karang Joang, Kec. Balikpapan Utara</li>
             <li style="color:rgba(255,255,255,0.5);font-size:14px;">⏰ Senin–Minggu: 06:45–17:45 WITA</li>
           </ul>
-          </div>
         </div>
       </div>
+    </div>
 
     <div class="footer-bottom">
       <div class="footer-bottom-text">
@@ -668,8 +963,241 @@
 
   <button class="back-to-top" aria-label="Kembali ke atas">↑</button>
 
+  <!-- Lightbox Modal (baru) -->
+  <div class="hse-lightbox" id="hseLightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="hse-lightbox-backdrop" id="hseLightboxBackdrop"></div>
+    <div class="hse-lightbox-content">
+      <button class="hse-lightbox-close" id="hseLightboxClose" aria-label="Tutup Modal">&times;</button>
+      <img src="" alt="" class="hse-lightbox-img" id="hseLightboxImg" />
+    </div>
+  </div>
+
   <script src="js/script.js"></script>
   <script src="js/lang-switcher.js"></script>
+
+
+
+
+  <!-- Lightbox Modal (baru) -->
+  <script>
+    (function () {
+      /**
+       * DATA KONFIGURASI KAMPANYE MINGGUAN
+       * Edit bagian ini setiap minggu untuk mengganti konten
+       */
+      const HSE_PROGRAMS = [
+        {
+          label: "Senin",
+          imageUrl: "https://realistic-beige-6lccrrrbkn.edgeone.app/image.jpeg",
+          alt: "Kampanye HSE Senin - Team Coordination"
+        },
+        {
+          label: "Selasa",
+          imageUrl: "https://gross-purple-vod6opcaaa.edgeone.app/image.jpeg",
+          alt: "Kampanye HSE Selasa - Engineering Safety"
+        },
+        {
+          label: "Rabu",
+          imageUrl: "https://damp-copper-bybhz5bhqr.edgeone.app/WhatsApp%20Image%202026-04-07%20at%2010.59.58.jpeg",
+          alt: "Kampanye HSE Rabu - Mental Health"
+        },
+        {
+          label: "Kamis",
+          imageUrl: "https://official-turquoise-cgiznzc6sr.edgeone.app/WhatsApp%20Image%202026-04-07%20at%2010.59.57.jpeg",
+          alt: "Kampanye HSE Kamis - Site Protocol"
+        },
+        {
+          label: "Jumat",
+          imageUrl: "https://representative-blush-24cxp0mo7a.edgeone.app/WhatsApp%20Image%202026-04-07%20at%2010.59.57-2.jpeg",
+          alt: "Kampanye HSE Jumat - Zero Accident Vision"
+        },
+        {
+          label: "Sabtu",
+          imageUrl: "https://fantastic-salmon-movf855pfe.edgeone.app/WhatsApp%20Image%202026-04-07%20at%2010.59.57-3.jpeg",
+          alt: "Kampanye HSE Sabtu - House Keeping"
+        },
+        {
+          label: "Minggu",
+          imageUrl: "https://still-pink-esegrcbwim.edgeone.app/WhatsApp%20Image%202026-04-07%20at%2010.59.58-2.jpeg",
+          alt: "Kampanye HSE Minggu - Family & Safety"
+        }
+      ];
+
+      const ITEMS_PER_GROUP = 3;
+      let currentGroup = 0;
+      let totalGroups = 0;
+
+      // --- Build slide groups dari HSE_PROGRAMS ---
+      function buildGroups(items, perGroup) {
+        const groups = [];
+        for (let i = 0; i < items.length; i += perGroup) {
+          groups.push(items.slice(i, i + perGroup));
+        }
+        return groups;
+      }
+
+      // --- Render HTML ---
+      function renderCarousel() {
+        const track = document.getElementById('hseCarouselTrack');
+        const dotsContainer = document.getElementById('hseCarouselDots');
+        if (!track || !dotsContainer) return 0;
+
+        const groups = buildGroups(HSE_PROGRAMS, ITEMS_PER_GROUP);
+        track.innerHTML = '';
+        dotsContainer.innerHTML = '';
+
+        // Set CSS variable and track width
+        track.style.setProperty('--total-groups', groups.length);
+        track.style.width = `${groups.length * 100}%`;
+
+        groups.forEach((group, groupIndex) => {
+          const slideEl = document.createElement('div');
+          slideEl.className = 'hse-slide-group';
+          slideEl.setAttribute('data-group', groupIndex);
+
+          group.forEach((item) => {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'hse-card';
+            cardEl.setAttribute('data-img', item.imageUrl);
+            cardEl.setAttribute('data-alt', item.alt);
+            cardEl.setAttribute('role', 'button');
+            cardEl.setAttribute('tabindex', '0');
+            cardEl.setAttribute('aria-label', `Lihat ${item.label}`);
+
+            cardEl.innerHTML = `
+              <span class="hse-badge">${item.label}</span>
+              <img src="${item.imageUrl}" alt="${item.alt}" loading="lazy" />
+            `;
+            slideEl.appendChild(cardEl);
+          });
+
+          track.appendChild(slideEl);
+
+          // Dot per group
+          const dot = document.createElement('button');
+          dot.className = 'hse-dot' + (groupIndex === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', `Slide group ${groupIndex + 1}`);
+          dot.addEventListener('click', () => goToGroup(groupIndex));
+          dotsContainer.appendChild(dot);
+        });
+
+        return groups.length;
+      }
+
+      function goToGroup(index) {
+        if (index < 0 || index >= totalGroups) return;
+        currentGroup = index;
+
+        const track = document.getElementById('hseCarouselTrack');
+        const percent = (index / totalGroups) * 100;
+        track.style.transform = `translateX(-${percent}%)`;
+
+        updateUI();
+      }
+
+      function updateUI() {
+        // Update dots
+        document.querySelectorAll('.hse-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentGroup);
+        });
+
+        // Update buttons
+        const btnPrev = document.getElementById('hseBtnPrev');
+        const btnNext = document.getElementById('hseBtnNext');
+        if (btnPrev && btnNext) {
+          btnPrev.dataset.hidden = currentGroup === 0 ? 'true' : 'false';
+          btnNext.dataset.hidden = currentGroup === totalGroups - 1 ? 'true' : 'false';
+        }
+      }
+
+      // --- Touch Swipe ---
+      function initSwipe(wrapper) {
+        if (!wrapper) return;
+        let startX = 0;
+        let isDragging = false;
+
+        wrapper.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX;
+          isDragging = true;
+        }, { passive: true });
+
+        wrapper.addEventListener('touchend', (e) => {
+          if (!isDragging) return;
+          const deltaX = e.changedTouches[0].clientX - startX;
+          const threshold = 50;
+          if (deltaX < -threshold) goToGroup(currentGroup + 1);
+          else if (deltaX > threshold) goToGroup(currentGroup - 1);
+          isDragging = false;
+        }, { passive: true });
+      }
+
+      // --- Lightbox ---
+      function initLightbox() {
+        const lightbox = document.getElementById('hseLightbox');
+        const imgEl = document.getElementById('hseLightboxImg');
+        const closeBtn = document.getElementById('hseLightboxClose');
+        const backdrop = document.getElementById('hseLightboxBackdrop');
+        const track = document.getElementById('hseCarouselTrack');
+
+        if (!lightbox || !imgEl || !closeBtn || !backdrop || !track) return;
+
+        function openModal(src, alt) {
+          imgEl.src = src;
+          imgEl.alt = alt;
+          lightbox.classList.add('is-open');
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+          lightbox.classList.remove('is-open');
+          lightbox.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+          setTimeout(() => { imgEl.src = ''; }, 300);
+        }
+
+        track.addEventListener('click', (e) => {
+          const card = e.target.closest('.hse-card');
+          if (!card) return;
+          openModal(card.dataset.img, card.dataset.alt);
+        });
+
+        track.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            const card = e.target.closest('.hse-card');
+            if (card) {
+              e.preventDefault();
+              openModal(card.dataset.img, card.dataset.alt);
+            }
+          }
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+        backdrop.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && lightbox.classList.contains('is-open')) {
+            closeModal();
+          }
+        });
+      }
+
+      // --- Initialization ---
+      document.addEventListener('DOMContentLoaded', () => {
+        totalGroups = renderCarousel();
+
+        const btnPrev = document.getElementById('hseBtnPrev');
+        const btnNext = document.getElementById('hseBtnNext');
+
+        if (btnPrev) btnPrev.addEventListener('click', () => goToGroup(currentGroup - 1));
+        if (btnNext) btnNext.addEventListener('click', () => goToGroup(currentGroup + 1));
+
+        initSwipe(document.getElementById('hseCarouselWrapper'));
+        initLightbox();
+
+        updateUI();
+      });
+    })();
+  </script>
 </body>
 
 </html>

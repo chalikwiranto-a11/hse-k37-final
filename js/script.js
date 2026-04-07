@@ -443,9 +443,15 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycby6YeMcOnDAxLgF_wFsDfjt
  */
 async function fetchHsePhotos(params = {}) {
   let data = [];
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
 
   try {
-    const res = await fetch(GAS_URL);
+    const res = await fetch(GAS_URL, { signal: controller.signal });
+    clearTimeout(timeoutId);
+    
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    
     data = await res.json();
     
     // Jika data kosong atau error dari server, gunakan default
@@ -453,7 +459,8 @@ async function fetchHsePhotos(params = {}) {
       data = [...HSE_PHOTOS_DATA];
     }
   } catch (err) {
-    console.error('[HSE Gallery] Error fetching from server. Fallback to default.', err);
+    clearTimeout(timeoutId);
+    console.error('[HSE Gallery] Error fetching from server:', err.name === 'AbortError' ? 'Request timeout' : err.message);
     data = [...HSE_PHOTOS_DATA];
   }
 
