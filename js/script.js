@@ -6,6 +6,38 @@
 
 'use strict';
 
+/* ── 0. VIDEO AUTOPLAY FIX (Mobile & Safari) ─────────────────── */
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('video').forEach(video => {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    
+    // Attempt force play
+    let playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Jika tetap diblokir (biasanya karena Low Power Mode di HP), 
+        // kita minimal biarkan play button native muncul tapi tanpa mengganggu UI yang lain.
+      });
+    }
+  });
+
+  // Tambahan force play saat user scroll pertama kali jika autoplay masih terblokir
+  const forcePlayOnInteraction = () => {
+    document.querySelectorAll('video').forEach(video => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      }
+    });
+    window.removeEventListener('touchstart', forcePlayOnInteraction);
+    window.removeEventListener('scroll', forcePlayOnInteraction);
+  };
+  window.addEventListener('touchstart', forcePlayOnInteraction, { once: true, passive: true });
+  window.addEventListener('scroll', forcePlayOnInteraction, { once: true, passive: true });
+});
+
 /* ── 1. NAVBAR — Scroll behaviour & transparency ──────────────── */
 (function initNavbar() {
   const navbar = document.querySelector('.navbar');
@@ -549,7 +581,7 @@ function formatDate(dateStr) {
 
 /* ── 10. INITIALISE GALLERY on page load ─────────────────────── */
 (async function initGallery() {
-  const container = document.querySelector('.gallery-grid');
+  const container = null; // Menghindari override foto statis
   if (!container) return;
 
   // Show skeleton
