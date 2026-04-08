@@ -1,6 +1,12 @@
 import glob
 import re
 import shutil
+import pathlib
+import pandas
+import matplotlib
+import numpy
+
+
 
 # First, copy program.html to document.html
 shutil.copyfile('/Users/wirantochalik/Downloads/HSE-K37/program.html', '/Users/wirantochalik/Downloads/HSE-K37/document.html')
