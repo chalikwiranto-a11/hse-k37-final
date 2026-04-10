@@ -769,22 +769,77 @@
   <!-- ═══ REPORT OBSERVATION CTA ═══════════════════════════════ -->
   <section class="cta-section" id="report-section">
     <div class="container">
-      <div class="cta-split">
-        <div class="cta-text">
-          <div class="section-eyebrow reveal">Kampanye & Induksi Digital</div>
-          <h2 class="cta-title reveal reveal-delay-1">Health Care Presentation</h2>
-          <p class="cta-desc reveal reveal-delay-2">
-            Scan Barcode untuk membantu kami mengisi Form Penilaian Pelayanan Kesehatan. Kami menghadirkan kemudahan
-            akses informasi bagi setiap pekerja di area K-37.
-          </p>
+      <div class="section-header">
+        <div class="section-eyebrow reveal" style="color: rgba(255,255,255,0.8);">Kampanye & Induksi Digital</div>
+        <h2 class="section-title reveal reveal-delay-1" style="color: #fff;">Health Care Presentation</h2>
+        <p class="section-desc reveal reveal-delay-2" style="color: rgba(255,255,255,0.7);">
+          Scan Barcode untuk membantu kami mengisi Form Penilaian Pelayanan Kesehatan & Kotak P3K, Kami menghadirkan
+          kemudahan
+          akses informasi bagi setiap pekerja di area K-37.
+        </p>
+      </div>
+
+      <div class="cta-split dual-images">
+        <div class="cta-image reveal reveal-left reveal-delay-3">
+          <img src="https://safe-olive-kxq9ixhm84.edgeone.app/image.jpeg" alt="Digital Induction Barcode"
+            loading="lazy">
         </div>
         <div class="cta-image reveal reveal-right reveal-delay-4">
-          <img src="https://cheap-lavender-ywli2blg26.edgeone.app/image.jpeg" alt="Safety Campaign Induction Barcodes"
+          <img src="https://cheap-lavender-ywli2blg26.edgeone.app/image.jpeg" alt="Health Care Presentation Barcode"
             loading="lazy">
         </div>
       </div>
     </div>
   </section>
+
+  <style>
+    #report-section .section-header {
+      margin-bottom: 50px;
+    }
+
+    #report-section .section-eyebrow::before,
+    #report-section .section-eyebrow::after {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .dual-images {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px !important;
+      align-items: center;
+    }
+
+    .dual-images .cta-image {
+      margin: 0;
+      flex: none;
+      width: 100%;
+    }
+
+    .dual-images .cta-image:first-child {
+      transform: perspective(1200px) rotateY(12deg) translateX(-10px);
+    }
+
+    .dual-images .cta-image:last-child {
+      transform: perspective(1200px) rotateY(-12deg) translateX(10px);
+    }
+
+    .dual-images .cta-image:hover {
+      transform: perspective(1200px) rotateY(0) scale(1.05) !important;
+      z-index: 10;
+    }
+
+    @media (max-width: 992px) {
+      .dual-images {
+        grid-template-columns: 1fr;
+        gap: 30px !important;
+      }
+
+      .dual-images .cta-image:first-child,
+      .dual-images .cta-image:last-child {
+        transform: none;
+      }
+    }
+  </style>
 
   <!-- ═══ HEALTH CAMPAIGN GALLERY ══════════════════════════════ -->
   <section class="section" id="gallery-health">
