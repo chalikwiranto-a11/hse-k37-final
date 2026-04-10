@@ -476,7 +476,7 @@ const GAS_URL = 'https://script.google.com/macros/s/AKfycby6YeMcOnDAxLgF_wFsDfjt
 async function fetchHsePhotos(params = {}) {
   let data = [];
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 8000); // 8s timeout
+  const timeoutId = setTimeout(() => controller.abort(), 15000); // 15s timeout - More patient for GAS cold starts
 
   try {
     const res = await fetch(GAS_URL, { signal: controller.signal });
