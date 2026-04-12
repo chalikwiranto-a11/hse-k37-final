@@ -721,17 +721,7 @@
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section class="section section-alt" id="gallery-env">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow reveal">Catatan Digital Mutu Kawasan Lingkungan Terpadu </div>
-        <h2 class="section-title reveal reveal-delay-1">Aktivitas Evaluasi Kepatuhan Kualtias Mutu Lingkungan Sesuai
-          Standar Operasional. </h2>
-      </div>
-      <div class="gallery-grid" id="gallery-grid"></div>
-    </div>
-  </section>
+
 
   <!-- FORM SECTION -->
   <section class="section section-alt" id="report">
@@ -1048,10 +1038,7 @@ _Dikirim via HSE Reporting System_`.trim();
       }, 4000);
     }
 
-    document.addEventListener('DOMContentLoaded', async () => {
-      const container = document.getElementById('gallery-grid');
-      if (container) { const { data } = await fetchHsePhotos({ category: 'environment' }); renderGalleryCards(container, data); }
-    });
+
   </script>
 </body>
 
