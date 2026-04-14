@@ -49,7 +49,7 @@
       flex-direction: column;
       justify-content: center;
       overflow: hidden;
-      background: radial-gradient(circle at 70% 30%, #15462d 0%, #0d3520 40%, #0a2818 100%);
+      background: radial-gradient(circle at 75% 45%, #1b5e3c 0%, #0d3520 35%, #071e12 100%);
     }
 
     /* Forest bokeh dots */
@@ -57,25 +57,26 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(101, 220, 162, 0.06) 1.5px, transparent 1.5px);
-      background-size: 40px 40px;
+      background-image: radial-gradient(circle, rgba(101, 220, 162, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
       z-index: 1;
       pointer-events: none;
-      opacity: 0.5;
+      opacity: 0.6;
     }
 
     /* Teal glow orb */
     .env-hero::after {
       content: '';
       position: absolute;
-      top: -10%;
-      right: -5%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(101, 220, 162, 0.08) 0%, transparent 70%);
+      top: 20%;
+      right: 5%;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(101, 220, 162, 0.12) 0%, transparent 70%);
       border-radius: 50%;
       z-index: 1;
       pointer-events: none;
+      filter: blur(40px);
     }
 
     /* Secondary green glow bottom-left */
@@ -115,25 +116,26 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
-      color: rgba(188, 202, 191, 0.7);
+      font-size: 13px;
+      color: rgba(188, 202, 191, 0.6);
       font-family: 'Inter', sans-serif;
       font-weight: 500;
+      margin-bottom: 8px;
     }
 
     .eh-breadcrumb a {
-      color: rgba(188, 202, 191, 0.7);
+      color: rgba(188, 202, 191, 0.6);
       text-decoration: none;
       transition: color 0.2s;
     }
 
     .eh-breadcrumb a:hover {
-      color: #65dca2;
+      color: #fff;
     }
 
     .eh-breadcrumb .sep {
       font-size: 12px;
-      opacity: 0.5;
+      opacity: 0.4;
     }
 
     .eh-breadcrumb .current {
@@ -143,31 +145,33 @@
     .eh-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
+      gap: 10px;
+      padding: 8px 18px;
       border-radius: 99px;
-      background: rgba(101, 220, 162, 0.1);
+      background: rgba(7, 30, 18, 0.5);
       border: 1px solid rgba(101, 220, 162, 0.2);
       backdrop-filter: blur(20px);
       width: fit-content;
+      margin-bottom: 4px;
     }
 
     .eh-badge span {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       color: #65dca2;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.12em;
       font-family: 'Inter', sans-serif;
     }
 
     .eh-title {
       font-family: 'Poppins', 'Manrope', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
       font-weight: 800;
-      line-height: 1.08;
-      color: #c9ebd1;
-      letter-spacing: -0.02em;
+      line-height: 0.95;
+      color: #fff;
+      letter-spacing: -0.03em;
+      margin-bottom: 5px;
     }
 
     .eh-title .accent {
@@ -249,8 +253,8 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 320px;
-      height: 320px;
+      width: 380px;
+      height: 380px;
       z-index: 10;
       animation: eh-float 6s ease-in-out infinite;
     }
@@ -274,54 +278,61 @@
       }
     }
 
-    /* Floating leaf */
-    .eh-leaf {
+    /* Floating Square Cards */
+    .eh-floating-card {
       position: absolute;
-      top: 10%;
-      right: 12%;
       width: 110px;
       height: 110px;
+      background: rgba(7, 30, 18, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       z-index: 15;
-      animation: eh-float2 5s ease-in-out infinite;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      transition: all 0.3s ease;
     }
 
-    .eh-leaf img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      transform: rotate(12deg);
-      filter: drop-shadow(0 12px 20px rgba(101, 220, 162, 0.2));
+    .eh-floating-card:hover {
+      transform: scale(1.05) translateY(-5px);
+      border-color: rgba(101, 220, 162, 0.3);
     }
 
-    @keyframes eh-float2 {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(5deg);
-      }
-
-      50% {
-        transform: translateY(-14px) rotate(-3deg);
-      }
-    }
-
-    /* Water droplet */
-    .eh-water {
-      position: absolute;
-      bottom: 18%;
-      left: 15%;
-      width: 80px;
-      height: 80px;
-      z-index: 15;
+    .eh-floating-card.water {
+      bottom: 25%;
+      left: 5%;
       animation: eh-float3 7s ease-in-out infinite;
     }
 
-    .eh-water img {
-      width: 100%;
-      height: 100%;
+    .eh-floating-card.safe {
+      top: 10%;
+      right: 0%;
+      width: 125px;
+      height: 125px;
+      animation: eh-float2 6s ease-in-out infinite;
+    }
+
+    .eh-floating-card img {
+      width: 55%;
+      height: auto;
       object-fit: contain;
-      opacity: 0.85;
-      filter: drop-shadow(0 10px 20px rgba(101, 220, 162, 0.15));
+    }
+
+    .eh-floating-card.safe img {
+      width: 65%;
+    }
+
+    .eh-floating-card span {
+      font-size: 10px;
+      font-weight: 800;
+      color: #65dca2;
+      margin-top: 8px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'Inter', sans-serif;
     }
 
     @keyframes eh-float3 {
@@ -365,30 +376,33 @@
     /* Gold certification badge */
     .eh-cert {
       position: absolute;
-      bottom: 30%;
+      bottom: 40%;
       right: 5%;
       display: flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
+      gap: 10px;
+      padding: 10px 24px;
       border-radius: 99px;
-      background: rgba(245, 166, 35, 0.08);
+      background: rgba(7, 30, 18, 0.6);
       backdrop-filter: blur(20px);
-      border: 1px solid rgba(245, 166, 35, 0.25);
+      border: 1.5px solid rgba(245, 166, 35, 0.4);
       animation: eh-float2 8s ease-in-out infinite reverse;
       z-index: 15;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 166, 35, 0.1);
     }
 
     .eh-cert span:first-child {
-      font-size: 16px;
+      font-size: 18px;
+      filter: drop-shadow(0 0 5px rgba(245, 166, 35, 0.5));
     }
 
     .eh-cert span:last-child {
-      font-size: 10px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 800;
       color: #ffb955;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.15em;
       font-family: 'Inter', sans-serif;
+      text-shadow: 0 0 10px rgba(255, 185, 85, 0.3);
     }
 
     /* Stats bar */
@@ -397,44 +411,50 @@
       z-index: 10;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 20px;
       max-width: 1300px;
       margin: 0 auto;
-      padding: 0 40px 50px;
+      padding: 0 40px 60px;
     }
 
     .eh-stat-card {
-      background: rgba(7, 37, 21, 0.55);
-      backdrop-filter: blur(16px);
-      padding: 24px 20px;
-      border-radius: 16px;
+      background: rgba(7, 30, 18, 0.65);
+      backdrop-filter: blur(24px);
+      padding: 32px 24px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
       border-top: 3px solid var(--ec-color, #65dca2);
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      transition: transform 0.4s ease, background 0.3s ease;
+      gap: 14px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 0 rgba(101, 220, 162, 0);
     }
 
     .eh-stat-card:hover {
-      transform: translateY(-6px);
-      background: rgba(18, 48, 31, 0.6);
+      transform: translateY(-8px);
+      background: rgba(12, 45, 28, 0.75);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px var(--ec-glow, rgba(101, 220, 162, 0.2));
     }
 
     .eh-stat-num {
-      font-family: 'Barlow Condensed', 'Manrope', sans-serif;
-      font-size: 2.2rem;
+      font-family: 'Poppins', 'Manrope', sans-serif;
+      font-size: 3.2rem;
       font-weight: 800;
       color: var(--ec-color, #65dca2);
       line-height: 1;
+      letter-spacing: -0.04em;
     }
 
     .eh-stat-label {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 10.5px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.15em;
       color: rgba(201, 235, 209, 0.6);
       font-family: 'Inter', sans-serif;
+      line-height: 1.4;
     }
 
     @media (max-width: 1024px) {
@@ -465,7 +485,7 @@
       }
 
       .eh-stat-num {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
       }
 
       .env-hero-inner {
@@ -485,10 +505,9 @@
           <span class="current">Lingkungan</span>
         </nav>
         <div class="eh-badge">
-          <span style="font-size:16px;">🌿</span>
-          <span>Departemen Perlindungan Lingkungan</span>
+          <span>🌿 DEPARTEMEN PERLINDUNGAN LINGKUNGAN</span>
         </div>
-        <h1 class="eh-title">Perlindungan <span class="accent">Lingkungan</span></h1>
+        <h1 class="eh-title">Perlindungan <br> <span class="accent">Lingkungan</span></h1>
         <p class="eh-subtitle hero-subtitle">Memantau, mengelola, dan meminimalkan jejak lingkungan kita melalui
           program berbasis sains, kepatuhan terhadap regulasi, dan inisiatif keberlanjutan menyeluruh.</p>
         <div class="eh-actions">
@@ -505,20 +524,25 @@
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgJtqhgtHdqD17_n07zgMxw9elqxn8wYhzmVmOR8L6Hm9JDTUIjI0XvMCg2TwcG9kXavPEsbBCg7BH_pi-EwxgOy-3v7zSH_fGwg508Dk2bDYB474FZkNMqTQ9W17-5NwWmRlQxUREuwO7T83YD_0d81xzkO0fPIHgD4WUSI11CXH2MY3j7C2vDwj1tWY7QX-Mjr3-uxeGizsw8uD9gjDMSyqQDTxjAOWCad-pIiGmhDDb2WFa1fW5W7QctSx-hKMBd3XikJmWOKA"
             alt="3D Globe with forest" loading="eager">
         </div>
-        <!-- Floating leaf -->
-        <div class="eh-leaf">
-          <img
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYKC4uv8JC2cBl2YUaWhoD7yapYMy0FmxtqKWy080xT5fvyjNGm-KSDf48owjaedYOANoDg41df2GX40PTTJZiDza_CkcEOv4-8x9eEY7IroIavUL9jYUj7B-Glz1kOi0gwX--Hu6TL6YGL7BtTefgkAA6-9Ge2slLNBAIPCGGacb7OZY-zls_t5sOECL6M-wNIi7wxhUfrE2NxdsOyqRl5l63kk7uhNG7XYz6IrVA_jhuqnpAE0RcRCzNCP8L4rCVYsUE0bGnpy8"
-            alt="Floating emerald leaf" loading="eager">
-        </div>
-        <!-- Water droplet -->
-        <div class="eh-water">
+
+        <!-- Water Drop Card -->
+        <div class="eh-floating-card water">
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZhY6xiYDmV4JM_sL3UIY2TCTtE-TGQVQpPDFPfLM3-nBvGlWYymUVctPlr0pyYVzwwf5bqkfgBFdyvbJUXsa-R2Gxf7hys5v7-kkYFGsFHZKnt5pDfSBDbKAZF3GkxLEZHxvZCfOW_5hLf0O8vZ7SVeYjN4y1Mnn5Yyrv0vKqbqWlay0RcsEXnYZaLKPgmBcG4BS4Q842UcY80vTCoGjSs7_ghRVVfSxpZQlhUD0bvJ5sXtL8erPhO78mxez98nLKbPUhCAhpNEc"
-            alt="Water droplet" loading="eager">
+            alt="Water drop">
         </div>
+
+        <!-- Safe Work Card -->
+        <div class="eh-floating-card safe">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYKC4uv8JC2cBl2YUaWhoD7yapYMy0FmxtqKWy080xT5fvyjNGm-KSDf48owjaedYOANoDg41df2GX40PTTJZiDza_CkcEOv4-8x9eEY7IroIavUL9jYUj7B-Glz1kOi0gwX--Hu6TL6YGL7BtTefgkAA6-9Ge2slLNBAIPCGGacb7OZY-zls_t5sOECL6M-wNIi7wxhUfrE2NxdsOyqRl5l63kk7uhNG7XYz6IrVA_jhuqnpAE0RcRCzNCP8L4rCVYsUE0bGnpy8"
+            alt="Safe work leaf">
+          <span>SAFE WORK</span>
+        </div>
+
         <!-- Recycling symbol -->
-        <div class="eh-recycle">♻️</div>
+        <div class="eh-recycle" style="top:35%; left:0%;">♻️</div>
+
         <!-- Gold certification badge -->
         <div class="eh-cert">
           <span>🏅</span>
@@ -529,21 +553,21 @@
 
     <!-- Stats bar -->
     <div class="eh-stats">
-      <div class="eh-stat-card" style="--ec-color:#65dca2;">
-        <div class="eh-stat-num">96%</div>
-        <div class="eh-stat-label">Sosialisasi Penanganan Tumpahan</div>
-      </div>
-      <div class="eh-stat-card" style="--ec-color:#ffb955;">
+      <div class="eh-stat-card" style="--ec-color:#65dca2; --ec-glow:rgba(101,220,162,0.3);">
         <div class="eh-stat-num">100%</div>
-        <div class="eh-stat-label">Kepatuhan PROPER</div>
+        <div class="eh-stat-label">Penanganan Tumpahan</div>
       </div>
-      <div class="eh-stat-card" style="--ec-color:#65dca2;">
+      <div class="eh-stat-card" style="--ec-color:#ffb955; --ec-glow:rgba(255,185,85,0.3);">
         <div class="eh-stat-num">100%</div>
-        <div class="eh-stat-label">Sosialisasi Bahaya Hewan Liar</div>
+        <div class="eh-stat-label">Sosialisasi Penanganan Housekeeping ALL Area K-37</div>
       </div>
-      <div class="eh-stat-card" style="--ec-color:#83f9bd;">
+      <div class="eh-stat-card" style="--ec-color:#65dca2; --ec-glow:rgba(101,220,162,0.3);">
         <div class="eh-stat-num">100%</div>
-        <div class="eh-stat-label">Sosialisasi Housekeeping</div>
+        <div class="eh-stat-label">Sosialisasi Penanganan Hewan Buas</div>
+      </div>
+      <div class="eh-stat-card" style="--ec-color:#65dca2; --ec-glow:rgba(101,220,162,0.3);">
+        <div class="eh-stat-num">12 ton</div>
+        <div class="eh-stat-label">Penanganan Limbah Domestik</div>
       </div>
     </div>
   </section>
@@ -553,20 +577,20 @@
     <div class="container">
       <div class="section-header">
         <div class="section-eyebrow reveal" style="color:var(--accent);">KPI Lingkungan</div>
-        <h2 class="section-title reveal reveal-delay-1" style="color:#fff;">Kinerja Lingkungan — 2025</h2>
+        <h2 class="section-title reveal reveal-delay-1" style="color:#fff;">Kinerja Lingkungan — 2026</h2>
       </div>
       <div class="stats-grid">
         <div class="stat-card reveal reveal-delay-1" style="--stat-color:#2dc653;">
-          <div class="stat-icon-bg" style="background:rgba(45,198,83,0.12);">♻️</div>
-          <div class="stat-number" data-count="100" data-suffix="%">0%</div>
+          <div class="stat-icon-bg" style="background:rgba(45,198,83,0.12);">🛢️</div>
+          <div class="stat-number" data-count="7" data-suffix="">0%</div>
           <div class="stat-label">Penanganan Tumpahan Chemical</div>
           <div class="stat-sublabel">Total Penanganan Chemical</div>
         </div>
         <div class="stat-card reveal reveal-delay-2" style="--stat-color:#3e92cc;">
-          <div class="stat-icon-bg" style="background:rgba(62,146,204,0.12);">💧</div>
-          <div class="stat-number" data-count="2" data-suffix="%">0</div>
-          <div class="stat-label">Insiden Tumpahan</div>
-          <div class="stat-sublabel">2 Temuan Tumpahan</div>
+          <div class="stat-icon-bg" style="background:rgba(62,146,204,0.12);">🗑️</div>
+          <div class="stat-number" data-count="98" data-suffix="">0</div>
+          <div class="stat-label">Penanganan Limbah Domestik</div>
+          <div class="stat-sublabel">Total Penanganan Limbah Domestik</div>
         </div>
         <div class="stat-card reveal reveal-delay-3" style="--stat-color:#ffb703;">
           <div class="stat-icon-bg" style="background:rgba(255,183,3,0.12);">🐕</div>
@@ -575,10 +599,10 @@
           <div class="stat-sublabel">Total Hewan Reproduksi</div>
         </div>
         <div class="stat-card reveal reveal-delay-4" style="--stat-color:#1fa36e;">
-          <div class="stat-icon-bg" style="background:rgba(31,163,110,0.12);">📉</div>
-          <div class="stat-number" data-count="15" data-suffix="%">0%</div>
-          <div class="stat-label">Pengurangan Karbon</div>
-          <div class="stat-sublabel">Dibandingkan garis dasar 2024</div>
+          <div class="stat-icon-bg" style="background:rgba(31,163,110,0.12);">👨🏽‍💻</div>
+          <div class="stat-number" data-count="52" data-suffix="">0%</div>
+          <div class="stat-label">Sosialisasi Housekeeping ALL Area</div>
+          <div class="stat-sublabel">Total Sosialisasi</div>
         </div>
       </div>
     </div>
@@ -641,7 +665,7 @@
       <div class="split-section reverse">
         <div class="split-visual reveal-left">
           <div class="split-visual-placeholder" style="background:linear-gradient(135deg,#0a4a30,#1fa36e);"><img
-              src="https://invisible-aquamarine-8xsvpnakpz.edgeone.app/3466f01a-261e-4639-af73-9f207512dbdf.jpg"
+              src="https://scontent.fbdj6-1.fna.fbcdn.net/v/t39.30808-6/481996766_968484258810449_3026922542001625417_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=2a1932&_nc_ohc=_d0IWEvJ2hYQ7kNvwFHT1gm&_nc_oc=AdrwVsqM1ky250C2dmSq3A0AxUrgprCzJ0HqfaP2ubiJXPI48RklveQn6LsxhI7k1927NhVdx30bCf3ztySKo1qO&_nc_zt=23&_nc_ht=scontent.fbdj6-1.fna&_nc_gid=Va8vQ2bZULszMGRwauFJ5w&_nc_ss=7a389&oh=00_Af1PV_sOEpIwePavACGEZIwCDz6Bq5tPhzvr5rHzlLb17w&oe=69E34A73"
               alt="Komitmen Operasional HSE" loading="lazy"></div>
         </div>
         <div class="split-text reveal-right">
