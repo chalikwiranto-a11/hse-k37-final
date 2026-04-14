@@ -984,6 +984,9 @@ button {
   overflow: hidden;
   aspect-ratio: 4/3;
   background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Real photo image — fills the card thumbnail */
