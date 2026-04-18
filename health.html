@@ -870,7 +870,7 @@
 
   <!-- ═══ HEALTH CONSULTATION FORM ══════════════════════════════ -->
   <section class="section section-alt" id="consultation">
-    <div class="container" style="max-width:680px;">
+    <div class="container" style="max-width:860px;">
       <div class="section-header">
         <div class="section-eyebrow reveal" style="color:#2dc653;">Klinik HSE</div>
         <h2 class="section-title reveal reveal-delay-1">Jadwalkan Konsultasi Kesehatan</h2>
@@ -891,11 +891,31 @@
           <button class="health-tab-btn" onclick="switchHealthTab('mcu')" data-tab="mcu">
             📋 Follow Up MCU
           </button>
+          <button class="health-tab-btn" onclick="switchHealthTab('obesitas')" data-tab="obesitas">
+            ⚖️ Lapor Obesitas
+          </button>
 
-          <!-- Barcode Icon Button Group (New) -->
+          <!-- Barcode Icon Button Group — MCU -->
           <div id="mcu-barcode-group" style="margin-left:auto; display:none; align-items:center; gap:8px;">
             <span style="color:#e6a200; font-size:13px; font-weight:700; letter-spacing:0.02em;">Scan Barcode!</span>
             <button class="barcode-btn" onclick="openMcuModal()" title="Lihat Prosedur Barcode MCU"
+              style="border:none; background:rgba(62,146,204,0.1); color:var(--secondary); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.3s ease;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M3 17v2a2 2 0 0 0 2 2h2"></path>
+                <rect x="7" y="7" width="10" height="10" rx="2"></rect>
+                <line x1="12" y1="12" x2="12" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Barcode Icon Button Group — Obesitas -->
+          <div id="obs-barcode-group" style="margin-left:auto; display:none; align-items:center; gap:8px;">
+            <span style="color:#e6a200; font-size:13px; font-weight:700; letter-spacing:0.02em;">Scan Barcode!</span>
+            <button class="barcode-btn" onclick="openObsModal()" title="Lihat Barcode Program Obesitas"
               style="border:none; background:rgba(62,146,204,0.1); color:var(--secondary); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.3s ease;">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -936,8 +956,9 @@
                 <option value="Sakit Kepala / Pusing">Sakit Kepala / Pusing</option>
                 <option value="Sesak Nafas / Gangguan Pernapasan">Sesak Nafas / Gangguan Pernapasan</option>
                 <option value="Sakit Pinggang / Nyeri Otot">Sakit Pinggang / Nyeri Otot</option>
-                <option value="Mual / Gangguan Pencernaan">Mual / Gangguan Pencernaan</option>
+                <option value="Gangguan Pencernaan">Gangguan Pencernaan</option>
                 <option value="Cedera Ringan (Luka / Memar)">Cedera Ringan (Luka / Memar)</option>
+                <option value="Saluran Kemih">Saluran Kemih</option>
                 <option value="Lainnya">Lainnya (Sebutkan...)</option>
               </select>
             </div>
@@ -1020,6 +1041,71 @@
                   d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
               </svg>
               Kirim Follow Up MCU via WhatsApp
+            </button>
+          </form>
+        </div>
+
+        <!-- Form 3: Obesitas (New) -->
+        <div id="form-obesitas" class="health-form-content" style="display:none;">
+          <form id="wa-obesitas-form" onsubmit="submitObesitasToWhatsApp(event)">
+            <!-- Row 1: Nama & ID Badge -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label class="wa-label">👤 Nama Lengkap *</label>
+                <input id="obs-name" type="text" class="wa-input" placeholder="Nama lengkap sesuai ID" required />
+              </div>
+              <div>
+                <label class="wa-label">🪪 No ID Badge *</label>
+                <input id="obs-badge" type="text" class="wa-input" placeholder="Nomor ID Badge" required />
+              </div>
+            </div>
+
+            <!-- Row 2: Departemen & Maincon -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label class="wa-label">🏢 Team Departemen *</label>
+                <input id="obs-dept" type="text" class="wa-input" placeholder="Piping" required />
+              </div>
+              <div>
+                <label class="wa-label">🏗️ Maincon *</label>
+                <select id="obs-maincon" class="wa-input" required
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                  <option value="">Pilih Maincon...</option>
+                  <option value="Hyundai Engineering L.td., Co.">Hyundai Engineering L.td., Co.</option>
+                  <option value="Rekayasa Industri">Rekayasa Industri</option>
+                  <option value="PP Team">PP Team</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 3: Status BMI -->
+            <div style="margin-bottom:16px;">
+              <label class="wa-label">⚖️ Status BMI *</label>
+              <select id="obs-bmi" class="wa-input" required
+                style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <option value="">Pilih Status BMI...</option>
+                <option value="Overweight > 25,0-29,9">Overweight > 25,0-29,9</option>
+                <option value="Obesitas Stage I > 30,0-34,9">Obesitas Stage I > 30,0-34,9</option>
+                <option value="Obesitas Stage II > 35,0-40,9">Obesitas Stage II > 35,0-40,9</option>
+                <option value="Obesitas Stage III > 40,0">Obesitas Stage III > 40,0</option>
+              </select>
+            </div>
+
+            <!-- Row 3: Alasan Ikut -->
+            <div style="margin-bottom:24px;">
+              <label class="wa-label">📝 Alasan Ikut Program Obesitas *</label>
+              <textarea id="obs-reason" class="wa-input" rows="3" required
+                placeholder="Jelaskan alasan Anda mengikuti program obesitas..."
+                style="resize:vertical;min-height:80px;"></textarea>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" id="wa-obesitas-submit-btn" class="wa-submit-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Kirim Laporan via WhatsApp
             </button>
           </form>
         </div>
@@ -1214,13 +1300,11 @@
     const HSE_CLINIC_WA_NUMBER = '6285388881989';
 
     function switchHealthTab(tabId) {
-      // Show/Hide Barcode group based on tab
-      const barcodeGroup = document.getElementById('mcu-barcode-group');
-      if (tabId === 'mcu') {
-        barcodeGroup.style.display = 'flex';
-      } else {
-        barcodeGroup.style.display = 'none';
-      }
+      // Show/Hide Barcode groups based on tab
+      const mcuBarcodeGroup = document.getElementById('mcu-barcode-group');
+      const obsBarcodeGroup = document.getElementById('obs-barcode-group');
+      mcuBarcodeGroup.style.display = tabId === 'mcu' ? 'flex' : 'none';
+      obsBarcodeGroup.style.display = tabId === 'obesitas' ? 'flex' : 'none';
 
       // Toggle Tab Buttons
 
@@ -1235,8 +1319,10 @@
       });
       if (tabId === 'konsultasi') {
         document.getElementById('form-konsultasi').style.display = 'block';
-      } else {
+      } else if (tabId === 'mcu') {
         document.getElementById('form-mcu').style.display = 'block';
+      } else {
+        document.getElementById('form-obesitas').style.display = 'block';
       }
     }
 
@@ -1301,7 +1387,7 @@ _Pendaftaran via Portal HSE_
 _${new Date().toLocaleString('id-ID')}_
 `.trim();
 
-      sendToWhatsApp(pesan, 'wa-health-submit-btn', 'wa-health-form');
+      sendToWhatsAppCustom(pesan, 'wa-health-submit-btn', 'wa-health-form', '6285797825468');
     }
 
     function submitMcuToWhatsApp(e) {
@@ -1345,9 +1431,78 @@ Note : Hasil Validasi MCU ditunggu waktu validasi -+1 minggu`;
       sendToWhatsApp(pesan, 'wa-mcu-submit-btn', 'wa-mcu-form');
     }
 
+    function submitObesitasToWhatsApp(e) {
+      e.preventDefault();
+
+      const nama = document.getElementById('obs-name').value.trim();
+      const badge = document.getElementById('obs-badge').value.trim();
+      const dept = document.getElementById('obs-dept').value.trim();
+      const maincon = document.getElementById('obs-maincon').value;
+      const bmi = document.getElementById('obs-bmi').value;
+      const reason = document.getElementById('obs-reason').value.trim();
+
+      const pesan = `*Form Laporan Obesitas*
+
+Nama : ${nama}
+No ID Badge : ${badge}
+Dapartement : ${dept}
+Maincon : ${maincon}
+Status BMI : ${bmi}
+Alasan Ikut Program Obesitas : ${reason}`;
+
+      // Use the specific WhatsApp number provided by user
+      const encoded = encodeURIComponent(pesan);
+      const waUrl = `https://wa.me/6285257125961?text=${encoded}`;
+      const btn = document.getElementById('wa-obesitas-submit-btn');
+
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '⏳ Membuka WhatsApp...';
+      btn.disabled = true;
+
+      window.open(waUrl, '_blank');
+
+      setTimeout(() => {
+        btn.innerHTML = '✅ WhatsApp Terbuka!';
+        btn.style.background = '#128c7e';
+
+        setTimeout(() => {
+          document.getElementById('wa-obesitas-form').reset();
+          btn.innerHTML = originalHTML;
+          btn.style.background = '#25d366';
+          btn.disabled = false;
+        }, 3000);
+      }, 1000);
+    }
+
     function sendToWhatsApp(pesan, btnId, formId) {
       const encoded = encodeURIComponent(pesan);
       const waUrl = `https://wa.me/${HSE_CLINIC_WA_NUMBER}?text=${encoded}`;
+      const btn = document.getElementById(btnId);
+
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = '⏳ Membuka WhatsApp...';
+      btn.disabled = true;
+
+      window.open(waUrl, '_blank');
+
+      setTimeout(() => {
+        btn.innerHTML = '✅ WhatsApp Terbuka!';
+        btn.style.background = '#128c7e';
+
+        setTimeout(() => {
+          document.getElementById(formId).reset();
+          if (formId === 'wa-health-form') toggleKeluhanLain();
+
+          btn.innerHTML = originalHTML;
+          btn.style.background = '#25d366';
+          btn.disabled = false;
+        }, 3000);
+      }, 1000);
+    }
+
+    function sendToWhatsAppCustom(pesan, btnId, formId, customNumber) {
+      const encoded = encodeURIComponent(pesan);
+      const waUrl = `https://wa.me/${customNumber}?text=${encoded}`;
       const btn = document.getElementById(btnId);
 
       const originalHTML = btn.innerHTML;
@@ -1381,6 +1536,16 @@ Note : Hasil Validasi MCU ditunggu waktu validasi -+1 minggu`;
       document.getElementById('mcu-qr-modal').classList.remove('active');
       document.body.style.overflow = '';
     }
+
+    function openObsModal() {
+      document.getElementById('obs-qr-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeObsModal() {
+      document.getElementById('obs-qr-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
   </script>
 
   <!-- MCU Barcode Modal -->
@@ -1391,7 +1556,14 @@ Note : Hasil Validasi MCU ditunggu waktu validasi -+1 minggu`;
     </div>
   </div>
 
-  </script>
+  <!-- Obesitas Barcode Modal -->
+  <div class="hse-modal" id="obs-qr-modal" onclick="if(event.target===this) closeObsModal()">
+    <div class="mcu-modal-container">
+      <button class="mcu-modal-close" onclick="closeObsModal()">✕</button>
+      <img src="https://varied-coral-p7gemynm6x.edgeone.app/a7d59b89-45d4-495f-aab3-f8e8f28bcd60.jpg"
+        alt="Obesitas Program QR Code" style="width: 100%; height: auto; display: block;">
+    </div>
+  </div>
 
   <!-- ═══ GALLERY KESEHATAN ══════════════════════════════════════ -->
   <section id="gallery-health" class="section section-alt">
