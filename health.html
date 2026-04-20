@@ -1091,7 +1091,23 @@
               </select>
             </div>
 
-            <!-- Row 3: Alasan Ikut -->
+            <!-- Row 4: Tinggi Badan, Berat Badan, Umur -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label class="wa-label">📏 Tinggi Badan (cm) *</label>
+                <input id="obs-height" type="number" class="wa-input" placeholder="170" required min="50" max="250" />
+              </div>
+              <div>
+                <label class="wa-label">⚖️ Berat Badan (kg) *</label>
+                <input id="obs-weight" type="number" class="wa-input" placeholder="75" required min="20" max="300" />
+              </div>
+              <div>
+                <label class="wa-label">🎂 Umur (tahun) *</label>
+                <input id="obs-age" type="number" class="wa-input" placeholder="30" required min="15" max="100" />
+              </div>
+            </div>
+
+            <!-- Row 5: Alasan Ikut -->
             <div style="margin-bottom:24px;">
               <label class="wa-label">📝 Alasan Ikut Program Obesitas *</label>
               <textarea id="obs-reason" class="wa-input" rows="3" required
@@ -1439,6 +1455,9 @@ Note : Hasil Validasi MCU ditunggu waktu validasi -+1 minggu`;
       const dept = document.getElementById('obs-dept').value.trim();
       const maincon = document.getElementById('obs-maincon').value;
       const bmi = document.getElementById('obs-bmi').value;
+      const height = document.getElementById('obs-height').value.trim();
+      const weight = document.getElementById('obs-weight').value.trim();
+      const age = document.getElementById('obs-age').value.trim();
       const reason = document.getElementById('obs-reason').value.trim();
 
       const pesan = `*Form Laporan Obesitas*
@@ -1447,6 +1466,9 @@ Nama : ${nama}
 No ID Badge : ${badge}
 Dapartement : ${dept}
 Maincon : ${maincon}
+Tinggi Badan : ${height} cm
+Berat Badan : ${weight} kg
+Umur : ${age} tahun
 Status BMI : ${bmi}
 Alasan Ikut Program Obesitas : ${reason}`;
 
