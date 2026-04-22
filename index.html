@@ -8,6 +8,8 @@
   <meta name="description"
     content="Portal Departemen HSE Industri untuk komunikasi keselamatan, pelaporan, dan dokumentasi." />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap" />
   <link rel="icon" href="assets/logo-rdmp.png?v=2" type="image/png" />
 </head>
 
@@ -240,77 +242,417 @@
     </div>
   </section>
 
-  <!-- ═══ HSE STATISTICS ═══════════════════════════════════════ -->
-  <section class="section section-dark" id="statistics">
-    <div class="container">
-      <div class="section-header">
+  <!-- ═══ QHSE DASHBOARD ═══════════════════════════════════════ -->
+  <section class="section section-dark" id="statistics" style="padding-left: 0; padding-right: 0;">
+    <div class="container" style="max-width: 100%;">
+      <div class="section-header" style="padding-left: 5%; padding-right: 5%;">
         <div class="section-eyebrow reveal">Dasbor Kinerja</div>
-        <h2 class="section-title reveal reveal-delay-1">Statistik HSE — Berjalan di Tahun 2026</h2>
+        <h2 class="section-title reveal reveal-delay-1">QHSE Dashboard end-to-end</h2>
         <p class="section-desc reveal reveal-delay-2">
-          Indikator kinerja keselamatan terpantau secara real-time di seluruh lokasi dan departemen kerja.
+          Indikator kinerja keselamatan terpantau secara real-time di lokasi Kariangau-37.
         </p>
       </div>
 
-      <div class="stats-grid">
-        <div class="stat-card reveal reveal-delay-1" style="--stat-color:#ffb703;">
-          <div class="stat-icon-bg" style="background:rgba(255,183,3,0.12);font-size:26px;">📸</div>
-          <div class="stat-number" data-count="348" data-suffix="">0</div>
-          <div class="stat-label">Total Observasi</div>
-          <div class="stat-sublabel">Seluruh kategori digabungkan</div>
+      <!-- Dashboard embed -->
+      <div class="qhse-dashboard reveal reveal-delay-2">
+        <style>
+          .qhse-dashboard {
+            width: 100%;
+          }
+
+          .qhse-dashboard .db-header {
+            background: #0d2137;
+            padding: 10px 20px;
+            text-align: center;
+          }
+
+          .qhse-dashboard .db-header h2 {
+            font-family: 'Bebas Neue', 'DM Sans', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: #fff;
+            margin: 0;
+          }
+
+          .qhse-dashboard .db-info-bar {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background: #1e3a52;
+            padding: 0;
+          }
+
+          .qhse-dashboard .db-info-cell {
+            padding: 10px 18px;
+            border-right: 1px solid #2e506a;
+          }
+
+          .qhse-dashboard .db-info-cell:last-child {
+            border-right: none;
+          }
+
+          .qhse-dashboard .db-info-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #7bafc8;
+            margin-bottom: 4px;
+          }
+
+          .qhse-dashboard .db-info-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e8f4fd;
+          }
+
+          .qhse-dashboard .db-kpi-section {
+            padding: 14px 16px 6px;
+            background: #ecf0f5;
+          }
+
+          .qhse-dashboard .db-kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+          }
+
+          .qhse-dashboard .db-kpi-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 10px 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+            border: 1px solid #dde5ee;
+            text-align: center;
+            transition: transform .15s, box-shadow .15s;
+          }
+
+          .qhse-dashboard .db-kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.11);
+          }
+
+          .qhse-dashboard .db-kpi-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: #546e7a;
+            line-height: 1.3;
+            margin-bottom: 6px;
+            min-height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+          }
+
+          .qhse-dashboard .db-kpi-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            line-height: 1;
+          }
+
+          .qhse-dashboard .db-kpi-num.blue {
+            color: #1565c0;
+          }
+
+          .qhse-dashboard .db-kpi-num.teal {
+            color: #00695c;
+          }
+
+          .qhse-dashboard .db-kpi-num.orange {
+            color: #e65100;
+          }
+
+          .qhse-dashboard .db-kpi-num.green {
+            color: #2e7d32;
+          }
+
+          .qhse-dashboard .db-kpi-num.red {
+            color: #c62828;
+          }
+
+          /* Charts */
+          .qhse-dashboard .db-charts-section {
+            padding: 6px 16px 16px;
+            background: #ecf0f5;
+          }
+
+          .qhse-dashboard .db-section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            letter-spacing: 2px;
+            color: #fff;
+            background: #0d2137;
+            padding: 5px 14px;
+            border-radius: 6px 6px 0 0;
+            margin-bottom: 0;
+            text-align: left;
+          }
+
+          .qhse-dashboard .db-charts-wrapper {
+            background: #fff;
+            border-radius: 0 0 10px 10px;
+            padding: 14px;
+            border: 1px solid #dde5ee;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+          }
+
+          .qhse-dashboard .db-charts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 12px;
+          }
+
+          .qhse-dashboard .db-charts-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+          }
+
+          .qhse-dashboard .db-chart-card {
+            background: #f7fafd;
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid #dde5ee;
+          }
+
+          .qhse-dashboard .db-chart-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #0d2137;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 6px;
+          }
+
+          .qhse-dashboard .db-chart-wrap {
+            height: 90px;
+            position: relative;
+          }
+
+          .qhse-dashboard .db-chart-wrap canvas {
+            width: 100% !important;
+            height: 90px !important;
+          }
+
+          .qhse-dashboard .db-chart-wrap-tall {
+            height: 110px;
+            position: relative;
+          }
+
+          .qhse-dashboard .db-chart-wrap-tall canvas {
+            width: 100% !important;
+            height: 110px !important;
+          }
+
+          .qhse-dashboard .db-pie-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 90px;
+          }
+
+          .qhse-dashboard .db-pie-wrap canvas {
+            flex: 0 0 90px;
+            width: 90px !important;
+            height: 90px !important;
+          }
+
+          .qhse-dashboard .db-pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+            min-width: 0;
+          }
+
+          .qhse-dashboard .db-pie-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            color: #546e7a;
+            line-height: 1.2;
+          }
+
+          .qhse-dashboard .db-pie-legend-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            flex-shrink: 0;
+          }
+
+          .qhse-dashboard .db-pie-legend-val {
+            font-family: 'DM Mono', monospace;
+            font-weight: 700;
+            color: #1a2b3c;
+            margin-left: auto;
+            font-size: 11px;
+          }
+
+          .qhse-dashboard .db-donut-center {
+            position: absolute;
+            top: 50%;
+            left: 45px;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+          }
+
+          .qhse-dashboard .db-donut-center .dc-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: #0d2137;
+            line-height: 1;
+          }
+
+          .qhse-dashboard .db-donut-center .dc-lbl {
+            font-size: 8px;
+            color: #78909c;
+            font-weight: 600;
+            text-transform: uppercase;
+          }
+
+          .qhse-dashboard .db-pie-wrap-box {
+            position: relative;
+            flex: 0 0 90px;
+            height: 90px;
+          }
+
+          @media(max-width:900px) {
+            .qhse-dashboard .db-kpi-grid {
+              grid-template-columns: repeat(4, 1fr);
+            }
+
+            .qhse-dashboard .db-charts-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+
+            .qhse-dashboard .db-charts-grid-3 {
+              grid-template-columns: 1fr;
+            }
+          }
+
+          @media(max-width:600px) {
+            .qhse-dashboard .db-kpi-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+
+            .qhse-dashboard .db-charts-grid {
+              grid-template-columns: 1fr;
+            }
+
+            .qhse-dashboard .db-info-bar {
+              grid-template-columns: 1fr;
+            }
+          }
+        </style>
+
+        <div class="db-header">
+          <h2>QHSE Dashboard</h2>
         </div>
 
-        <div class="stat-card reveal reveal-delay-2" style="--stat-color:#e63946;">
-          <div class="stat-icon-bg" style="background:rgba(230,57,70,0.12);font-size:26px;">⚠️</div>
-          <div class="stat-number" data-count="24" data-suffix="">0</div>
-          <div class="stat-label">Temuan Belum Ditutup</div>
-          <div class="stat-sublabel">Membutuhkan tindakan segera</div>
+        <div class="db-info-bar">
+          <div class="db-info-cell">
+            <div class="db-info-label">Start Date</div>
+            <div class="db-info-value">22 November 2019</div>
+          </div>
+          <div class="db-info-cell">
+            <div class="db-info-label">Project</div>
+            <div class="db-info-value">RDMP Balikpapan JO</div>
+          </div>
+          <div class="db-info-cell">
+            <div class="db-info-label">Name of Reporting HSE Person</div>
+            <div class="db-info-value">Agus Kuswanto ST, SST, M.PSI</div>
+          </div>
         </div>
 
-        <div class="stat-card reveal reveal-delay-3" style="--stat-color:#2dc653;">
-          <div class="stat-icon-bg" style="background:rgba(45,198,83,0.12);font-size:26px;">✅</div>
-          <div class="stat-number" data-count="312" data-suffix="">0</div>
-          <div class="stat-label">Temuan Ditutup</div>
-          <div class="stat-sublabel">Berhasil diselesaikan</div>
+        <!-- KPI CARDS -->
+        <div class="db-kpi-section">
+          <div class="db-kpi-grid" id="dbKpiGrid"></div>
         </div>
 
-        <div class="stat-card reveal reveal-delay-4" style="--stat-color:#3e92cc;">
-          <div class="stat-icon-bg" style="background:rgba(62,146,204,0.12);font-size:26px;">🎯</div>
-          <div class="stat-number" data-count="18" data-suffix="">0</div>
-          <div class="stat-label">Kampanye Keselamatan</div>
-          <div class="stat-sublabel">Sedang berlangsung kuartal ini</div>
+        <!-- CHARTS -->
+        <div class="db-charts-section">
+          <div class="db-section-title">Incident & Injury Tracking</div>
+          <div class="db-charts-wrapper">
+            <div class="db-charts-grid">
+              <div class="db-chart-card">
+                <div class="db-chart-title">First Aid Injury</div>
+                <div class="db-chart-wrap"><canvas id="dbFAI"></canvas></div>
+              </div>
+              <div class="db-chart-card">
+                <div class="db-chart-title">Medical Treatment Injury</div>
+                <div class="db-pie-wrap">
+                  <div class="db-pie-wrap-box">
+                    <canvas id="dbMTI"></canvas>
+                    <div class="db-donut-center">
+                      <div class="dc-num" id="dbMtiTotal">9</div>
+                      <div class="dc-lbl">Total</div>
+                    </div>
+                  </div>
+                  <div class="db-pie-legend" id="dbMtiLegend"></div>
+                </div>
+              </div>
+              <div class="db-chart-card">
+                <div class="db-chart-title">Restricted Work Injury</div>
+                <div class="db-chart-wrap"><canvas id="dbRWI"></canvas></div>
+              </div>
+              <div class="db-chart-card">
+                <div class="db-chart-title">Lost Time Injury</div>
+                <div class="db-chart-wrap"><canvas id="dbLTI"></canvas></div>
+              </div>
+            </div>
+            <div class="db-charts-grid">
+              <div class="db-chart-card">
+                <div class="db-chart-title">Number of Lost Workdays</div>
+                <div class="db-chart-wrap"><canvas id="dbNLW"></canvas></div>
+              </div>
+              <div class="db-chart-card">
+                <div class="db-chart-title">Fatal Incidents</div>
+                <div class="db-chart-wrap"><canvas id="dbFI"></canvas></div>
+              </div>
+              <div class="db-chart-card">
+                <div class="db-chart-title">Road Traffic Incident</div>
+                <div class="db-pie-wrap">
+                  <div class="db-pie-wrap-box">
+                    <canvas id="dbRTI"></canvas>
+                  </div>
+                  <div class="db-pie-legend" id="dbRtiLegend"></div>
+                </div>
+              </div>
+              <div class="db-chart-card">
+                <div class="db-chart-title">Property Damage Incident</div>
+                <div class="db-pie-wrap">
+                  <div class="db-pie-wrap-box">
+                    <canvas id="dbPDI"></canvas>
+                    <div class="db-donut-center">
+                      <div class="dc-num" id="dbPdiTotal">14</div>
+                      <div class="dc-lbl">Total</div>
+                    </div>
+                  </div>
+                  <div class="db-pie-legend" id="dbPdiLegend"></div>
+                </div>
+              </div>
+            </div>
+            <div class="db-charts-grid-3" style="margin-top:12px;">
+              <div class="db-chart-card">
+                <div class="db-chart-title">Environmental Incidents</div>
+                <div class="db-chart-wrap-tall"><canvas id="dbEI"></canvas></div>
+              </div>
+              <div class="db-chart-card">
+                <div class="db-chart-title">Client HSE Observation</div>
+                <div class="db-chart-wrap-tall"><canvas id="dbCHO"></canvas></div>
+              </div>
+              <div class="db-chart-card">
+                <div class="db-chart-title">Internal HSE Observation</div>
+                <div class="db-chart-wrap-tall"><canvas id="dbIHO"></canvas></div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </div><!-- end .qhse-dashboard -->
 
-      <!-- Secondary stats row -->
-      <div class="stats-grid" style="margin-top:24px;">
-        <div class="stat-card reveal reveal-delay-1" style="--stat-color:#fff;">
-          <div class="stat-icon-bg" style="background:rgba(255,255,255,0.08);font-size:26px;">🦺</div>
-          <div class="stat-number" data-count="100" data-suffix="%">0%</div>
-          <div class="stat-label">Kepatuhan Pemakaian APD</div>
-          <div class="stat-sublabel">Rata-rata di seluruh lokasi</div>
-        </div>
-
-        <div class="stat-card reveal reveal-delay-2" style="--stat-color:#fff;">
-          <div class="stat-icon-bg" style="background:rgba(255,255,255,0.08);font-size:26px;">📋</div>
-          <div class="stat-number" data-count="98" data-suffix="%">0%</div>
-          <div class="stat-label">Kepatuhan PTW</div>
-          <div class="stat-sublabel">Tingkat penerapan izin kerja aman</div>
-        </div>
-
-        <div class="stat-card reveal reveal-delay-3" style="--stat-color:#fff;">
-          <div class="stat-icon-bg" style="background:rgba(255,255,255,0.08);font-size:26px;">⏰</div>
-          <div class="stat-number" data-count="2840" data-suffix="+">0+</div>
-          <div class="stat-label">Jam Kerja Aman</div>
-          <div class="stat-sublabel">Jam kerja tanpa LTI tahun ini</div>
-        </div>
-
-        <div class="stat-card reveal reveal-delay-4" style="--stat-color:#fff;">
-          <div class="stat-icon-bg" style="background:rgba(255,255,255,0.08);font-size:26px;">🏥</div>
-          <div class="stat-number" data-count="56" data-suffix="">0</div>
-          <div class="stat-label">Pemeriksaan Medis</div>
-          <div class="stat-sublabel">Karyawan diperiksa bulan ini</div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1031,6 +1373,185 @@
       document.getElementById('attendance-modal').classList.remove('active');
       document.body.style.overflow = '';
     }
+  </script>
+
+  <!-- QHSE Dashboard Chart.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script>
+    (function () {
+      const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+      // ─── KPI DATA ───
+      const KPI = [
+        { key: 'manHours', label: 'Total Man Hours Worked', val: 167200, cls: 'blue' },
+        { key: 'safeHours', label: 'Safe Man Hours Worked Without LTI', val: 820941, cls: 'teal' },
+        { key: 'avgManpower', label: 'Man Power Register', val: 371, cls: 'blue' },
+        { key: 'nearmiss', label: 'Nearmiss Report', val: 148, cls: 'orange' },
+        { key: 'clientClosed', label: 'Safety Observation Report (SOR)', val: 15570, cls: 'green' },
+        { key: 'internalClosed', label: 'Safety Observation Cards (SOC)', val: 159018, cls: 'teal' },
+        { key: 'walkthrough', label: 'Permit to Work Register', val: 159018, cls: 'blue' },
+        { key: 'meetings', label: 'Induction New Hire', val: 987, cls: 'green' },
+        { key: 'induction', label: 'Management Of Change', val: 112, cls: 'orange' },
+        { key: 'behavioral', label: 'Audit Management', val: 314, cls: 'blue' },
+        { key: 'audit', label: 'Management Walkthrough', val: 271, cls: 'teal' },
+        { key: 'mgmtTour', label: 'Internal HSE Observation', val: 9818, cls: 'green' },
+        { key: 'hazard', label: 'Safety Observation Report (SOR)', val: 15570, cls: 'orange' },
+        { key: 'preventive', label: 'Daily Check Up Register', val: 7787, cls: 'red' },
+        { key: 'survey', label: 'Clinic Register', val: 337, cls: 'teal' },
+        { key: 'awards', label: 'JOB Hazard Analysis (JHA)', val: 11418, cls: 'green' },
+      ];
+
+      // ─── CHART DATA ───
+      const CD = {
+        FAI: { target: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], actual: [1, 0, 2, 1, 0, 3, 1, 2, 0, 1, 1, 0], cum: [1, 1, 3, 4, 4, 7, 8, 10, 10, 11, 12, 12] },
+        MTI: { belowTarget: 4, atTarget: 3, exceeded: 2 },
+        RWI: { target: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], actual: [0, 0, 1, 0, 1, 0, 2, 1, 0, 1, 0, 1], cum: [0, 0, 1, 1, 2, 2, 4, 5, 5, 6, 6, 7] },
+        LTI: { target: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], actual: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0], cum: [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1] },
+        NLW: { target: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], actual: [0, 1, 0, 0, 2, 1, 0, 1, 0, 0, 2, 1], cum: [0, 1, 1, 1, 3, 4, 4, 5, 5, 5, 7, 8] },
+        FI: { target: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], actual: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], cum: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] },
+        RTI: { minor: 5, moderate: 4, serious: 2 },
+        PDI: { minor: 6, major: 5, critical: 3 },
+        EI: { a: [3, 5, 2, 4, 6, 3, 7, 4, 2, 5, 3, 4], b: [2, 3, 1, 2, 4, 2, 5, 3, 1, 3, 2, 2] },
+        CHO: { safe: [12, 15, 10, 18, 20, 14, 22, 16, 12, 19, 14, 18], atRisk: [5, 8, 4, 7, 9, 6, 10, 7, 4, 8, 6, 7], closed: [10, 14, 9, 15, 18, 12, 20, 15, 11, 17, 13, 16] },
+        IHO: { safe: [8, 10, 7, 12, 14, 9, 15, 11, 8, 13, 9, 12], atRisk: [3, 5, 2, 4, 6, 3, 7, 4, 2, 5, 3, 4], closed: [7, 9, 6, 11, 13, 8, 14, 10, 7, 12, 8, 11] },
+      };
+
+      const CI = {};
+
+      function mkComboChart(id, dataObj) {
+        const ctx = document.getElementById(id).getContext('2d');
+        CI[id] = new Chart(ctx, {
+          data: {
+            labels: M,
+            datasets: [
+              { type: 'bar', label: 'Actual', data: dataObj.actual, backgroundColor: '#e53935', borderRadius: 3, yAxisID: 'y' },
+              { type: 'bar', label: 'Target', data: dataObj.target, backgroundColor: '#fdd835', borderRadius: 3, yAxisID: 'y' },
+              {
+                type: 'line', label: 'Cumulative', data: dataObj.cum, borderColor: '#1565c0', backgroundColor: 'transparent',
+                borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#1565c0', tension: .3, yAxisID: 'y2'
+              },
+            ]
+          },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+            scales: {
+              x: { ticks: { font: { size: 9, family: 'DM Sans' }, color: '#78909c' }, grid: { display: false } },
+              y: { position: 'left', ticks: { font: { size: 9 }, maxTicksLimit: 5, color: '#78909c' }, grid: { color: '#eef3f8' } },
+              y2: { position: 'right', ticks: { font: { size: 9 }, maxTicksLimit: 5, color: '#1565c0' }, grid: { display: false } },
+            }
+          }
+        });
+      }
+
+      function mkDonutChart(id, labels, values, colors, legendId, totalId) {
+        const ctx = document.getElementById(id).getContext('2d');
+        CI[id] = new Chart(ctx, {
+          type: 'doughnut',
+          data: { labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: '#fff', hoverOffset: 4 }] },
+          options: {
+            responsive: false, maintainAspectRatio: false, cutout: '68%',
+            plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed}` } } },
+          }
+        });
+        renderPieLegend(legendId, labels, values, colors);
+        if (totalId) document.getElementById(totalId).textContent = values.reduce((a, b) => a + b, 0);
+      }
+
+      function mkPieChart(id, labels, values, colors, legendId) {
+        const ctx = document.getElementById(id).getContext('2d');
+        CI[id] = new Chart(ctx, {
+          type: 'pie',
+          data: { labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: '#fff', hoverOffset: 4 }] },
+          options: {
+            responsive: false, maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed}` } } },
+          }
+        });
+        renderPieLegend(legendId, labels, values, colors);
+      }
+
+      function renderPieLegend(legendId, labels, values, colors) {
+        const el = document.getElementById(legendId);
+        if (!el) return;
+        const total = values.reduce((a, b) => a + b, 0);
+        el.innerHTML = labels.map((l, i) => `
+          <div class="db-pie-legend-item">
+            <span class="db-pie-legend-dot" style="background:${colors[i]}"></span>
+            <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${l}</span>
+            <span class="db-pie-legend-val">${values[i]} <span style="font-size:9px;color:#aaa">(${total ? Math.round(values[i] / total * 100) : 0}%)</span></span>
+          </div>`).join('');
+      }
+
+      function mkGroupBar(id, datasets, colors) {
+        const ctx = document.getElementById(id).getContext('2d');
+        CI[id] = new Chart(ctx, {
+          type: 'bar',
+          data: { labels: M, datasets: datasets.map((d, i) => ({ label: d.label, data: d.data, backgroundColor: colors[i], borderRadius: 3 })) },
+          options: {
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: true, labels: { font: { size: 9 }, boxWidth: 10 } } },
+            scales: {
+              x: { ticks: { font: { size: 9, family: 'DM Sans' }, color: '#78909c' }, grid: { display: false } },
+              y: { ticks: { font: { size: 9 }, maxTicksLimit: 5, color: '#78909c' }, grid: { color: '#eef3f8' } },
+            }
+          }
+        });
+      }
+
+      // ─── BUILD KPI CARDS ───
+      function buildKPI() {
+        const g = document.getElementById('dbKpiGrid');
+        if (!g) return;
+        g.innerHTML = '';
+        KPI.forEach(k => {
+          g.innerHTML += `<div class="db-kpi-card">
+            <div class="db-kpi-label">${k.label}</div>
+            <div class="db-kpi-num ${k.cls}">${k.val.toLocaleString()}</div>
+          </div>`;
+        });
+      }
+
+      // ─── INIT ───
+      window.addEventListener('load', () => {
+        buildKPI();
+        mkComboChart('dbFAI', CD.FAI);
+        mkComboChart('dbRWI', CD.RWI);
+        mkComboChart('dbLTI', CD.LTI);
+        mkComboChart('dbNLW', CD.NLW);
+        mkComboChart('dbFI', CD.FI);
+
+        mkDonutChart('dbMTI',
+          ['Below Target', 'At Target', 'Exceeded'],
+          [CD.MTI.belowTarget, CD.MTI.atTarget, CD.MTI.exceeded],
+          ['#e53935', '#fdd835', '#43a047'],
+          'dbMtiLegend', 'dbMtiTotal');
+
+        mkPieChart('dbRTI',
+          ['Minor', 'Moderate', 'Serious'],
+          [CD.RTI.minor, CD.RTI.moderate, CD.RTI.serious],
+          ['#42a5f5', '#ff9800', '#e53935'],
+          'dbRtiLegend');
+
+        mkDonutChart('dbPDI',
+          ['Minor', 'Major', 'Critical'],
+          [CD.PDI.minor, CD.PDI.major, CD.PDI.critical],
+          ['#26a69a', '#ff7043', '#b71c1c'],
+          'dbPdiLegend', 'dbPdiTotal');
+
+        mkGroupBar('dbEI',
+          [{ label: 'Cat A', data: CD.EI.a }, { label: 'Cat B', data: CD.EI.b }],
+          ['#ef6c00', '#ffa726']);
+
+        mkGroupBar('dbCHO',
+          [{ label: 'Safe', data: CD.CHO.safe }, { label: 'At Risk', data: CD.CHO.atRisk }, { label: 'Closed', data: CD.CHO.closed }],
+          ['#43a047', '#e53935', '#1565c0']);
+
+        mkGroupBar('dbIHO',
+          [{ label: 'Safe', data: CD.IHO.safe }, { label: 'At Risk', data: CD.IHO.atRisk }, { label: 'Closed', data: CD.IHO.closed }],
+          ['#00897b', '#f4511e', '#283593']);
+      });
+    })();
   </script>
 
   <script src="js/script.js"></script>

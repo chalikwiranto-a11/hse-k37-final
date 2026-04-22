@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QHSE Dashboard</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Bebas+Neue&display=swap');
+
+        :root {
+            --bg: #ecf0f5;
+            --card: #ffffff;
+            --primary: #0d2137;
+            --accent: #1565c0;
+            --accent2: #0288d1;
+            --green: #2e7d32;
+            --green2: #43a047;
+            --yellow: #f9a825;
+            --orange: #e65100;
+            --red: #c62828;
+            --teal: #00695c;
+            --gray: #78909c;
+            --text: #1a2b3c;
+            --subtext: #546e7a;
+            --border: #dde5ee;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+            --r: 10px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── HEADER ── */
+        .header {
+            background: var(--primary);
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: #fff;
+        }
+
+        /* ── INFO BAR ── */
+        .info-bar {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background: #1e3a52;
+            padding: 0;
+        }
+
+        .info-cell {
+            padding: 10px 18px;
+            border-right: 1px solid #2e506a;
+        }
+
+        .info-cell:last-child {
+            border-right: none;
+        }
+
+        .info-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #7bafc8;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 13px;
+            font-weight: 600;
+            color: #e8f4fd;
+        }
+
+        .info-value.editable {
+            background: #152d40;
+            border: none;
+            color: #e8f4fd;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            width: 100%;
+            outline: none;
+            padding: 3px 7px;
+            border-radius: 5px;
+            cursor: text;
+        }
+
+        .info-value.editable:focus {
+            background: #0d2137;
+            outline: 2px solid #0288d1;
+        }
+
+        /* ── KPI GRID ── */
+        .kpi-section {
+            padding: 14px 16px 6px;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+        }
+
+        .kpi-card {
+            background: var(--card);
+            border-radius: var(--r);
+            padding: 10px 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+            transition: transform .15s, box-shadow .15s;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.11);
+        }
+
+        .kpi-card .kpi-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--subtext);
+            line-height: 1.3;
+            margin-bottom: 6px;
+            min-height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .kpi-card .kpi-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .kpi-card.blue .kpi-num {
+            color: #1565c0;
+        }
+
+        .kpi-card.teal .kpi-num {
+            color: #00695c;
+        }
+
+        .kpi-card.orange .kpi-num {
+            color: #e65100;
+        }
+
+        .kpi-card.green .kpi-num {
+            color: #2e7d32;
+        }
+
+        .kpi-card.red .kpi-num {
+            color: #c62828;
+        }
+
+        /* ── CHARTS SECTION ── */
+        .charts-section {
+            padding: 6px 16px 16px;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            letter-spacing: 2px;
+            color: var(--primary);
+            background: var(--primary);
+            color: #fff;
+            padding: 5px 14px;
+            border-radius: 6px 6px 0 0;
+            margin-bottom: 0;
+        }
+
+        .charts-wrapper {
+            background: #fff;
+            border-radius: 0 0 10px 10px;
+            padding: 14px;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .charts-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .chart-card {
+            background: #f7fafd;
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .chart-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 6px;
+        }
+
+        .chart-wrap {
+            height: 90px;
+            position: relative;
+        }
+
+        .chart-wrap canvas {
+            width: 100% !important;
+            height: 90px !important;
+        }
+
+        .chart-wrap-tall {
+            height: 110px;
+            position: relative;
+        }
+
+        .chart-wrap-tall canvas {
+            width: 100% !important;
+            height: 110px !important;
+        }
+
+        /* ── PIE / DONUT CHARTS ── */
+        .pie-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 90px;
+        }
+
+        .pie-wrap canvas {
+            flex: 0 0 90px;
+            width: 90px !important;
+            height: 90px !important;
+        }
+
+        .pie-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .pie-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 10px;
+            color: var(--subtext);
+            line-height: 1.2;
+        }
+
+        .pie-legend-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .pie-legend-val {
+            font-family: 'DM Mono', monospace;
+            font-weight: 700;
+            color: var(--text);
+            margin-left: auto;
+            font-size: 11px;
+        }
+
+        .donut-center {
+            position: absolute;
+            top: 50%;
+            left: 45px;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .donut-center .dc-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .donut-center .dc-lbl {
+            font-size: 8px;
+            color: var(--gray);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pie-wrap-box {
+            position: relative;
+            flex: 0 0 90px;
+            height: 90px;
+        }
+
+        /* ── EDIT BUTTON ── */
+        .fab {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 22px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(21, 101, 192, .45);
+            z-index: 1000;
+            transition: background .2s, transform .15s;
+            letter-spacing: .5px;
+        }
+
+        .fab:hover {
+            background: #0d47a1;
+            transform: translateY(-2px);
+        }
+
+        /* ── MODAL ── */
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 16px;
+            width: 92%;
+            max-width: 740px;
+            max-height: 88vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .2);
+        }
+
+        .modal-head {
+            background: var(--primary);
+            padding: 18px 24px;
+            border-radius: 16px 16px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-head h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #7bafc8;
+            font-size: 22px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 20px 24px;
+        }
+
+        .tab-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin-bottom: 18px;
+        }
+
+        .tb {
+            background: #edf3fa;
+            border: none;
+            border-radius: 7px;
+            padding: 7px 13px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            color: var(--subtext);
+            letter-spacing: .3px;
+            transition: background .15s;
+        }
+
+        .tb.on {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .tc {
+            display: none;
+        }
+
+        .tc.on {
+            display: block;
+        }
+
+        .field {
+            margin-bottom: 13px;
+        }
+
+        .field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--subtext);
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            margin-bottom: 5px;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 9px 12px;
+            border: 1.5px solid #d4e0ee;
+            border-radius: 8px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .field input:focus {
+            border-color: var(--accent);
+        }
+
+        .mths {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 7px;
+        }
+
+        .mf label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--gray);
+            display: block;
+            text-align: center;
+            margin-bottom: 3px;
+        }
+
+        .mf input {
+            width: 100%;
+            padding: 6px 3px;
+            border: 1.5px solid #d4e0ee;
+            border-radius: 6px;
+            font-size: 12px;
+            text-align: center;
+            font-family: 'DM Mono', monospace;
+            outline: none;
+        }
+
+        .mf input:focus {
+            border-color: var(--accent);
+        }
+
+        .note {
+            font-size: 11px;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+
+        .mactions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-ok {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 9px;
+            padding: 10px 26px;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+        }
+
+        .btn-cx {
+            background: #edf3fa;
+            color: var(--subtext);
+            border: none;
+            border-radius: 9px;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+        }
+
+        @media(max-width:900px) {
+            .kpi-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .charts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .charts-grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:600px) {
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .mths {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>QHSE Dashboard</h1>
+    </div>
+
+    <div class="info-bar">
+        <div class="info-cell">
+            <div class="info-label">Start Date</div>
+            <input class="info-value editable" id="inf-startdate" value="22 November 2019" placeholder="Start Date">
+        </div>
+        <div class="info-cell">
+            <div class="info-label">Project</div>
+            <input class="info-value editable" id="inf-projcode" value="RDMP Balikpapan JO" placeholder="Project Code">
+        </div>
+        <div class="info-cell">
+            <div class="info-label">Name of Reporting HSE Person</div>
+            <input class="info-value editable" id="inf-hseperson" value="Agus Kuswanto ST, SST, M.PSI"
+                placeholder="HSE Person Name">
+        </div>
+    </div>
+
+    <!-- KPI CARDS -->
+    <div class="kpi-section">
+        <div class="kpi-grid" id="kpiGrid"></div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="charts-section">
+        <div class="section-title">Incident & Injury Tracking</div>
+        <div class="charts-wrapper">
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-title">First Aid Injury</div>
+                    <div class="chart-wrap"><canvas id="cFAI"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Medical Treatment Injury</div>
+                    <div class="pie-wrap">
+                        <div class="pie-wrap-box">
+                            <canvas id="cMTI"></canvas>
+                            <div class="donut-center">
+                                <div class="dc-num" id="mtiTotal">9</div>
+                                <div class="dc-lbl">Total</div>
+                            </div>
+                        </div>
+                        <div class="pie-legend" id="mtiLegend"></div>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Restricted Work Injury</div>
+                    <div class="chart-wrap"><canvas id="cRWI"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Lost Time Injury</div>
+                    <div class="chart-wrap"><canvas id="cLTI"></canvas></div>
+                </div>
+            </div>
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-title">Number of Lost Workdays</div>
+                    <div class="chart-wrap"><canvas id="cNLW"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Fatal Incidents</div>
+                    <div class="chart-wrap"><canvas id="cFI"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Road Traffic Incident</div>
+                    <div class="pie-wrap">
+                        <div class="pie-wrap-box">
+                            <canvas id="cRTI"></canvas>
+                        </div>
+                        <div class="pie-legend" id="rtiLegend"></div>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Property Damage Incident</div>
+                    <div class="pie-wrap">
+                        <div class="pie-wrap-box">
+                            <canvas id="cPDI"></canvas>
+                            <div class="donut-center">
+                                <div class="dc-num" id="pdiTotal">14</div>
+                                <div class="dc-lbl">Total</div>
+                            </div>
+                        </div>
+                        <div class="pie-legend" id="pdiLegend"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="charts-grid-3" style="margin-top:12px;">
+                <div class="chart-card">
+                    <div class="chart-title">Environmental Incidents</div>
+                    <div class="chart-wrap-tall"><canvas id="cEI"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Client HSE Observation</div>
+                    <div class="chart-wrap-tall"><canvas id="cCHO"></canvas></div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-title">Internal HSE Observation</div>
+                    <div class="chart-wrap-tall"><canvas id="cIHO"></canvas></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAB -->
+    <button class="fab" onclick="openModal()">✏ Edit Data</button>
+
+    <!-- MODAL -->
+    <div class="overlay" id="overlay">
+        <div class="modal">
+            <div class="modal-head">
+                <h2>Edit Dashboard Data</h2>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="tab-bar" id="tabBar"></div>
+                <div id="tabContents"></div>
+                <div class="mactions">
+                    <button class="btn-cx" onclick="closeModal()">Batal</button>
+                    <button class="btn-ok" onclick="applyAll()">✔ Terapkan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <script>
+        const M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        // ─── KPI DATA ───
+        const KPI = [
+            { key: 'manHours', label: 'Total Man Hours Worked', val: 167200, cls: 'blue' },
+            { key: 'safeHours', label: 'Safe Man Hours Worked Without LTI', val: 820941, cls: 'teal' },
+            { key: 'avgManpower', label: 'Man Power Register', val: 371, cls: 'blue' },
+            { key: 'nearmiss', label: 'Nearmiss Report', val: 148, cls: 'orange' },
+            { key: 'clientClosed', label: 'Safety Observation Report (SOR)', val: 15570, cls: 'green' },
+            { key: 'internalClosed', label: 'Safety Observation Cards (SOC)', val: 159018, cls: 'teal' },
+            { key: 'walkthrough', label: 'Permit to Work Register', val: 159018, cls: 'blue' },
+            { key: 'meetings', label: 'Induction New Hire', val: 987, cls: 'green' },
+            { key: 'induction', label: 'Management Of Change', val: 112, cls: 'orange' },
+            { key: 'behavioral', label: 'Audit Management', val: 314, cls: 'blue' },
+            { key: 'audit', label: 'Management Walkthrough', val: 271, cls: 'teal' },
+            { key: 'mgmtTour', label: 'Internal HSE Observation', val: 9818, cls: 'green' },
+            { key: 'hazard', label: 'Safety Observation Report (SOR)', val: 15570, cls: 'orange' },
+            { key: 'preventive', label: 'Daily Check Up Register', val: 7787, cls: 'red' },
+            { key: 'survey', label: 'Clinic Register', val: 337, cls: 'teal' },
+            { key: 'awards', label: 'JOB Hazard Analysis (JHA)', val: 11418, cls: 'green' },
+        ];
+
+        // ─── CHART DATA ───
+        const CD = {
+            FAI: {
+                target: [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+                actual: [1, 0, 2, 1, 0, 3, 1, 2, 0, 1, 1, 0],
+                cum: [1, 1, 3, 4, 4, 7, 8, 10, 10, 11, 12, 12],
+            },
+            MTI: {
+                belowTarget: 4, atTarget: 3, exceeded: 2,
+            },
+            RWI: {
+                target: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                actual: [0, 0, 1, 0, 1, 0, 2, 1, 0, 1, 0, 1],
+                cum: [0, 0, 1, 1, 2, 2, 4, 5, 5, 6, 6, 7],
+            },
+            LTI: {
+                target: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                actual: [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+                cum: [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+            },
+            NLW: {
+                target: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                actual: [0, 1, 0, 0, 2, 1, 0, 1, 0, 0, 2, 1],
+                cum: [0, 1, 1, 1, 3, 4, 4, 5, 5, 5, 7, 8],
+            },
+            FI: {
+                target: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                actual: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                cum: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            },
+            RTI: {
+                minor: 5, moderate: 4, serious: 2,
+            },
+            PDI: {
+                minor: 6, major: 5, critical: 3,
+            },
+            EI: {
+                a: [3, 5, 2, 4, 6, 3, 7, 4, 2, 5, 3, 4],
+                b: [2, 3, 1, 2, 4, 2, 5, 3, 1, 3, 2, 2],
+            },
+            CHO: {
+                safe: [12, 15, 10, 18, 20, 14, 22, 16, 12, 19, 14, 18],
+                atRisk: [5, 8, 4, 7, 9, 6, 10, 7, 4, 8, 6, 7],
+                closed: [10, 14, 9, 15, 18, 12, 20, 15, 11, 17, 13, 16],
+            },
+            IHO: {
+                safe: [8, 10, 7, 12, 14, 9, 15, 11, 8, 13, 9, 12],
+                atRisk: [3, 5, 2, 4, 6, 3, 7, 4, 2, 5, 3, 4],
+                closed: [7, 9, 6, 11, 13, 8, 14, 10, 7, 12, 8, 11],
+            },
+        };
+
+        // ─── CHART INSTANCES ───
+        const CI = {};
+
+        function mkComboChart(id, dataObj) {
+            const ctx = document.getElementById(id).getContext('2d');
+            CI[id] = new Chart(ctx, {
+                data: {
+                    labels: M,
+                    datasets: [
+                        { type: 'bar', label: 'Actual', data: dataObj.actual, backgroundColor: '#e53935', borderRadius: 3, yAxisID: 'y' },
+                        { type: 'bar', label: 'Target', data: dataObj.target, backgroundColor: '#fdd835', borderRadius: 3, yAxisID: 'y' },
+                        {
+                            type: 'line', label: 'Cumulative', data: dataObj.cum, borderColor: '#1565c0', backgroundColor: 'transparent',
+                            borderWidth: 2, pointRadius: 3, pointBackgroundColor: '#1565c0', tension: .3, yAxisID: 'y2'
+                        },
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
+                    scales: {
+                        x: { ticks: { font: { size: 9, family: 'DM Sans' }, color: '#78909c' }, grid: { display: false } },
+                        y: { position: 'left', ticks: { font: { size: 9 }, maxTicksLimit: 5, color: '#78909c' }, grid: { color: '#eef3f8' } },
+                        y2: { position: 'right', ticks: { font: { size: 9 }, maxTicksLimit: 5, color: '#1565c0' }, grid: { display: false } },
+                    }
+                }
+            });
+        }
+
+        // ─── DONUT CHART ───
+        function mkDonutChart(id, labels, values, colors, legendId, totalId) {
+            const ctx = document.getElementById(id).getContext('2d');
+            CI[id] = new Chart(ctx, {
+                type: 'doughnut',
+                data: { labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: '#fff', hoverOffset: 4 }] },
+                options: {
+                    responsive: false, maintainAspectRatio: false,
+                    cutout: '68%',
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed}` } } },
+                }
+            });
+            renderPieLegend(legendId, labels, values, colors);
+            if (totalId) document.getElementById(totalId).textContent = values.reduce((a, b) => a + b, 0);
+        }
+
+        // ─── PIE CHART ───
+        function mkPieChart(id, labels, values, colors, legendId) {
+            const ctx = document.getElementById(id).getContext('2d');
+            CI[id] = new Chart(ctx, {
+                type: 'pie',
+                data: { labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: '#fff', hoverOffset: 4 }] },
+                options: {
+                    responsive: false, maintainAspectRatio: false,
+                    plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${c.label}: ${c.parsed}` } } },
+                }
+            });
+            renderPieLegend(legendId, labels, values, colors);
+        }
+
+        function renderPieLegend(legendId, labels, values, colors) {
+            const el = document.getElementById(legendId);
+            if (!el) return;
+            const total = values.reduce((a, b) => a + b, 0);
+            el.innerHTML = labels.map((l, i) => `
+    <div class="pie-legend-item">
+      <span class="pie-legend-dot" style="background:${colors[i]}"></span>
+      <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${l}</span>
+      <span class="pie-legend-val">${values[i]} <span style="font-size:9px;color:#aaa">(${total ? Math.round(values[i] / total * 100) : 0}%)</span></span>
+    </div>`).join('');
+        }
+
+        function updateDonut(id, values, legendId, totalId, labels, colors) {
+            CI[id].data.datasets[0].data = [...values];
+            CI[id].update('active');
+            renderPieLegend(legendId, labels, values, colors);
+            if (totalId) document.getElementById(totalId).textContent = values.reduce((a, b) => a + b, 0);
+        }
+
+        function mkGroupBar(id, datasets, colors) {
+            const ctx = document.getElementById(id).getContext('2d');
+            CI[id] = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: M,
+                    datasets: datasets.map((d, i) => ({
+                        label: d.label, data: d.data,
+                        backgroundColor: colors[i], borderRadius: 3,
+                    }))
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: { legend: { display: true, labels: { font: { size: 9 }, boxWidth: 10 } } },
+                    scales: {
+                        x: { ticks: { font: { size: 9, family: 'DM Sans' }, color: '#78909c' }, grid: { display: false } },
+                        y: { ticks: { font: { size: 9 }, maxTicksLimit: 5, color: '#78909c' }, grid: { color: '#eef3f8' } },
+                    }
+                }
+            });
+        }
+
+        function updateCombo(id, dataObj) {
+            CI[id].data.datasets[0].data = [...dataObj.actual];
+            CI[id].data.datasets[1].data = [...dataObj.target];
+            CI[id].data.datasets[2].data = [...dataObj.cum];
+            CI[id].update('active');
+        }
+
+        function updateGroup(id, datasets) {
+            datasets.forEach((d, i) => { CI[id].data.datasets[i].data = [...d.data]; });
+            CI[id].update('active');
+        }
+
+        // ─── BUILD KPI CARDS ───
+        function buildKPI() {
+            const g = document.getElementById('kpiGrid');
+            g.innerHTML = '';
+            KPI.forEach(k => {
+                g.innerHTML += `<div class="kpi-card ${k.cls}" data-key="${k.key}">
+      <div class="kpi-label">${k.label}</div>
+      <div class="kpi-num" id="kv-${k.key}">${k.val.toLocaleString()}</div>
+    </div>`;
+            });
+        }
+
+        // ─── MODAL BUILD ───
+        const TABS = [
+            { id: 'kpis', label: 'KPI Cards' },
+            { id: 'fai', label: 'First Aid Injury' },
+            { id: 'mti', label: 'Med. Treatment' },
+            { id: 'rwi', label: 'Restricted Work' },
+            { id: 'lti', label: 'Lost Time Injury' },
+            { id: 'nlw', label: 'Lost Workdays' },
+            { id: 'fi', label: 'Fatal Incidents' },
+            { id: 'rti', label: 'Road Traffic' },
+            { id: 'pdi', label: 'Property Damage' },
+            { id: 'ei', label: 'Environ. Incidents' },
+            { id: 'cho', label: 'Client HSE Obs' },
+            { id: 'iho', label: 'Internal HSE Obs' },
+        ];
+
+        function buildModal() {
+            const tb = document.getElementById('tabBar');
+            const tc = document.getElementById('tabContents');
+            tb.innerHTML = ''; tc.innerHTML = '';
+            TABS.forEach((t, i) => {
+                tb.innerHTML += `<button class="tb${i === 0 ? ' on' : ''}" onclick="switchTab('${t.id}',this)">${t.label}</button>`;
+                tc.innerHTML += `<div class="tc${i === 0 ? ' on' : ''}" id="tc-${t.id}"></div>`;
+            });
+
+            // KPI tab
+            const kpiDiv = document.getElementById('tc-kpis');
+            KPI.forEach(k => {
+                kpiDiv.innerHTML += `<div class="field"><label>${k.label}</label>
+      <input type="number" id="mi-kpi-${k.key}" value="${k.val}"></div>`;
+            });
+
+            // Combo chart tabs (FAI, RWI, LTI, NLW, FI only)
+            [['fai', 'FAI'], ['rwi', 'RWI'], ['lti', 'LTI'], ['nlw', 'NLW'], ['fi', 'FI']].forEach(([tid, ckey]) => {
+                const d = document.getElementById(`tc-${tid}`);
+                d.innerHTML = `<p class="note">Nilai per bulan (Jan–Des)</p>`;
+                ['target', 'actual', 'cum'].forEach(row => {
+                    d.innerHTML += `<div class="field"><label>${row.charAt(0).toUpperCase() + row.slice(1)}</label>
+        <div class="mths">${M.map((m, i) => `<div class="mf"><label>${m}</label>
+          <input type="number" id="mi-${ckey}-${row}-${i}" value="${CD[ckey][row][i]}"></div>`).join('')}
+        </div></div>`;
+                });
+            });
+
+            // MTI - Donut inputs
+            const mtiDiv = document.getElementById('tc-mti');
+            mtiDiv.innerHTML = `<p class="note">Jumlah per kategori injury treatment</p>
+    <div class="field"><label>Below Target</label><input type="number" id="mi-mti-belowTarget" value="${CD.MTI.belowTarget}"></div>
+    <div class="field"><label>At Target</label><input type="number" id="mi-mti-atTarget" value="${CD.MTI.atTarget}"></div>
+    <div class="field"><label>Exceeded</label><input type="number" id="mi-mti-exceeded" value="${CD.MTI.exceeded}"></div>`;
+
+            // RTI - Pie inputs
+            const rtiDiv = document.getElementById('tc-rti');
+            rtiDiv.innerHTML = `<p class="note">Jumlah per tingkat keparahan road traffic incident</p>
+    <div class="field"><label>Minor</label><input type="number" id="mi-rti-minor" value="${CD.RTI.minor}"></div>
+    <div class="field"><label>Moderate</label><input type="number" id="mi-rti-moderate" value="${CD.RTI.moderate}"></div>
+    <div class="field"><label>Serious</label><input type="number" id="mi-rti-serious" value="${CD.RTI.serious}"></div>`;
+
+            // PDI - Donut inputs
+            const pdiDiv = document.getElementById('tc-pdi');
+            pdiDiv.innerHTML = `<p class="note">Jumlah per tingkat kerusakan properti</p>
+    <div class="field"><label>Minor</label><input type="number" id="mi-pdi-minor" value="${CD.PDI.minor}"></div>
+    <div class="field"><label>Major</label><input type="number" id="mi-pdi-major" value="${CD.PDI.major}"></div>
+    <div class="field"><label>Critical</label><input type="number" id="mi-pdi-critical" value="${CD.PDI.critical}"></div>`;
+
+            // EI
+            const eiDiv = document.getElementById('tc-ei');
+            eiDiv.innerHTML = `<p class="note">Nilai per bulan</p>`;
+            ['a', 'b'].forEach((row, ri) => {
+                eiDiv.innerHTML += `<div class="field"><label>${ri === 0 ? 'Category A' : 'Category B'}</label>
+      <div class="mths">${M.map((m, i) => `<div class="mf"><label>${m}</label>
+        <input type="number" id="mi-EI-${row}-${i}" value="${CD.EI[row][i]}"></div>`).join('')}
+      </div></div>`;
+            });
+
+            // CHO / IHO
+            [['cho', 'CHO', ['Safe', 'At Risk', 'Closed']], ['iho', 'IHO', ['Safe', 'At Risk', 'Closed']]].forEach(([tid, ckey, labels]) => {
+                const d = document.getElementById(`tc-${tid}`);
+                d.innerHTML = `<p class="note">Nilai per bulan</p>`;
+                [['safe', 'Safe'], ['atRisk', 'At Risk'], ['closed', 'Closed']].forEach(([row, lbl]) => {
+                    d.innerHTML += `<div class="field"><label>${lbl}</label>
+        <div class="mths">${M.map((m, i) => `<div class="mf"><label>${m}</label>
+          <input type="number" id="mi-${ckey}-${row}-${i}" value="${CD[ckey][row][i]}"></div>`).join('')}
+        </div></div>`;
+                });
+            });
+        }
+
+        function switchTab(id, btn) {
+            document.querySelectorAll('.tb').forEach(b => b.classList.remove('on'));
+            document.querySelectorAll('.tc').forEach(t => t.classList.remove('on'));
+            btn.classList.add('on');
+            document.getElementById('tc-' + id).classList.add('on');
+        }
+
+        function openModal() { buildModal(); document.getElementById('overlay').classList.add('show'); }
+        function closeModal() { document.getElementById('overlay').classList.remove('show'); }
+        document.getElementById('overlay').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+
+        function applyAll() {
+            // KPI
+            KPI.forEach(k => {
+                const v = parseInt(document.getElementById(`mi-kpi-${k.key}`).value) || 0;
+                k.val = v;
+                document.getElementById(`kv-${k.key}`).textContent = v.toLocaleString();
+            });
+            // Combo charts (FAI, RWI, LTI, NLW, FI)
+            [['fai', 'FAI'], ['rwi', 'RWI'], ['lti', 'LTI'], ['nlw', 'NLW'], ['fi', 'FI']].forEach(([, ckey]) => {
+                ['target', 'actual', 'cum'].forEach(row => {
+                    M.forEach((_, i) => {
+                        CD[ckey][row][i] = parseFloat(document.getElementById(`mi-${ckey}-${row}-${i}`).value) || 0;
+                    });
+                });
+                updateCombo('c' + ckey.charAt(0) + ckey.slice(1), CD[ckey]);
+            });
+            // MTI Donut
+            CD.MTI.belowTarget = parseInt(document.getElementById('mi-mti-belowTarget').value) || 0;
+            CD.MTI.atTarget = parseInt(document.getElementById('mi-mti-atTarget').value) || 0;
+            CD.MTI.exceeded = parseInt(document.getElementById('mi-mti-exceeded').value) || 0;
+            updateDonut('cMTI', [CD.MTI.belowTarget, CD.MTI.atTarget, CD.MTI.exceeded], 'mtiLegend', 'mtiTotal',
+                ['Below Target', 'At Target', 'Exceeded'], ['#e53935', '#fdd835', '#43a047']);
+            // RTI Pie
+            CD.RTI.minor = parseInt(document.getElementById('mi-rti-minor').value) || 0;
+            CD.RTI.moderate = parseInt(document.getElementById('mi-rti-moderate').value) || 0;
+            CD.RTI.serious = parseInt(document.getElementById('mi-rti-serious').value) || 0;
+            updateDonut('cRTI', [CD.RTI.minor, CD.RTI.moderate, CD.RTI.serious], 'rtiLegend', null,
+                ['Minor', 'Moderate', 'Serious'], ['#42a5f5', '#ff9800', '#e53935']);
+            // PDI Donut
+            CD.PDI.minor = parseInt(document.getElementById('mi-pdi-minor').value) || 0;
+            CD.PDI.major = parseInt(document.getElementById('mi-pdi-major').value) || 0;
+            CD.PDI.critical = parseInt(document.getElementById('mi-pdi-critical').value) || 0;
+            updateDonut('cPDI', [CD.PDI.minor, CD.PDI.major, CD.PDI.critical], 'pdiLegend', 'pdiTotal',
+                ['Minor', 'Major', 'Critical'], ['#26a69a', '#ff7043', '#b71c1c']);
+            // EI
+            ['a', 'b'].forEach(row => { M.forEach((_, i) => { CD.EI[row][i] = parseFloat(document.getElementById(`mi-EI-${row}-${i}`).value) || 0; }); });
+            updateGroup('cEI', [{ data: CD.EI.a }, { data: CD.EI.b }]);
+            // CHO
+            ['safe', 'atRisk', 'closed'].forEach(row => { M.forEach((_, i) => { CD.CHO[row][i] = parseFloat(document.getElementById(`mi-CHO-${row}-${i}`).value) || 0; }); });
+            updateGroup('cCHO', [{ data: CD.CHO.safe }, { data: CD.CHO.atRisk }, { data: CD.CHO.closed }]);
+            // IHO
+            ['safe', 'atRisk', 'closed'].forEach(row => { M.forEach((_, i) => { CD.IHO[row][i] = parseFloat(document.getElementById(`mi-IHO-${row}-${i}`).value) || 0; }); });
+            updateGroup('cIHO', [{ data: CD.IHO.safe }, { data: CD.IHO.atRisk }, { data: CD.IHO.closed }]);
+
+            closeModal();
+        }
+
+        // ─── INIT ───
+        window.addEventListener('load', () => {
+            buildKPI();
+            mkComboChart('cFAI', CD.FAI);
+            mkComboChart('cRWI', CD.RWI);
+            mkComboChart('cLTI', CD.LTI);
+            mkComboChart('cNLW', CD.NLW);
+            mkComboChart('cFI', CD.FI);
+
+            // MTI - Donut
+            mkDonutChart('cMTI',
+                ['Below Target', 'At Target', 'Exceeded'],
+                [CD.MTI.belowTarget, CD.MTI.atTarget, CD.MTI.exceeded],
+                ['#e53935', '#fdd835', '#43a047'],
+                'mtiLegend', 'mtiTotal');
+
+            // RTI - Pie
+            mkPieChart('cRTI',
+                ['Minor', 'Moderate', 'Serious'],
+                [CD.RTI.minor, CD.RTI.moderate, CD.RTI.serious],
+                ['#42a5f5', '#ff9800', '#e53935'],
+                'rtiLegend');
+
+            // PDI - Donut
+            mkDonutChart('cPDI',
+                ['Minor', 'Major', 'Critical'],
+                [CD.PDI.minor, CD.PDI.major, CD.PDI.critical],
+                ['#26a69a', '#ff7043', '#b71c1c'],
+                'pdiLegend', 'pdiTotal');
+
+            mkGroupBar('cEI',
+                [{ label: 'Cat A', data: CD.EI.a }, { label: 'Cat B', data: CD.EI.b }],
+                ['#ef6c00', '#ffa726']);
+
+            mkGroupBar('cCHO',
+                [{ label: 'Safe', data: CD.CHO.safe }, { label: 'At Risk', data: CD.CHO.atRisk }, { label: 'Closed', data: CD.CHO.closed }],
+                ['#43a047', '#e53935', '#1565c0']);
+
+            mkGroupBar('cIHO',
+                [{ label: 'Safe', data: CD.IHO.safe }, { label: 'At Risk', data: CD.IHO.atRisk }, { label: 'Closed', data: CD.IHO.closed }],
+                ['#00897b', '#f4511e', '#283593']);
+        });
+    </script>
+</body>
+
+</html>
