@@ -769,6 +769,57 @@
             style="white-space:nowrap;">
             🌙 Night Shift Report
           </button>
+
+          <!-- Barcode Icon Button Group — Security -->
+          <div id="sec-barcode-group" style="margin-left:auto; display:none; align-items:center; gap:8px;">
+            <span style="color:#e6a200; font-size:13px; font-weight:700; letter-spacing:0.02em;">Scan Barcode!</span>
+            <button class="barcode-btn" onclick="openSafetyModal('security')" title="Lihat Barcode Security"
+              style="border:none; background:rgba(62,146,204,0.1); color:var(--secondary); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.3s ease;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M3 17v2a2 2 0 0 0 2 2h2"></path>
+                <rect x="7" y="7" width="10" height="10" rx="2"></rect>
+                <line x1="12" y1="12" x2="12" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Barcode Icon Button Group — Scaffolding -->
+          <div id="scaf-barcode-group" style="margin-left:auto; display:none; align-items:center; gap:8px;">
+            <span style="color:#e6a200; font-size:13px; font-weight:700; letter-spacing:0.02em;">Scan Barcode!</span>
+            <button class="barcode-btn" onclick="openSafetyModal('scaffolding')" title="Lihat Barcode Scaffolding"
+              style="border:none; background:rgba(62,146,204,0.1); color:var(--secondary); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.3s ease;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M3 17v2a2 2 0 0 0 2 2h2"></path>
+                <rect x="7" y="7" width="10" height="10" rx="2"></rect>
+                <line x1="12" y1="12" x2="12" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Barcode Icon Button Group — Night Shift -->
+          <div id="night-barcode-group" style="margin-left:auto; display:none; align-items:center; gap:8px;">
+            <span style="color:#e6a200; font-size:13px; font-weight:700; letter-spacing:0.02em;">Scan Barcode!</span>
+            <button class="barcode-btn" onclick="openSafetyModal('nightshift')" title="Lihat Barcode Night Shift"
+              style="border:none; background:rgba(62,146,204,0.1); color:var(--secondary); width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.3s ease;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"></path>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"></path>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"></path>
+                <path d="M3 17v2a2 2 0 0 0 2 2h2"></path>
+                <rect x="7" y="7" width="10" height="10" rx="2"></rect>
+                <line x1="12" y1="12" x2="12" y2="12"></line>
+              </svg>
+            </button>
+          </div>
         </div>
 
         <!-- Form 1: Observasi Keselamatan -->
@@ -795,7 +846,8 @@
               </div>
               <div>
                 <label class="wa-label">🏢 Departemen</label>
-                <select id="f-dept" class="wa-input" style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <select id="f-dept" class="wa-input"
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
                   <option value="">Pilih departemen…</option>
                   <option>Operasional (Operations)</option>
                   <option>Pemeliharaan (Maintenance)</option>
@@ -812,7 +864,8 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
               <div>
                 <label class="wa-label">🏷️ Kategori Observasi *</label>
-                <select id="f-category" class="wa-input" required style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <select id="f-category" class="wa-input" required
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
                   <option value="">Pilih kategori…</option>
                   <option value="⚠️ Unsafe Condition">⚠️ Unsafe Condition (Kondisi Tidak Aman)</option>
                   <option value="🚫 Unsafe Act">🚫 Unsafe Act (Tindakan Tidak Aman)</option>
@@ -822,7 +875,8 @@
               </div>
               <div>
                 <label class="wa-label">🔴 Tingkat Risiko</label>
-                <select id="f-risk" class="wa-input" style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <select id="f-risk" class="wa-input"
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
                   <option value="🟢 Low">🟢 Rendah (Low)</option>
                   <option value="🟡 Medium">🟡 Sedang (Medium)</option>
                   <option value="🔴 High">🔴 Tinggi (High)</option>
@@ -913,7 +967,8 @@
               </div>
               <div>
                 <label class="wa-label">⏱️ Shift *</label>
-                <select id="sec-shift" class="wa-input" required style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <select id="sec-shift" class="wa-input" required
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
                   <option value="">Pilih Shift...</option>
                   <option value="Pagi">Pagi</option>
                   <option value="Malam">Malam</option>
@@ -1021,7 +1076,8 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:flex-end;margin-bottom:16px;">
               <div>
                 <label class="wa-label">⏱️ Waktu (Time) *</label>
-                <select id="scaf-shift" class="wa-input" required style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <select id="scaf-shift" class="wa-input" required
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
                   <option value="">Pilih Waktu/Shift...</option>
                   <option value="Morning AT 07:00 - 11.45 WITA">Morning AT 07:00 - 11.45 WITA</option>
                   <option value="Afternoon AT 13:00 - 17.00 WITA">Afternoon AT 13:00 - 17.00 WITA</option>
@@ -1029,7 +1085,8 @@
               </div>
               <div>
                 <label class="wa-label">📊 Status *</label>
-                <select id="scaf-status" class="wa-input" required style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <select id="scaf-status" class="wa-input" required
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
                   <option value="">Pilih Status...</option>
                   <option value="Start">Start</option>
                   <option value="Progress">Progress</option>
@@ -1102,7 +1159,8 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:flex-end;margin-bottom:16px;">
               <div>
                 <label class="wa-label">👥 Team *</label>
-                <select id="night-team" class="wa-input" required style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <select id="night-team" class="wa-input" required
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
                   <option value="">Pilih Team...</option>
                   <option value="Team 1: 01.00-01.45">Team 1: 01.00-01.45</option>
                   <option value="Team 2: 01.45-02.30">Team 2: 01.45-02.30</option>
@@ -1113,7 +1171,8 @@
               </div>
               <div>
                 <label class="wa-label">📍 Area Condition *</label>
-                <select id="night-area" class="wa-input" required style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <select id="night-area" class="wa-input" required
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
                   <option value="">Pilih Area Condition...</option>
                   <option value="Warehouse A">Warehouse A</option>
                   <option value="Warehouse B">Warehouse B</option>
@@ -1129,7 +1188,8 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:flex-end;margin-bottom:24px;">
               <div>
                 <label class="wa-label">🔎 Condition *</label>
-                <select id="night-condition" class="wa-input" required style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                <select id="night-condition" class="wa-input" required
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
                   <option value="">Pilih Condition...</option>
                   <option value="Good">Good</option>
                   <option value="No">No</option>
@@ -1166,7 +1226,9 @@
     }
 
     .safety-tab-btn {
-      padding: 10px 20px;
+      padding: 14px 16px;
+      flex: 1;
+      text-align: center;
       border: none;
       background: none;
       font-size: 14px;
@@ -1231,6 +1293,72 @@
       color: #bbb;
     }
 
+    /* BARCODE STYLES START */
+    .barcode-btn:hover {
+      background: var(--secondary) !important;
+      color: #fff !important;
+      transform: scale(1.1);
+      box-shadow: 0 4px 12px rgba(62, 146, 204, 0.2);
+    }
+
+    .hse-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .hse-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mcu-modal-container {
+      position: relative;
+      width: 90%;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      transform: scale(0.9);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .hse-modal.active .mcu-modal-container {
+      transform: scale(1);
+    }
+
+    .mcu-modal-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 32px;
+      height: 32px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 16px;
+      transition: background 0.3s ease;
+    }
+
+    .mcu-modal-close:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    /* BARCODE STYLES END */
+
     #wa-submit-btn:hover {
       background: #1ebe5d !important;
       transform: translateY(-2px);
@@ -1238,6 +1366,21 @@
     }
 
     @media (max-width: 600px) {
+      .safety-tabs {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 0;
+      }
+
+      .safety-tab-btn {
+        text-align: left;
+        padding: 14px 0;
+      }
+
+      .safety-tab-btn.active::after {
+        bottom: 0;
+      }
+
       #wa-observation-form>div[style*="grid-template-columns"] {
         display: flex !important;
         flex-direction: column !important;
@@ -1352,14 +1495,26 @@ _${new Date().toLocaleString('id-ID')}_
       document.querySelectorAll('.safety-form-content').forEach(content => {
         content.style.display = 'none';
       });
+      // Hide all barcode groups
+      ['sec-barcode-group', 'scaf-barcode-group', 'night-barcode-group'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+
       if (tabId === 'observasi') {
         document.getElementById('form-observasi').style.display = 'block';
       } else if (tabId === 'security') {
         document.getElementById('form-security').style.display = 'block';
+        const bg = document.getElementById('sec-barcode-group');
+        if (bg) bg.style.display = 'flex';
       } else if (tabId === 'scaffolding') {
         document.getElementById('form-scaffolding').style.display = 'block';
+        const bg = document.getElementById('scaf-barcode-group');
+        if (bg) bg.style.display = 'flex';
       } else if (tabId === 'nightshift') {
         document.getElementById('form-nightshift').style.display = 'block';
+        const bg = document.getElementById('night-barcode-group');
+        if (bg) bg.style.display = 'flex';
       }
     }
 
@@ -1548,7 +1703,52 @@ _${new Date().toLocaleString('id-ID')}_
         document.getElementById('wa-nightshift-form').reset();
       }, 3000);
     }
+    function openSafetyModal(type) {
+      const modalImages = {
+        'security': 'https://inner-red-gti5xhr9ey.edgeone.app/image.jpeg',
+        'scaffolding': 'https://fortunate-bronze-syxkv30fo5.edgeone.app/image.jpeg',
+        'nightshift': 'https://forthcoming-amber-ai7kxmm6m3.edgeone.app/image.jpeg'
+      };
+
+      // ═════════════════════════════════════════════════════
+      // GANTI LINK UNTUK TOMBOL "CLICK HERE" DI BAWAH INI:
+      // ═════════════════════════════════════════════════════
+      const modalLinks = {
+        'security': 'https://docs.google.com/forms/d/e/1FAIpQLSeTQXFKofTTzQ2V1YpgZlRlCZhx5IxG_wQOS0dOXuoW0XcUsA/viewform',
+        'scaffolding': 'https://docs.google.com/forms/d/e/1FAIpQLSc7sVCVV59VlJOkRDnqc4tp5n4Cq5K6nRqNXoocDkzQy_L6lA/viewform',
+        'nightshift': 'https://docs.google.com/forms/d/e/1FAIpQLSdK7kaPKL7Crz6qtApcx1ocIzhQdrliU5L-gKfHcak1EzBdJA/viewform'
+      };
+
+      const img = document.getElementById('safety-modal-img');
+      if (img) img.src = modalImages[type] || modalImages['security'];
+
+      const linkBtn = document.getElementById('safety-modal-link');
+      if (linkBtn) linkBtn.href = modalLinks[type] || '#';
+
+      document.getElementById('safety-qr-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSafetyModal() {
+      document.getElementById('safety-qr-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
   </script>
+
+  <!-- Safety Barcode Modal -->
+  <div class="hse-modal" id="safety-qr-modal" onclick="if(event.target===this) closeSafetyModal()">
+    <div class="mcu-modal-container">
+      <button class="mcu-modal-close" onclick="closeSafetyModal()">✕</button>
+      <img id="safety-modal-img" src="" alt="Safety Procedure QR Code"
+        style="width: 100%; height: auto; display: block;">
+      <div style="padding: 20px; background: #fff; text-align: center; border-top: 1px solid #e2e8f0;">
+        <a id="safety-modal-link" href="#"
+          style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #1a365d; color: #fff; padding: 12px 32px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.3s ease;">
+          📋 Click Here
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══ GALLERY KESELAMATAN ══════════════════════════════════════ -->
   <section class="section section-alt" id="gallery-safety">
