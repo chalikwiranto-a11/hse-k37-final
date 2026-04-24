@@ -1039,6 +1039,238 @@
       </div>
     </div>
   </section>
+  <section class="cta-section" id="report-section" style="background: url('assets/gallery-bg.png') center/cover no-repeat !important;">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow reveal" style="color: rgba(255,255,255,0.9);">Gallery</div>
+        <h2 class="section-title reveal reveal-delay-1" style="color: #fff;">LIFTING PLAN</h2>
+        <p class="section-desc reveal reveal-delay-2" style="color: rgba(255,255,255,0.7);">
+          <style>
+            .gallery-carousel {
+              display: flex;
+              overflow-x: auto;
+              scroll-snap-type: x mandatory;
+              gap: 24px;
+              padding: 10px 0 24px 0;
+              -webkit-overflow-scrolling: touch;
+              scrollbar-width: thin;
+              scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+            }
+
+            .gallery-carousel::-webkit-scrollbar {
+              height: 8px;
+            }
+
+            .gallery-carousel::-webkit-scrollbar-thumb {
+              background: rgba(255, 255, 255, 0.3);
+              border-radius: 4px;
+            }
+
+            .gallery-carousel-item {
+              flex: 0 0 calc(33.333% - 16px);
+              scroll-snap-align: start;
+              border-radius: 16px;
+              background: #fff;
+              border: 1px solid var(--border, #e2e8f0);
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              aspect-ratio: 16 / 10;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              overflow: hidden;
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+
+            .gallery-carousel-item:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            }
+
+            .gallery-carousel-item img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              border-radius: 16px;
+            }
+
+            @media (max-width: 768px) {
+              .gallery-carousel-item {
+                flex: 0 0 calc(85% - 12px);
+              }
+            }
+          </style>
+        <div class="gallery-carousel reveal reveal-delay-3">
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-1.webp" alt="Gallery 1" loading="lazy">
+          </div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-2.webp" alt="Gallery 2" loading="lazy">
+          </div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-3.webp" alt="Gallery 3" loading="lazy">
+          </div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-4.webp" alt="Gallery 4" loading="lazy">
+          </div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-5.webp" alt="Gallery 5" loading="lazy">
+          </div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-6.webp" alt="Gallery 6" loading="lazy">
+          </div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-7.webp" alt="Gallery 7" loading="lazy">
+          </div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-8.webp" alt="Gallery 8" loading="lazy">
+          </div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-9.webp" alt="Gallery 9" loading="lazy">
+          </div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-10.webp" alt="Gallery 10"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-11.webp" alt="Gallery 11"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-12.webp" alt="Gallery 12"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-13.webp" alt="Gallery 13"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-14.webp" alt="Gallery 14"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-15.webp" alt="Gallery 15"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-16.webp" alt="Gallery 16"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-17.webp" alt="Gallery 17"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-18.webp" alt="Gallery 18"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-19.webp" alt="Gallery 19"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-20.webp" alt="Gallery 20"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-21.webp" alt="Gallery 21"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-22.webp" alt="Gallery 22"
+              loading="lazy"></div>
+          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-23.webp" alt="Gallery 23"
+              loading="lazy"></div>
+        </div>
+      </div>
+
+      <!-- Lightbox Modal for Gallery -->
+      <style>
+        .permit-lightbox {
+          position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center;
+          opacity: 0; visibility: hidden; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .permit-lightbox.is-open { opacity: 1; visibility: visible; }
+        
+        .permit-lightbox-backdrop {
+          position: absolute; inset: 0;
+          background: rgba(10, 25, 50, 0.95);
+          backdrop-filter: blur(10px);
+        }
+
+        .permit-lightbox-content {
+          position: relative; z-index: 1; max-width: 90vw; max-height: 90vh;
+          display: flex; align-items: center; justify-content: center;
+          transform: scale(0.9); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .permit-lightbox.is-open .permit-lightbox-content { transform: scale(1); }
+
+        .permit-lightbox-img {
+          display: block; max-height: 85vh; border-radius: var(--radius-lg, 12px);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); object-fit: contain;
+          transition: opacity 0.3s ease;
+        }
+
+        .permit-lightbox-close {
+          position: absolute; top: -50px; right: 0; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; cursor: pointer; transition: all 0.3s; z-index: 10;
+        }
+        .permit-lightbox-close:hover { background: var(--danger, #e63946); transform: rotate(90deg); }
+        
+        .permit-lightbox-nav {
+          position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; cursor: pointer; transition: all 0.3s; z-index: 10;
+        }
+        .permit-lightbox-nav:hover { background: var(--primary, #0a2463); border-color: rgba(255,255,255,0.5); }
+        .permit-lightbox-prev { left: -70px; }
+        .permit-lightbox-next { right: -70px; }
+        
+        @media (max-width: 900px) {
+          .permit-lightbox-prev { left: -40px; width: 35px; height: 35px; font-size: 20px; }
+          .permit-lightbox-next { right: -40px; width: 35px; height: 35px; font-size: 20px; }
+          .permit-lightbox-img { max-width: 75vw; }
+        }
+
+        .gallery-carousel-item { cursor: pointer; }
+      </style>
+      <div class="permit-lightbox" id="permitLightbox" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="permit-lightbox-backdrop" id="permitLightboxBackdrop"></div>
+        <div class="permit-lightbox-content">
+          <button class="permit-lightbox-close" id="permitLightboxClose" aria-label="Tutup Modal">&times;</button>
+          <button class="permit-lightbox-nav permit-lightbox-prev" id="permitLightboxPrev" aria-label="Gambar Sebelumnya">&lsaquo;</button>
+          <img src="" alt="" class="permit-lightbox-img" id="permitLightboxImg" />
+          <button class="permit-lightbox-nav permit-lightbox-next" id="permitLightboxNext" aria-label="Gambar Berikutnya">&rsaquo;</button>
+        </div>
+      </div>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const lightbox = document.getElementById('permitLightbox');
+          const imgEl = document.getElementById('permitLightboxImg');
+          const closeBtn = document.getElementById('permitLightboxClose');
+          const backdrop = document.getElementById('permitLightboxBackdrop');
+          const prevBtn = document.getElementById('permitLightboxPrev');
+          const nextBtn = document.getElementById('permitLightboxNext');
+          const items = Array.from(document.querySelectorAll('.gallery-carousel-item img'));
+          let currentIndex = 0;
+
+          if (!lightbox || !imgEl || !closeBtn || !backdrop || items.length === 0) return;
+
+          function openModal(index) {
+            currentIndex = index;
+            const item = items[currentIndex];
+            imgEl.style.opacity = '0';
+            setTimeout(() => {
+              imgEl.src = item.src;
+              imgEl.alt = item.alt;
+              imgEl.style.opacity = '1';
+            }, 100);
+            
+            lightbox.classList.add('is-open');
+            lightbox.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+          }
+
+          function closeModal() {
+            lightbox.classList.remove('is-open');
+            lightbox.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+            setTimeout(() => { imgEl.src = ''; }, 300);
+          }
+
+          function showNext() {
+            currentIndex = (currentIndex + 1) % items.length;
+            openModal(currentIndex);
+          }
+
+          function showPrev() {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            openModal(currentIndex);
+          }
+
+          items.forEach((item, index) => {
+            item.parentElement.addEventListener('click', () => {
+              openModal(index);
+            });
+          });
+
+          closeBtn.addEventListener('click', closeModal);
+          backdrop.addEventListener('click', closeModal);
+          prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+          nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+
+          document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('is-open')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowRight') showNext();
+            if (e.key === 'ArrowLeft') showPrev();
+          });
+        });
+      </script>
+  </section>
+
 
   <!-- REQUEST PERMIT FORM — WhatsApp Integrated -->
   <section class="section" id="request-permit">
