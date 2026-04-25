@@ -1044,31 +1044,55 @@
       <div class="section-header">
         <div class="section-eyebrow reveal" style="color: #333;">Gallery</div>
         <h2 class="section-title reveal reveal-delay-1" style="color: #000;">LIFTING PLAN</h2>
-        <p class="section-desc reveal reveal-delay-2" style="color: rgba(255,255,255,0.7);">
+        <p class="section-desc reveal reveal-delay-2" style="color: rgba(255,255,255,0.7);"></p>
+      </div>
           <style>
-            .gallery-carousel {
-              display: flex;
-              overflow-x: auto;
-              scroll-snap-type: x mandatory;
-              gap: 24px;
+            /* ── CSS Marquee Gallery ── */
+            .gallery-marquee-wrapper {
+              overflow: hidden;
+              width: 100%;
               padding: 10px 0 24px 0;
-              -webkit-overflow-scrolling: touch;
-              scrollbar-width: thin;
-              scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+              position: relative;
             }
 
-            .gallery-carousel::-webkit-scrollbar {
-              height: 8px;
+            /* Fade edges for smooth visual */
+            .gallery-marquee-wrapper::before,
+            .gallery-marquee-wrapper::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              width: 60px;
+              z-index: 2;
+              pointer-events: none;
+            }
+            .gallery-marquee-wrapper::before {
+              left: 0;
+              background: linear-gradient(to right, rgba(0,0,0,0.15), transparent);
+            }
+            .gallery-marquee-wrapper::after {
+              right: 0;
+              background: linear-gradient(to left, rgba(0,0,0,0.15), transparent);
             }
 
-            .gallery-carousel::-webkit-scrollbar-thumb {
-              background: rgba(255, 255, 255, 0.3);
-              border-radius: 4px;
+            .gallery-marquee-track {
+              display: flex;
+              gap: 24px;
+              width: max-content;
+              animation: marquee-scroll 60s linear infinite;
+            }
+
+            .gallery-marquee-wrapper:hover .gallery-marquee-track {
+              animation-play-state: paused;
+            }
+
+            @keyframes marquee-scroll {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
             }
 
             .gallery-carousel-item {
-              flex: 0 0 calc(33.333% - 16px);
-              scroll-snap-align: start;
+              flex: 0 0 320px;
               border-radius: 16px;
               background: #fff;
               border: 1px solid var(--border, #e2e8f0);
@@ -1078,6 +1102,7 @@
               align-items: center;
               justify-content: center;
               overflow: hidden;
+              cursor: pointer;
               transition: transform 0.3s ease, box-shadow 0.3s ease;
             }
 
@@ -1095,59 +1120,66 @@
 
             @media (max-width: 768px) {
               .gallery-carousel-item {
-                flex: 0 0 calc(85% - 12px);
+                flex: 0 0 260px;
+              }
+              .gallery-marquee-track {
+                gap: 16px;
+                animation-duration: 45s;
               }
             }
           </style>
-        <div class="gallery-carousel reveal reveal-delay-3">
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-1.webp" alt="Gallery 1" loading="lazy">
+        <div class="gallery-marquee-wrapper reveal reveal-delay-3">
+          <div class="gallery-marquee-track">
+            <!-- Original 23 items -->
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-1.webp" alt="Gallery 1" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-2.webp" alt="Gallery 2" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-3.webp" alt="Gallery 3" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-4.webp" alt="Gallery 4" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-5.webp" alt="Gallery 5" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-6.webp" alt="Gallery 6" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-7.webp" alt="Gallery 7" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-8.webp" alt="Gallery 8" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-9.webp" alt="Gallery 9" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-10.webp" alt="Gallery 10" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-11.webp" alt="Gallery 11" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-12.webp" alt="Gallery 12" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-13.webp" alt="Gallery 13" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-14.webp" alt="Gallery 14" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-15.webp" alt="Gallery 15" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-16.webp" alt="Gallery 16" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-17.webp" alt="Gallery 17" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-18.webp" alt="Gallery 18" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-19.webp" alt="Gallery 19" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-20.webp" alt="Gallery 20" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-21.webp" alt="Gallery 21" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-22.webp" alt="Gallery 22" loading="lazy"></div>
+            <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-23.webp" alt="Gallery 23" loading="lazy"></div>
+            <!-- Duplicated 23 items for seamless loop -->
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-1.webp" alt="Gallery 1" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-2.webp" alt="Gallery 2" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-3.webp" alt="Gallery 3" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-4.webp" alt="Gallery 4" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-5.webp" alt="Gallery 5" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-6.webp" alt="Gallery 6" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-7.webp" alt="Gallery 7" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-8.webp" alt="Gallery 8" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-9.webp" alt="Gallery 9" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-10.webp" alt="Gallery 10" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-11.webp" alt="Gallery 11" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-12.webp" alt="Gallery 12" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-13.webp" alt="Gallery 13" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-14.webp" alt="Gallery 14" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-15.webp" alt="Gallery 15" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-16.webp" alt="Gallery 16" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-17.webp" alt="Gallery 17" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-18.webp" alt="Gallery 18" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-19.webp" alt="Gallery 19" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-20.webp" alt="Gallery 20" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-21.webp" alt="Gallery 21" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-22.webp" alt="Gallery 22" loading="lazy"></div>
+            <div class="gallery-carousel-item" aria-hidden="true"><img src="assets/izin kerja/gallery-23.webp" alt="Gallery 23" loading="lazy"></div>
           </div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-2.webp" alt="Gallery 2" loading="lazy">
-          </div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-3.webp" alt="Gallery 3" loading="lazy">
-          </div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-4.webp" alt="Gallery 4" loading="lazy">
-          </div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-5.webp" alt="Gallery 5" loading="lazy">
-          </div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-6.webp" alt="Gallery 6" loading="lazy">
-          </div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-7.webp" alt="Gallery 7" loading="lazy">
-          </div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-8.webp" alt="Gallery 8" loading="lazy">
-          </div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-9.webp" alt="Gallery 9" loading="lazy">
-          </div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-10.webp" alt="Gallery 10"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-11.webp" alt="Gallery 11"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-12.webp" alt="Gallery 12"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-13.webp" alt="Gallery 13"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-14.webp" alt="Gallery 14"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-15.webp" alt="Gallery 15"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-16.webp" alt="Gallery 16"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-17.webp" alt="Gallery 17"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-18.webp" alt="Gallery 18"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-19.webp" alt="Gallery 19"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-20.webp" alt="Gallery 20"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-21.webp" alt="Gallery 21"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-22.webp" alt="Gallery 22"
-              loading="lazy"></div>
-          <div class="gallery-carousel-item"><img src="assets/izin kerja/gallery-23.webp" alt="Gallery 23"
-              loading="lazy"></div>
         </div>
-      </div>
 
       <!-- Lightbox Modal for Gallery -->
       <style>
@@ -1213,13 +1245,16 @@
           const backdrop = document.getElementById('permitLightboxBackdrop');
           const prevBtn = document.getElementById('permitLightboxPrev');
           const nextBtn = document.getElementById('permitLightboxNext');
-          const items = Array.from(document.querySelectorAll('.gallery-carousel-item img'));
+          const TOTAL_ORIGINALS = 23;
+          const allItems = Array.from(document.querySelectorAll('.gallery-carousel-item img'));
+          // Only use original 23 for lightbox navigation
+          const items = allItems.slice(0, TOTAL_ORIGINALS);
           let currentIndex = 0;
 
           if (!lightbox || !imgEl || !closeBtn || !backdrop || items.length === 0) return;
 
           function openModal(index) {
-            currentIndex = index;
+            currentIndex = index % TOTAL_ORIGINALS;
             const item = items[currentIndex];
             imgEl.style.opacity = '0';
             setTimeout(() => {
@@ -1241,18 +1276,19 @@
           }
 
           function showNext() {
-            currentIndex = (currentIndex + 1) % items.length;
+            currentIndex = (currentIndex + 1) % TOTAL_ORIGINALS;
             openModal(currentIndex);
           }
 
           function showPrev() {
-            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            currentIndex = (currentIndex - 1 + TOTAL_ORIGINALS) % TOTAL_ORIGINALS;
             openModal(currentIndex);
           }
 
-          items.forEach((item, index) => {
+          // Attach click to ALL items (originals + duplicates), mapping to correct index
+          allItems.forEach((item, index) => {
             item.parentElement.addEventListener('click', () => {
-              openModal(index);
+              openModal(index % TOTAL_ORIGINALS);
             });
           });
 
@@ -1269,6 +1305,7 @@
           });
         });
       </script>
+    </div>
   </section>
 
 
@@ -1337,12 +1374,21 @@
               <label class="ptw-label" for="department">🏢 Departemen *</label>
               <select id="department" class="ptw-input ptw-select" required>
                 <option value="">Pilih departemen...</option>
-                <option>Operasional</option>
-                <option>Pemeliharaan</option>
-                <option>Konstruksi</option>
-                <option>HSE</option>
-                <option>Engineering</option>
-                <option>Kontraktor Eksternal</option>
+                <option>PP Team</option>
+                <option>Preservation ALL</option>
+                <option>Scaffolding (Repair Ashiba)</option>
+                <option>Scaffolding (Repair Accessories)</option>
+                <option>Scaffolding Contruction</option>
+                <option>Rekind I (Fitting, Mechanical)</option>
+                <option>Rekind II (E&amp;I Preservation)</option>
+                <option>Flange &amp; Bulk Support</option>
+                <option>Valve Team</option>
+                <option>Fitting Team</option>
+                <option>E&amp;I Warehouse C</option>
+                <option>HVAC &amp; Preservation</option>
+                <option>Scaffolding Material</option>
+                <option>Mechanical Team</option>
+                <option>Pipe Team</option>
               </select>
             </div>
           </div>

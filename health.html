@@ -947,7 +947,30 @@
               </div>
             </div>
 
-            <!-- Row 2: Keluhan -->
+            <!-- Row 2: Umur & Nama Perusahaan -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+              <div>
+                <label class="wa-label">🎂 Umur (tahun) *</label>
+                <input id="h-age" type="number" class="wa-input" placeholder="cth: 30" required min="15" max="100" />
+              </div>
+              <div>
+                <label class="wa-label">🏢 Nama Perusahaan *</label>
+                <select id="h-company" class="wa-input" required onchange="togglePerusahaan()"
+                  style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
+                  <option value="">Pilih perusahaan...</option>
+                  <option value="RDMP JO">RDMP JO</option>
+                  <option value="Subcont">Subcont</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Subcont Name (Hidden by default) -->
+            <div id="subcont-container" style="display:none;margin-bottom:16px;">
+              <label class="wa-label">🏗️ Nama Subkontraktor *</label>
+              <input id="h-subcont" type="text" class="wa-input" placeholder="cth: Hyundai Engineering, Rekind, dll" />
+            </div>
+
+            <!-- Row 3: Keluhan -->
             <div style="margin-bottom:16px;">
               <label class="wa-label">🩺 Keluhan Utama *</label>
               <select id="h-keluhan" class="wa-input" required onchange="toggleKeluhanLain()"
@@ -1370,11 +1393,31 @@
       }
     }
 
+    function togglePerusahaan() {
+      const select = document.getElementById('h-company');
+      const container = document.getElementById('subcont-container');
+      const inputSubcont = document.getElementById('h-subcont');
+
+      if (select.value === 'Subcont') {
+        container.style.display = 'block';
+        inputSubcont.required = true;
+      } else {
+        container.style.display = 'none';
+        inputSubcont.required = false;
+        inputSubcont.value = '';
+      }
+    }
+
     function submitHealthToWhatsApp(e) {
       e.preventDefault();
 
       const nama = document.getElementById('h-name').value.trim();
       const badge = document.getElementById('h-badge').value.trim();
+      const umur = document.getElementById('h-age').value;
+      const company = document.getElementById('h-company').value;
+      const subcont = document.getElementById('h-subcont').value.trim();
+      const namaPerusahaan = company === 'Subcont' && subcont ? `Subcont — ${subcont}` : company;
+
       let keluhan = document.getElementById('h-keluhan').value;
       if (keluhan === 'Lainnya') {
         keluhan = document.getElementById('h-keluhan-lain').value.trim();
@@ -1395,6 +1438,8 @@ ${'─'.repeat(30)}
 
 👤 *Nama:* ${nama}
 🪪 *ID Badge:* ${badge}
+🎂 *Umur:* ${umur} tahun
+🏢 *Perusahaan:* ${namaPerusahaan}
 🤒 *Keluhan Utama:* ${keluhan}
 📅 *Rencana Bertemu:* ${tgl}
 
