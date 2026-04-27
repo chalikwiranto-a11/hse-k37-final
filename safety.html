@@ -997,28 +997,6 @@
               </div>
             </div>
 
-            <!-- ====== HEADER: Daily Activities ====== -->
-            <div style="margin-bottom:16px; border-bottom:1px solid var(--border); padding-bottom:8px;">
-              <h3 style="font-size:16px; margin:0; color:var(--text-primary);">Daily Activities</h3>
-            </div>
-
-            <div style="margin-bottom:16px;">
-              <label class="wa-label">🚪 Gate Security *</label>
-              <textarea id="sec-gate" class="wa-input" rows="2" required placeholder="Laporan penjagaan gerbang..."
-                style="resize:vertical;min-height:60px;"></textarea>
-            </div>
-
-            <div style="margin-bottom:16px;">
-              <label class="wa-label">🏗️ Security Yard 2 *</label>
-              <textarea id="sec-yard" class="wa-input" rows="2" required placeholder="Laporan area Yard 2..."
-                style="resize:vertical;min-height:60px;"></textarea>
-            </div>
-
-            <div style="margin-bottom:24px;">
-              <label class="wa-label">🚶 Security Patrol *</label>
-              <textarea id="sec-patrol" class="wa-input" rows="2" required placeholder="Laporan patroli keliling..."
-                style="resize:vertical;min-height:60px;"></textarea>
-            </div>
 
             <!-- ====== HEADER: Observation & Issues ====== -->
             <div style="margin-bottom:16px; border-bottom:1px solid var(--border); padding-bottom:8px;">
@@ -1158,15 +1136,15 @@
 
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:flex-end;margin-bottom:16px;">
               <div>
-                <label class="wa-label">👥 Team *</label>
+                <label class="wa-label">🕐 Time *</label>
                 <select id="night-team" class="wa-input" required
                   style="appearance:none;background-image:url(&quot;data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E&quot;);background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;">
-                  <option value="">Pilih Team...</option>
-                  <option value="Team 1: 01.00-01.45">Team 1: 01.00-01.45</option>
-                  <option value="Team 2: 01.45-02.30">Team 2: 01.45-02.30</option>
-                  <option value="Team 3: 02.30-03.15">Team 3: 02.30-03.15</option>
-                  <option value="Team 4: 03.15-04.00">Team 4: 03.15-04.00</option>
-                  <option value="Team 5: 04.45-05.45">Team 5: 04.45-05.45</option>
+                  <option value="">Pilih Time...</option>
+                  <option value="Time 1: 01.00-01.45 WITA">Time 1: 01.00-01.45 WITA</option>
+                  <option value="Time 2: 01.45-02.30 WITA">Time 2: 01.45-02.30 WITA</option>
+                  <option value="Time 3: 02.30-03.15 WITA">Time 3: 02.30-03.15 WITA</option>
+                  <option value="Time 4: 03.15-04.00 WITA">Time 4: 03.15-04.00 WITA</option>
+                  <option value="Time 5: 04.45-05.45 WITA">Time 5: 04.45-05.45 WITA</option>
                 </select>
               </div>
               <div>
@@ -1396,7 +1374,7 @@
     const HSE_WA_NUMBER_OBSERVASI = '6285388881989'; // Form Laporan Observasi
     const HSE_WA_NUMBER_SECURITY = '6281250406463'; // Form Security Daily Activity (Silakan ganti dengan nomor PIC)
     const HSE_WA_NUMBER_SCAFFOLDING = '6285388881989'; // Form Scaffolding Daily Activity (Silakan ganti dengan nomor PIC)
-    const HSE_WA_NUMBER_NIGHTSHIFT = '6285388881989'; // Form Night Shift Activity (Silakan ganti dengan nomor PIC)
+    const HSE_WA_NUMBER_NIGHTSHIFT = '6282236093809'; // Form Night Shift Activity
     //  Format: 62 + nomor tanpa angka 0 di depan
     //  Contoh: 0812-3456-7890 → 6281234567890
     // ════════════════════════════════════════════════
@@ -1532,9 +1510,7 @@ _${new Date().toLocaleString('id-ID')}_
       const attendance = document.getElementById('sec-attendance').value;
       const vendor = document.getElementById('sec-vendor').value;
 
-      const gate = document.getElementById('sec-gate').value.trim();
-      const yard = document.getElementById('sec-yard').value.trim();
-      const patrol = document.getElementById('sec-patrol').value.trim();
+
 
       const issues = document.getElementById('sec-issues').value.trim() || 'Tidak ada masalah';
 
@@ -1555,15 +1531,7 @@ ${'─'.repeat(30)}
 • Worker Attendance Today: ${attendance}
 • Contractor / Vendor: ${vendor}
 
-📝 *Daily Activities:*
-🚪 _Gate Security:_
-${gate}
 
-🏗️ _Security Yard 2:_
-${yard}
-
-🚶 _Security Patrol:_
-${patrol}
 
 ⚠️ *Observation & Issues:*
 ${issues}
@@ -1674,7 +1642,7 @@ ${'─'.repeat(30)}
 📝 *Activity:* 
 ${activity}
 
-👥 *Team:* ${team}
+🕐 *Time:* ${team}
 📍 *Area Condition:* ${area}
 🔎 *Condition:* ${condition}
 💬 *Remarks:* ${remarks}
