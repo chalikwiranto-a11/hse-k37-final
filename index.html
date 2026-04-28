@@ -238,9 +238,21 @@
       </div>
 
       <div class="custom-postcard-body"
-        style="padding: 40px 20px; background: #fff; display: flex; justify-content: center; align-items: center; border-top: 1px solid rgba(0,0,0,0.05);">
-        <a href="https://hse-vote.vercel.app"
-          style="display: inline-flex; align-items: center; gap: 12px; padding: 16px 80px; font-size: 18px; font-weight: 700; color: #fff; background: #1a1a2e; font-family: 'Poppins', sans-serif; text-decoration: none; border-radius: 99px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-transform: uppercase; letter-spacing: 2px; box-shadow: 0 4px 20px rgba(26, 26, 46, 0.3);">
+        style="padding: 40px 20px; background: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 20px; border-top: 1px solid rgba(0,0,0,0.05);">
+        
+        <!-- Checkbox Agreement -->
+        <label class="vote-agree-label" for="voteAgreeCheck">
+          <input type="checkbox" id="voteAgreeCheck" class="vote-agree-checkbox" />
+          <span class="vote-agree-checkmark"></span>
+          <span class="vote-agree-text">
+            Silahkan di baca untuk tata cara vote
+            <a href="javascript:void(0)" id="openVoteGuideBtn" class="vote-guide-link">Leader Next Month</a>
+          </span>
+        </label>
+
+        <!-- Click Here Button (disabled by default) -->
+        <a href="https://hse-vote.vercel.app" id="voteClickBtn" class="vote-click-btn vote-click-btn--disabled"
+          onclick="return document.getElementById('voteAgreeCheck').checked;">
           Click Here
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round" stroke-linejoin="round">
@@ -251,6 +263,380 @@
       </div>
     </div>
   </section>
+
+  <!-- ═══ VOTE GUIDE GALLERY POPUP ═══════════════════════════════ -->
+  <div id="voteGuideOverlay" class="vg-overlay">
+    <div class="vg-popup">
+      <button class="vg-close" id="voteGuideClose" aria-label="Tutup">&times;</button>
+      <h3 class="vg-title">Tata Cara Vote — Leader Next Month</h3>
+      <div class="vg-carousel">
+        <button class="vg-arrow vg-arrow-left" id="vgPrev" aria-label="Sebelumnya">&#10094;</button>
+        <div class="vg-slides" id="vgSlides">
+          <img src="popup/vote-guide-1.webp" alt="Tata Cara Vote 1" class="vg-slide vg-slide--active" />
+          <img src="popup/vote-guide-2.webp" alt="Tata Cara Vote 2" class="vg-slide" />
+          <img src="popup/vote-guide-3.webp" alt="Tata Cara Vote 3" class="vg-slide" />
+          <img src="popup/vote-guide-4.webp" alt="Tata Cara Vote 4" class="vg-slide" />
+          <img src="popup/vote-guide-5.webp" alt="Tata Cara Vote 5" class="vg-slide" />
+          <img src="popup/vote-guide-6.webp" alt="Tata Cara Vote 6" class="vg-slide" />
+          <img src="popup/vote-guide-7.webp" alt="Tata Cara Vote 7" class="vg-slide" />
+        </div>
+        <button class="vg-arrow vg-arrow-right" id="vgNext" aria-label="Berikutnya">&#10095;</button>
+      </div>
+      <div class="vg-dots" id="vgDots"></div>
+      <div class="vg-counter" id="vgCounter">1 / 7</div>
+    </div>
+  </div>
+
+  <style>
+    /* ── Vote Agreement Checkbox ── */
+    .vote-agree-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: #333;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .vote-agree-checkbox {
+      display: none;
+    }
+    .vote-agree-checkmark {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border: 2px solid #aaa;
+      border-radius: 6px;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .vote-agree-checkbox:checked + .vote-agree-checkmark {
+      background: #1a1a2e;
+      border-color: #1a1a2e;
+    }
+    .vote-agree-checkbox:checked + .vote-agree-checkmark::after {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 12px;
+      border: solid #fff;
+      border-width: 0 2.5px 2.5px 0;
+      transform: rotate(45deg);
+    }
+    .vote-guide-link {
+      color: #e63946;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .vote-guide-link:hover {
+      color: #c0392b;
+    }
+
+    /* ── Click Here Button States ── */
+    .vote-click-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 80px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      background: #1a1a2e;
+      font-family: 'Poppins', sans-serif;
+      text-decoration: none;
+      border-radius: 99px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 20px rgba(26, 26, 46, 0.3);
+    }
+    .vote-click-btn:hover:not(.vote-click-btn--disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(26, 26, 46, 0.45);
+    }
+    .vote-click-btn--disabled {
+      background: #b0b0b0;
+      box-shadow: none;
+      cursor: not-allowed;
+      opacity: 0.65;
+      pointer-events: auto;
+    }
+
+    /* ── Vote Guide Gallery Popup ── */
+    .vg-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
+    }
+    .vg-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .vg-popup {
+      position: relative;
+      max-width: 640px;
+      width: 94%;
+      max-height: 92vh;
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+      transform: scale(0.88) translateY(24px);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .vg-overlay.active .vg-popup {
+      transform: scale(1) translateY(0);
+    }
+
+    .vg-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 38px;
+      height: 38px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 3;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .vg-close:hover {
+      background: rgba(230, 57, 70, 0.85);
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    .vg-title {
+      text-align: center;
+      padding: 18px 50px 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin: 0;
+      letter-spacing: 0.3px;
+    }
+
+    .vg-carousel {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .vg-slides {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .vg-slide {
+      display: none;
+      width: 100%;
+      height: auto;
+      max-height: 65vh;
+      object-fit: contain;
+      animation: vgFadeIn 0.35s ease;
+    }
+    .vg-slide--active {
+      display: block;
+    }
+    @keyframes vgFadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .vg-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(26, 26, 46, 0.7);
+      color: #fff;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .vg-arrow:hover {
+      background: rgba(26, 26, 46, 0.95);
+      transform: translateY(-50%) scale(1.1);
+    }
+    .vg-arrow-left { left: 10px; }
+    .vg-arrow-right { right: 10px; }
+
+    .vg-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 0 6px;
+    }
+    .vg-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+    }
+    .vg-dot--active {
+      background: #1a1a2e;
+      transform: scale(1.25);
+    }
+
+    .vg-counter {
+      text-align: center;
+      padding: 4px 0 14px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: #888;
+    }
+
+    @media (max-width: 600px) {
+      .vote-click-btn {
+        padding: 14px 40px;
+        font-size: 15px;
+        letter-spacing: 1px;
+      }
+      .vote-agree-label {
+        font-size: 13px;
+        padding: 0 16px;
+      }
+      .vg-popup {
+        width: 96%;
+        border-radius: 14px;
+      }
+      .vg-title {
+        font-size: 15px;
+        padding: 14px 42px 10px;
+      }
+      .vg-arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 16px;
+      }
+      .vg-arrow-left { left: 6px; }
+      .vg-arrow-right { right: 6px; }
+    }
+  </style>
+
+  <script>
+    (function () {
+      /* ── Checkbox → Button toggle ── */
+      var checkbox = document.getElementById('voteAgreeCheck');
+      var voteBtn = document.getElementById('voteClickBtn');
+
+      checkbox.addEventListener('change', function () {
+        if (checkbox.checked) {
+          voteBtn.classList.remove('vote-click-btn--disabled');
+        } else {
+          voteBtn.classList.add('vote-click-btn--disabled');
+        }
+      });
+
+      /* ── Vote Guide Gallery Popup ── */
+      var guideOverlay = document.getElementById('voteGuideOverlay');
+      var guideCloseBtn = document.getElementById('voteGuideClose');
+      var openGuideBtn = document.getElementById('openVoteGuideBtn');
+      var slides = document.querySelectorAll('.vg-slide');
+      var prevBtn = document.getElementById('vgPrev');
+      var nextBtn = document.getElementById('vgNext');
+      var dotsContainer = document.getElementById('vgDots');
+      var counter = document.getElementById('vgCounter');
+      var currentSlide = 0;
+      var total = slides.length;
+
+      // Build dots
+      for (var i = 0; i < total; i++) {
+        var dot = document.createElement('button');
+        dot.className = 'vg-dot' + (i === 0 ? ' vg-dot--active' : '');
+        dot.dataset.index = i;
+        dot.addEventListener('click', function () {
+          goTo(parseInt(this.dataset.index));
+        });
+        dotsContainer.appendChild(dot);
+      }
+      var dots = dotsContainer.querySelectorAll('.vg-dot');
+
+      function goTo(idx) {
+        slides[currentSlide].classList.remove('vg-slide--active');
+        dots[currentSlide].classList.remove('vg-dot--active');
+        currentSlide = (idx + total) % total;
+        slides[currentSlide].classList.add('vg-slide--active');
+        dots[currentSlide].classList.add('vg-dot--active');
+        counter.textContent = (currentSlide + 1) + ' / ' + total;
+      }
+
+      prevBtn.addEventListener('click', function () { goTo(currentSlide - 1); });
+      nextBtn.addEventListener('click', function () { goTo(currentSlide + 1); });
+
+      function openGuide(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        guideOverlay.classList.add('active');
+        document.body.classList.add('popup-open');
+      }
+      function closeGuide() {
+        guideOverlay.classList.remove('active');
+        document.body.classList.remove('popup-open');
+      }
+
+      openGuideBtn.addEventListener('click', openGuide);
+      guideCloseBtn.addEventListener('click', closeGuide);
+      guideOverlay.addEventListener('click', function (e) {
+        if (e.target === guideOverlay) closeGuide();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (!guideOverlay.classList.contains('active')) return;
+        if (e.key === 'Escape') closeGuide();
+        if (e.key === 'ArrowLeft') goTo(currentSlide - 1);
+        if (e.key === 'ArrowRight') goTo(currentSlide + 1);
+      });
+
+      /* Swipe support */
+      var touchStartX = 0;
+      guideOverlay.addEventListener('touchstart', function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      guideOverlay.addEventListener('touchend', function (e) {
+        var diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) {
+          diff > 0 ? goTo(currentSlide + 1) : goTo(currentSlide - 1);
+        }
+      }, { passive: true });
+    })();
+  </script>
 
   <!-- ═══ QHSE DASHBOARD ═══════════════════════════════════════ -->
   <section class="section section-dark" id="statistics" style="padding-left: 0; padding-right: 0;">
@@ -1568,7 +1954,7 @@
   <div id="welcomePopupOverlay" class="welcome-popup-overlay">
     <div class="welcome-popup-container">
       <button class="welcome-popup-close" id="welcomePopupClose" aria-label="Tutup popup">&times;</button>
-      <img src="leader.png" alt="Leader Kariangau-37 — Vote A Role" class="welcome-popup-img" />
+      <img src="leader.webp" alt="Leader Kariangau-37 — Vote A Role" class="welcome-popup-img" />
     </div>
   </div>
 
@@ -1588,6 +1974,7 @@
       visibility: hidden;
       transition: opacity 0.4s ease, visibility 0.4s ease;
     }
+
     .welcome-popup-overlay.active {
       opacity: 1;
       visibility: visible;
@@ -1600,10 +1987,11 @@
       max-height: 90vh;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255,255,255,0.08);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.08);
       transform: scale(0.85) translateY(30px);
       transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
+
     .welcome-popup-overlay.active .welcome-popup-container {
       transform: scale(1) translateY(0);
     }
@@ -1636,6 +2024,7 @@
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
     }
+
     .welcome-popup-close:hover {
       background: rgba(230, 57, 70, 0.85);
       transform: rotate(90deg) scale(1.1);
@@ -1651,6 +2040,7 @@
         max-width: 92%;
         border-radius: 12px;
       }
+
       .welcome-popup-close {
         width: 34px;
         height: 34px;
