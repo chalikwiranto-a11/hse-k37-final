@@ -848,13 +848,14 @@
           Berikut adalah rekapitulasi data kunjungan dan pelayanan kesehatan di Klinik HSE K-37 selama periode bulan
           Januari hingga April 2026.
         </p>
-        <div class="reveal reveal-delay-3" style="display: flex; justify-content: center; margin-top: 15px; margin-bottom: 30px;">
+        <div class="reveal reveal-delay-3"
+          style="display: flex; justify-content: center; margin-top: 15px; margin-bottom: 30px;">
           <a href="javascript:void(0)" onclick="openClinicAttendanceModal()" class="btn btn-wa">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
               <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
             </svg>
-            E-Attendent List
+            Report Clinic Visit
           </a>
         </div>
       </div>
@@ -920,11 +921,11 @@
         transform: none;
       }
     }
-    
+
     .attend-modal-container {
       position: relative;
       width: 90%;
-      max-width: 500px;
+      max-width: 1000px;
       background: #fff;
       border-radius: 20px;
       overflow: hidden;
@@ -1939,7 +1940,8 @@ Alasan Ikut Program Obesitas : ${reason}`;
   <div id="clinic-attendance-modal" class="hse-modal" onclick="if(event.target===this) closeClinicAttendanceModal()">
     <div class="attend-modal-container">
       <button class="attend-modal-close" onclick="closeClinicAttendanceModal()">✕</button>
-      <img src="https://colossal-gray-labcizjbs7.edgeone.app/WhatsApp%20Image%202026-05-19%20at%2019.35.56.jpeg" alt="E-Attendance Barcode" style="width: 100%; height: auto; display: block;">
+      <img src="https://colossal-gray-labcizjbs7.edgeone.app/WhatsApp%20Image%202026-05-19%20at%2019.35.56.jpeg"
+        alt="E-Attendance Barcode" style="width: 100%; height: auto; display: block;">
       <div style="padding: 16px 24px 20px; text-align: center; background: #fff;">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfikm2e9w4xY5IQqDw5qQ01WM-0rs_COCYopxtDPgANIOYtXQ/viewform?usp=dialog&pli=1&authuser=0"
           target="_blank" rel="noopener"
