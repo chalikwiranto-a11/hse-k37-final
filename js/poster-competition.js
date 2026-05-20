@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const messageDiv = document.getElementById('submitMessage');
 
   // GANTI URL INI DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA
-  const API_URL = "https://script.google.com/macros/s/AKfycb.../exec"; 
+  const API_URL = "https://script.google.com/macros/s/AKfycbwy5GXkI-8Uqv_-cjJsLDwX0uHnvMeWW8MEAz2PM4ocGNX9ANaNRh4CznhWvhg4fD15/exec";
 
   // Validasi ukuran file (Maks 5MB)
-  fileInput.addEventListener('change', function() {
+  fileInput.addEventListener('change', function () {
     if (this.files && this.files[0]) {
       const file = this.files[0];
       const fileSizeMB = file.size / (1024 * 1024);

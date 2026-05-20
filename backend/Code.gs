@@ -5,14 +5,6 @@ var FOLDER_ID = "MASUKKAN_ID_FOLDER_GOOGLE_DRIVE_ANDA_DISINI";
 var SHEET_NAME = "Sheet1";
 
 function doPost(e) {
-  // Setup output header (CORS)
-  var headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-    "Content-Type": "application/json"
-  };
-
   try {
     // 1. Parsing payload JSON dari Frontend
     var data = JSON.parse(e.postData.contents);
@@ -69,8 +61,7 @@ function doPost(e) {
       status: "success",
       message: "Data dan file berhasil disimpan."
     }))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeaders(headers);
+    .setMimeType(ContentService.MimeType.JSON);
     
   } catch(error) {
     // Return respon error
@@ -78,19 +69,12 @@ function doPost(e) {
       status: "error",
       message: error.toString()
     }))
-    .setMimeType(ContentService.MimeType.JSON)
-    .setHeaders(headers);
+    .setMimeType(ContentService.MimeType.JSON);
   }
 }
 
 // Menangani permintaan Pre-flight (OPTIONS) dari browser
 function doOptions(e) {
-  var headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type"
-  };
   return ContentService.createTextOutput("")
-    .setMimeType(ContentService.MimeType.TEXT)
-    .setHeaders(headers);
+    .setMimeType(ContentService.MimeType.TEXT);
 }
