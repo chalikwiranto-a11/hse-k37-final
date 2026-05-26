@@ -1209,7 +1209,7 @@
           E-Induction
         </a>
 
-        <a href="program.html" class="btn btn-wa">
+        <a href="javascript:void(0)" onclick="openTrainingModal()" class="btn btn-wa">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
             <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
@@ -1857,6 +1857,23 @@
     }
   </style>
 
+  <!-- E-Training Modal -->
+  <div id="e-training-modal" class="hse-modal" onclick="if(event.target===this) closeTrainingModal()">
+    <div class="attend-modal-container">
+      <button class="attend-modal-close" onclick="closeTrainingModal()">✕</button>
+      <img src="master.webp" alt="E-Training Poster" style="width: 100%; height: auto; display: block;">
+      <div style="padding: 16px 24px 20px; text-align: center; background: #fff;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNK9kFAisbkzN3oGHZBRNHBc2uy7fHLjBhDIxQKf6iwiAUFw/viewform?usp=dialog"
+          target="_blank" rel="noopener"
+          style="display:inline-flex; align-items:center; gap:8px; padding:12px 32px; background:linear-gradient(135deg,#0a2463,#1a4b8c); color:#fff; border-radius:10px; font-weight:700; font-size:14px; font-family:'Inter',sans-serif; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 14px rgba(10,36,99,0.3);"
+          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(10,36,99,0.4)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(10,36,99,0.3)'">
+          📋 Click Here
+        </a>
+      </div>
+    </div>
+  </div>
+
   <div id="attendance-modal" class="hse-modal" onclick="if(event.target===this) closeAttendanceModal()">
     <div class="attend-modal-container">
       <button class="attend-modal-close" onclick="closeAttendanceModal()">✕</button>
@@ -1880,6 +1897,14 @@
     }
     function closeAttendanceModal() {
       document.getElementById('attendance-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function openTrainingModal() {
+      document.getElementById('e-training-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeTrainingModal() {
+      document.getElementById('e-training-modal').classList.remove('active');
       document.body.style.overflow = '';
     }
   </script>
