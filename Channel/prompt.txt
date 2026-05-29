@@ -1,0 +1,23 @@
+buatkan saya form yang dimana saya mau buat semacam lomba poster tentang golden rules di @channel.html
+buat tepat di atas section footer sebagai berikut
+
+response body
+"peserta": {
+    "nama_lengkap": "Budi Santoso",
+    "nik_karyawan": "63000",
+    "jabatan": "Superintenden, Supervisor, Foreman, Document Controller, Admin, Helper, ini dipilih user",
+    "area_kerja": "Diisi User"
+  },
+  "karya": {
+    "judul_poster": "Satu Langkah Aman, Seribu Nyawa Terjaga",
+    "tema": "Golden Rules - Keselamatan Kerja",
+    "deskripsi_singkat": "Poster ini menggambarkan pentingnya mematuhi Golden Rules di area kerja untuk mencegah kecelakaan.",
+    "file_poster": "https://storage.yourapp.com/uploads/poster_budi.jpg",
+    "format_file": "JPG",
+    "ukuran_file_mb": 2.4
+
+
+}
+
+ini di buat backendnya di google sheet menggunkan API APP script. dan tolong buat filenya terpisah dengan file channel.html
+mau saya bisa submit lomba poster ini lewat @channel.html dan masuk datanya ke google sheet
