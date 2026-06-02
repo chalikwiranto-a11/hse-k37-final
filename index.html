@@ -333,7 +333,165 @@
     </div>
   </div>
 
+  <!-- ═══ WELCOME POSTER POPUP ═══════════════════════════════ -->
+  <div id="welcomePosterOverlay" class="vg-overlay">
+    <div class="vg-popup" id="wpPopup" style="background: transparent; box-shadow: none !important; overflow: visible; width: fit-content; max-width: 95vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; margin: auto;">
+      <button class="vg-close" id="welcomePosterClose" aria-label="Tutup" style="top: -15px; right: -15px; background: #e63946; color: white; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); opacity: 1; z-index: 10;">&times;</button>
+      
+      <div class="wp-layout" id="wpLayout">
+        <img src="Lomba Poster.webp" id="welcomePosterImg" alt="Welcome Poster" class="wp-img" title="Klik untuk info pendaftaran!" />
+        
+        <div id="welcomePosterContent" class="wp-content">
+          <div class="wp-content-inner">
+            <h3>Ikut Meriahkan Event Lomba Poster!</h3>
+            <p>Dan menangkan berbagai hadiah menarik berupa uang tunai.</p>
+            <a href="channel.html#posterForm" class="wp-btn">
+              Daftar Di Sini
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <style>
+    /* ── Welcome Poster Popup Styles ── */
+    .wp-layout {
+      display: flex;
+      align-items: stretch;
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      border-radius: 12px;
+      background: transparent;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+    
+    .wp-img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 12px;
+      display: block;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative;
+      z-index: 2;
+    }
+    
+    .wp-img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+    }
+    
+    .wp-layout.wp-expanded .wp-img {
+      border-radius: 12px 0 0 12px;
+    }
+    
+    .wp-layout.wp-expanded .wp-img:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    
+    .wp-content {
+      width: 0;
+      opacity: 0;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 0 12px 12px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 1;
+    }
+    
+    .wp-layout.wp-expanded .wp-content {
+      width: 340px;
+      opacity: 1;
+    }
+    
+    .wp-content-inner {
+      min-width: 280px;
+      padding: 30px;
+      text-align: center;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.4s ease 0.2s;
+    }
+    
+    .wp-layout.wp-expanded .wp-content-inner {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    .wp-content-inner h3 {
+      color: #1a1a2e;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    
+    .wp-content-inner p {
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    
+    .wp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: #1a1a2e;
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      box-shadow: 0 4px 15px rgba(26,26,46,0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .wp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(26,26,46,0.45);
+      color: white;
+    }
+    
+    @media (max-width: 768px) {
+      .wp-layout {
+        flex-direction: column;
+      }
+      .wp-layout.wp-expanded .wp-img {
+        border-radius: 12px 12px 0 0;
+        max-height: 55vh;
+      }
+      .wp-content {
+        border-radius: 0 0 12px 12px;
+      }
+      .wp-layout.wp-expanded .wp-content {
+        width: 100%;
+        height: auto;
+      }
+      .wp-content-inner {
+        padding: 20px;
+        transform: translateY(-20px);
+      }
+      .wp-layout.wp-expanded .wp-content-inner {
+        transform: translateY(0);
+      }
+      .wp-content-inner h3 {
+        font-size: 20px;
+      }
+    }
     /* ── Vote Agreement Checkbox ── */
     .vote-agree-label {
       display: flex;
@@ -723,6 +881,42 @@
 
   <script>
     (function () {
+      /* ── Welcome Poster Popup ── */
+      var welcomeOverlay = document.getElementById('welcomePosterOverlay');
+      var welcomeCloseBtn = document.getElementById('welcomePosterClose');
+      
+      if (welcomeOverlay) {
+        window.addEventListener('load', function() {
+          setTimeout(function() {
+            welcomeOverlay.classList.add('active');
+            document.body.classList.add('popup-open');
+          }, 300); // 300ms delay for smoother entrance
+        });
+
+        if (welcomeCloseBtn) {
+          welcomeCloseBtn.addEventListener('click', function() {
+            welcomeOverlay.classList.remove('active');
+            document.body.classList.remove('popup-open');
+          });
+        }
+
+        welcomeOverlay.addEventListener('click', function(e) {
+          if (e.target === welcomeOverlay) {
+            welcomeOverlay.classList.remove('active');
+            document.body.classList.remove('popup-open');
+          }
+        });
+
+        // Interactive expansion on click
+        var wpImg = document.getElementById('welcomePosterImg');
+        var wpLayout = document.getElementById('wpLayout');
+        if (wpImg && wpLayout) {
+          wpImg.addEventListener('click', function() {
+            wpLayout.classList.toggle('wp-expanded');
+          });
+        }
+      }
+
       /* ── Checkbox → Button toggle ── */
       var checkbox = document.getElementById('voteAgreeCheck');
       var voteBtn = document.getElementById('voteClickBtn');
