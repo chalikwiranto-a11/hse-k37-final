@@ -278,14 +278,23 @@
           </span>
         </label>
 
-        <a href="javascript:void(0)" id="voteClickBtn" class="vote-click-btn">
-          Lihat Hasil
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
+        <div class="vote-btn-container">
+          <a href="javascript:void(0)" id="voteClickBtn" class="vote-click-btn">
+            Lihat Hasil
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+          <a href="https://hse-vote.vercel.app" class="vote-click-btn vote-poster-card-btn" target="_blank">
+            Vote Poster
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -345,13 +354,21 @@
           <div class="wp-content-inner">
             <h3>Ikut Meriahkan Event Lomba Poster!</h3>
             <p>Dan menangkan berbagai hadiah menarik berupa uang tunai.</p>
-            <a href="channel.html#posterForm" class="wp-btn">
-              Daftar Di Sini
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </a>
+            <div class="wp-btn-group">
+              <a href="channel.html#posterForm" class="wp-btn">
+                Daftar Di Sini
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+              <a href="https://hse-vote.vercel.app" class="wp-btn wp-btn-secondary" target="_blank">
+                Vote Poster
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -464,6 +481,30 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(26,26,46,0.45);
       color: white;
+    }
+
+    .wp-btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .wp-btn-group .wp-btn {
+      width: 100%;
+      max-width: 240px;
+      justify-content: center;
+    }
+
+    .wp-btn-secondary {
+      background: #e63946;
+      box-shadow: 0 4px 15px rgba(230,57,70,0.3);
+    }
+
+    .wp-btn-secondary:hover {
+      background: #d62839;
+      box-shadow: 0 8px 25px rgba(230,57,70,0.45);
     }
     
     @media (max-width: 768px) {
@@ -578,6 +619,24 @@
       cursor: not-allowed;
       opacity: 0.65;
       pointer-events: auto;
+    }
+
+    .vote-btn-container {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .vote-poster-card-btn {
+      background: #e63946;
+      box-shadow: 0 4px 20px rgba(230, 57, 70, 0.3);
+    }
+
+    .vote-poster-card-btn:hover {
+      background: #d62839;
+      box-shadow: 0 8px 30px rgba(230, 57, 70, 0.45);
     }
 
     /* ── Vote Guide Gallery Popup ── */
