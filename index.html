@@ -291,7 +291,9 @@
             Vote Poster
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+              <path
+                d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+              </path>
             </svg>
           </a>
         </div>
@@ -344,12 +346,15 @@
 
   <!-- ═══ WELCOME POSTER POPUP ═══════════════════════════════ -->
   <div id="welcomePosterOverlay" class="vg-overlay">
-    <div class="vg-popup" id="wpPopup" style="background: transparent; box-shadow: none !important; overflow: visible; width: fit-content; max-width: 95vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; margin: auto;">
-      <button class="vg-close" id="welcomePosterClose" aria-label="Tutup" style="top: -15px; right: -15px; background: #e63946; color: white; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); opacity: 1; z-index: 10;">&times;</button>
-      
+    <div class="vg-popup" id="wpPopup"
+      style="background: transparent; box-shadow: none !important; overflow: visible; width: fit-content; max-width: 95vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; margin: auto;">
+      <button class="vg-close" id="welcomePosterClose" aria-label="Tutup"
+        style="top: -15px; right: -15px; background: #e63946; color: white; border: 2px solid white; box-shadow: 0 4px 10px rgba(0,0,0,0.3); opacity: 1; z-index: 10;">&times;</button>
+
       <div class="wp-layout" id="wpLayout">
-        <img src="Lomba Poster.webp" id="welcomePosterImg" alt="Welcome Poster" class="wp-img" title="Klik untuk info pendaftaran!" />
-        
+        <img src="Lomba Poster.webp" id="welcomePosterImg" alt="Welcome Poster" class="wp-img"
+          title="Klik untuk info pendaftaran!" />
+
         <div id="welcomePosterContent" class="wp-content">
           <div class="wp-content-inner">
             <h3>Ikut Meriahkan Event Lomba Poster!</h3>
@@ -357,15 +362,19 @@
             <div class="wp-btn-group">
               <a href="channel.html#posterForm" class="wp-btn">
                 Daftar Di Sini
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </a>
               <a href="https://hse-vote.vercel.app" class="wp-btn wp-btn-secondary" target="_blank">
                 Vote Poster
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3">
+                  </path>
                 </svg>
               </a>
             </div>
@@ -383,9 +392,9 @@
       transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
       border-radius: 12px;
       background: transparent;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     }
-    
+
     .wp-img {
       width: auto;
       height: auto;
@@ -398,21 +407,21 @@
       position: relative;
       z-index: 2;
     }
-    
+
     .wp-img:hover {
       transform: scale(1.02);
-      box-shadow: 0 15px 50px rgba(0,0,0,0.7);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
     }
-    
+
     .wp-layout.wp-expanded .wp-img {
       border-radius: 12px 0 0 12px;
     }
-    
+
     .wp-layout.wp-expanded .wp-img:hover {
       transform: none;
       box-shadow: none;
     }
-    
+
     .wp-content {
       width: 0;
       opacity: 0;
@@ -425,12 +434,12 @@
       transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
       z-index: 1;
     }
-    
+
     .wp-layout.wp-expanded .wp-content {
       width: 340px;
       opacity: 1;
     }
-    
+
     .wp-content-inner {
       min-width: 280px;
       padding: 30px;
@@ -439,12 +448,12 @@
       transform: translateX(-20px);
       transition: all 0.4s ease 0.2s;
     }
-    
+
     .wp-layout.wp-expanded .wp-content-inner {
       opacity: 1;
       transform: translateX(0);
     }
-    
+
     .wp-content-inner h3 {
       color: #1a1a2e;
       font-family: 'DM Sans', sans-serif;
@@ -453,14 +462,14 @@
       margin-bottom: 12px;
       line-height: 1.3;
     }
-    
+
     .wp-content-inner p {
       color: #555;
       font-size: 15px;
       margin-bottom: 24px;
       line-height: 1.5;
     }
-    
+
     .wp-btn {
       display: inline-flex;
       align-items: center;
@@ -473,13 +482,13 @@
       font-family: 'Poppins', sans-serif;
       font-weight: 600;
       font-size: 15px;
-      box-shadow: 0 4px 15px rgba(26,26,46,0.3);
+      box-shadow: 0 4px 15px rgba(26, 26, 46, 0.3);
       transition: all 0.3s ease;
     }
-    
+
     .wp-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(26,26,46,0.45);
+      box-shadow: 0 8px 25px rgba(26, 26, 46, 0.45);
       color: white;
     }
 
@@ -499,40 +508,47 @@
 
     .wp-btn-secondary {
       background: #e63946;
-      box-shadow: 0 4px 15px rgba(230,57,70,0.3);
+      box-shadow: 0 4px 15px rgba(230, 57, 70, 0.3);
     }
 
     .wp-btn-secondary:hover {
       background: #d62839;
-      box-shadow: 0 8px 25px rgba(230,57,70,0.45);
+      box-shadow: 0 8px 25px rgba(230, 57, 70, 0.45);
     }
-    
+
     @media (max-width: 768px) {
       .wp-layout {
         flex-direction: column;
       }
+
       .wp-layout.wp-expanded .wp-img {
         border-radius: 12px 12px 0 0;
         max-height: 55vh;
       }
+
       .wp-content {
         border-radius: 0 0 12px 12px;
       }
+
       .wp-layout.wp-expanded .wp-content {
         width: 100%;
         height: auto;
       }
+
       .wp-content-inner {
         padding: 20px;
         transform: translateY(-20px);
       }
+
       .wp-layout.wp-expanded .wp-content-inner {
         transform: translateY(0);
       }
+
       .wp-content-inner h3 {
         font-size: 20px;
       }
     }
+
     /* ── Vote Agreement Checkbox ── */
     .vote-agree-label {
       display: flex;
@@ -943,23 +959,23 @@
       /* ── Welcome Poster Popup ── */
       var welcomeOverlay = document.getElementById('welcomePosterOverlay');
       var welcomeCloseBtn = document.getElementById('welcomePosterClose');
-      
+
       if (welcomeOverlay) {
-        window.addEventListener('load', function() {
-          setTimeout(function() {
+        window.addEventListener('load', function () {
+          setTimeout(function () {
             welcomeOverlay.classList.add('active');
             document.body.classList.add('popup-open');
           }, 300); // 300ms delay for smoother entrance
         });
 
         if (welcomeCloseBtn) {
-          welcomeCloseBtn.addEventListener('click', function() {
+          welcomeCloseBtn.addEventListener('click', function () {
             welcomeOverlay.classList.remove('active');
             document.body.classList.remove('popup-open');
           });
         }
 
-        welcomeOverlay.addEventListener('click', function(e) {
+        welcomeOverlay.addEventListener('click', function (e) {
           if (e.target === welcomeOverlay) {
             welcomeOverlay.classList.remove('active');
             document.body.classList.remove('popup-open');
@@ -970,7 +986,7 @@
         var wpImg = document.getElementById('welcomePosterImg');
         var wpLayout = document.getElementById('wpLayout');
         if (wpImg && wpLayout) {
-          wpImg.addEventListener('click', function() {
+          wpImg.addEventListener('click', function () {
             wpLayout.classList.toggle('wp-expanded');
           });
         }
@@ -1597,7 +1613,7 @@
             <path d="M10 15h4"></path>
             <path d="M12 13v4"></path>
           </svg>
-          Link Request APD & PPE
+          E-Link Request APD & PPE
         </a>
         <a href="health.html#consultation" class="btn btn-wa">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1608,20 +1624,20 @@
             <path d="M10 15h4"></path>
             <path d="M12 13v4"></path>
           </svg>
-          Konsultasi Dokter & Follow Up MCU
+          E-Konsultasi Dokter & Follow Up MCU
         </a>
         <a href="safety.html#report" class="btn btn-wa">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
           </svg>
-          Laporan Observasi
+          E-Laporan Observasi
         </a>
         <a href="permit.html#request-permit" class="btn btn-wa">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
             <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
           </svg>
-          Buat Izin Kerja
+          E-Buat Izin Kerja
         </a>
         <a href="#report-section" class="btn btn-wa">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1644,6 +1660,13 @@
             <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
           </svg>
           E-Attendent List
+        </a>
+        <a href="javascript:void(0)" onclick="openTracingModal()" class="btn btn-wa">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          E-tracing
         </a>
       </div>
 
@@ -2284,7 +2307,8 @@
     <div class="attend-modal-container">
       <button class="attend-modal-close" onclick="closeTrainingModal()">✕</button>
       <img src="master.webp" alt="E-Training Poster" style="width: 100%; height: auto; display: block;">
-      <div style="padding: 16px 24px 20px; text-align: center; background: #fff; display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap;">
+      <div
+        style="padding: 16px 24px 20px; text-align: center; background: #fff; display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap;">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdNK9kFAisbkzN3oGHZBRNHBc2uy7fHLjBhDIxQKf6iwiAUFw/viewform?usp=dialog"
           target="_blank" rel="noopener"
           style="display:inline-flex; align-items:center; gap:8px; padding:12px 32px; background:linear-gradient(135deg,#0a2463,#1a4b8c); color:#fff; border-radius:10px; font-weight:700; font-size:14px; font-family:'Inter',sans-serif; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 14px rgba(10,36,99,0.3);"
@@ -2292,12 +2316,14 @@
           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(10,36,99,0.3)'">
           📋 Click Here
         </a>
-        <a href="https://chat.whatsapp.com/Fp1VOjp0NHI0KDQNVHwJWW"
-          target="_blank" rel="noopener"
+        <a href="https://chat.whatsapp.com/Fp1VOjp0NHI0KDQNVHwJWW" target="_blank" rel="noopener"
           style="display:inline-flex; align-items:center; gap:8px; padding:12px 32px; background:#25d366; color:#fff; border-radius:10px; font-weight:700; font-size:14px; font-family:'Inter',sans-serif; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 14px rgba(37,211,102,0.3);"
           onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(37,211,102,0.4)'"
           onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(37,211,102,0.3)'">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
           Gabung Whatsapp Grup
         </a>
       </div>
@@ -2320,6 +2346,41 @@
     </div>
   </div>
 
+  <!-- E-Tracing Modal -->
+  <div id="e-tracing-modal" class="hse-modal" onclick="if(event.target===this) closeTracingModal()">
+    <div class="attend-modal-container">
+      <button class="attend-modal-close" onclick="closeTracingModal()">✕</button>
+      <img src="tracing.webp" alt="E-Tracing Poster" style="width: 100%; height: auto; display: block;">
+      <div
+        style="padding: 16px 24px 20px; text-align: center; background: #fff; display:flex; justify-content:center; align-items:center; gap:12px; flex-wrap:wrap;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFVV1uZAJroDSEgf3ASqOymX5R2BCXm85ORGtFIX-xky-j-g/viewform?usp=dialog"
+          target="_blank" rel="noopener"
+          style="display:inline-flex; align-items:center; gap:8px; padding:12px 32px; background:linear-gradient(135deg,#0a2463,#1a4b8c); color:#fff; border-radius:10px; font-weight:700; font-size:14px; font-family:'Inter',sans-serif; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 14px rgba(10,36,99,0.3);"
+          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(10,36,99,0.4)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(10,36,99,0.3)'">
+          📋 Click Here
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe63GZeYAV6ACjlqgHDjnHxRhWsJuRoqqzIHxMkL84AKgS8eg/viewform?usp=publish-editor"
+          target="_blank" rel="noopener"
+          style="display:inline-flex; align-items:center; gap:8px; padding:12px 32px; background:linear-gradient(135deg,#3e92cc,#1a4b8c); color:#fff; border-radius:10px; font-weight:700; font-size:14px; font-family:'Inter',sans-serif; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 14px rgba(62,146,204,0.3);"
+          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(62,146,204,0.4)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(62,146,204,0.3)'">
+          📝 Form Tracing Report
+        </a>
+        <a href="https://chat.whatsapp.com/H6c9HfQzVF4DBaNx2ObZD5?s=sw&p=a&mlu=3" target="_blank" rel="noopener"
+          style="display:inline-flex; align-items:center; gap:8px; padding:12px 32px; background:#25d366; color:#fff; border-radius:10px; font-weight:700; font-size:14px; font-family:'Inter',sans-serif; text-decoration:none; transition:all 0.2s; box-shadow:0 4px 14px rgba(37,211,102,0.3);"
+          onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(37,211,102,0.4)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='0 4px 14px rgba(37,211,102,0.3)'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Gabung Whatsapp Grup
+        </a>
+      </div>
+    </div>
+  </div>
+
   <script>
     function openAttendanceModal() {
       document.getElementById('attendance-modal').classList.add('active');
@@ -2335,6 +2396,14 @@
     }
     function closeTrainingModal() {
       document.getElementById('e-training-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    function openTracingModal() {
+      document.getElementById('e-tracing-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeTracingModal() {
+      document.getElementById('e-tracing-modal').classList.remove('active');
       document.body.style.overflow = '';
     }
   </script>
